@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 Jaeseok's TIL Blog
 
-## Getting Started
+> Today I Learned – 개발하며 배운 내용을 기록하는 나만의 블로그입니다.  
+> Markdown + GitHub + Next.js + Tailwind
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Stack
+- **Framework**: [Next.js](https://nextjs.org/) 15 (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Markdown**: GitHub에서 실시간 fetch
+- **Deploy**: Vercel
+- **TypeScript**: 타입 안정성 확보
+- **기타**:
+  - 다크모드 지원 🌙
+  - CSR/SSR/SSG/ISR 개념 학습을 겸함
+  - 카테고리 기반 사이드바 자동 구성
+  - 깃허브에서 마크다운 fetch → 렌더링
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📌 기능 정리
+|기능|설명|
+|---|---|
+|📂 카테고리 자동 탐색|	GitHub에서 폴더명을 불러와 사이드바 메뉴로 구성|
+|📄 마크다운 리스트|	각 폴더 안의 .md 파일 목록 출력|
+|📘 마크다운 렌더링|	react-markdown으로 HTML로 변환|
+|🌙 다크모드|	Tailwind + dark: 클래스 사용|
+|🔁 ISR|	정적 생성 + 주기적 재생성 (revalidate: 3600s)|
+|⚡ 실시간 fetch|	최신 내용 반영 가능|
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🧾 커밋 컨벤션
+|타입|의미|예시|
+|---|---|---|
+|`feat`|새로운 기능|`feat: 사이드바 카테고리 자동 구성`|
+|`fix`|버그 수정|`fix: fetch 실패 시 에러 핸들링 추가`|
+|`docs`|문서 수정 (README 등)|`docs: README 내용 정리 및 추가`|
+|`style`|코드 스타일 변경 (로직 X)|`style: 들여쓰기 및 코드 포맷팅`|
+|`refactor`|리팩토링|`refactor: fetch 함수 구조 개선`|
+|`test`|테스트 관련 코드|`test: fetchCategories 테스트 추가`|
+|`chore`|설정, 패키지, 기타 변경|`chore: Tailwind 초기 세팅`|
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧑‍💻 만든 사람
+Jaeseok Kong
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🪄 하고 싶은 것들 (To-do)
+ - [ ] 마크다운 내부 코드 하이라이팅
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+ - [ ] 검색 기능 추가
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+ - [ ] 태그 기반 필터링
+
+ - [ ] GitHub 액션으로 자동 배포 설정
+
+## 🌐 배포 주소
+???
