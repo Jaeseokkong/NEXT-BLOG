@@ -1,5 +1,5 @@
+import Sidebar from "@/components/Sidebar";
 import { fetchCategories } from "@/lib/github";
-import Image from "next/image";
 
 export default async function Home() {
   const data = await fetchCategories()
@@ -7,6 +7,7 @@ export default async function Home() {
 
   return (
     <div>
+      <Sidebar/>
     </div>
   );
 }
