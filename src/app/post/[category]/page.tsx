@@ -8,18 +8,20 @@ interface Props {
   }
 }
 
-export default async function PostListPage({params}: Props) {
-  const files = await fetchFilesInCategory(params.category);
+export default async function PostListPage({ params }: Props) {
+  const category = await params.category;
+
+  const files = await fetchFilesInCategory(category);
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold md-6 capitalize">{params.category}</h1>
+      <h1 className="text-2xl font-bold md-6 capitalize">{category}</h1>
       <ul className="space-y-4">
         {files.map((file) => {
           const { date, title, slug } = parseFileName(file.name);
           return (
             <li key={slug} className="p-4 rounded-xl bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-shadow duration-200 border border-zinc-200 dark:border-zinc-700">
-              <Link href={`/post/${params.category}/${slug}`}>
+              <Link href={`/post/${category}/${slug}`}>
                 <div className="text-sm text-zinc-500 dark:text-zinc-400">{date}</div>
                 <div className="text-lg font-semibold text-zinc-800 dark:text-zinc-100 mt-1">
                   📝 {title}

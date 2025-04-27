@@ -13,7 +13,7 @@ interface Props {
 }
 
 export default async function PostPage({ params }: Props) {
-	const { category, slug } = params;
+  const { category, slug } = await params;  
   const markdown = await fetchMarkdownFile(category, slug);
 
 	return (
