@@ -24,8 +24,8 @@ export async function fetchFilesInCategory(category: string): Promise<{name : st
   return data.filter((item: PostItemType) => item.name.endsWith(".md")).map((item: PostItemType) => ({ name: item.name, path: item.path}))
 }
 
-export async function fetchMarkdownFile(path: string): Promise<string> {
-  const res = await fetch(`https://raw.githubusercontent.com/Jaeseokkong/TIL/main/${path}`, {
+export async function fetchMarkdownFile(category: string, slug: string): Promise<string> {
+  const res = await fetch(`https://raw.githubusercontent.com/Jaeseokkong/TIL/main/${category}/${slug}.md`, {
     next: { revalidate: 60 }
   });
   return await res.text();

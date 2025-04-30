@@ -17,7 +17,7 @@ export default async function PostPage({ params }: Props) {
   const markdown = await fetchMarkdownFile(category, slug);
 
 	return (
-    <div className="prose prose-zinc dark:prose-invert max-w-3xl mx-auto py-8 px-4">
+    <div className="prose prose-neutral max-w-3xl mx-auto dark:prose-invert prose-headings:scroll-mt-24 prose-h2:mt-12 prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900 py-10">
 			<ReactMarkdown
 				remarkPlugins={[remarkGfm]}
 				rehypePlugins={[rehypeRaw, rehypeHighlight]}

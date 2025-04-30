@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@import "@fontsource/inter/index.css";
+@import "@fontsource/pretendard/index.css";
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -23,4 +26,131 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 2.25rem; 
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+details summary {
+  cursor: pointer;
+}
+
+/* 테이블 기본 스타일 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 1rem;
+  color: var(--foreground); /* 기본 텍스트 색상 */
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+/* 헤더 스타일 */
+th {
+  background-color: var(--background); /* 배경색 */
+  color: var(--foreground);
+  font-weight: 600;
+  border-top: 3px solid #ddd; /* 헤더 위쪽에 두꺼운 선 추가 */
+  border-bottom: 2px solid #ddd; /* 헤더 아래쪽에 선 추가 */
+}
+
+/* 바디 행 스타일 */
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* 짝수 행에 배경색 추가 */
+}
+
+/* 테이블 안의 셀 텍스트 정렬 */
+td {
+  vertical-align: middle; /* 셀 안 텍스트를 가운데 정렬 */
+}
+
+/* 모바일에서 테이블 스크롤 가능하게 하기 */
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  th, td {
+    padding: 10px;
+    font-size: 0.875rem;
+  }
+}
+
+/* 인라인 코드 스타일 */
+code {
+  background-color: #f4f4f4;
+  color: #d63384; /* 하이라이트 색 */
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* 코드 블록 스타일 */
+pre code {
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto; /* 긴 코드 가로 스크롤 */
+  display: block;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* 하이라이팅된 코드에 추가적인 스타일 */
+pre code.hljs {
+  background-color: #bbd6ff; /* 하이라이팅된 코드 배경 */
+}
+
+/* 코드 블록의 테두리 */
+pre {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(12, 4, 83, 0.1);
+}
+
+details pre {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(12, 4, 83, 0.1);
+  padding: 1rem;
+}
+
+
+li {
+  line-height: 2rem;
 }
