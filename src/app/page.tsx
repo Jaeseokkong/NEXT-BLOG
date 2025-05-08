@@ -1,13 +1,17 @@
+import PostList from "@/components/PostList";
 import Sidebar from "@/components/Sidebar";
-import { fetchCategories } from "@/lib/github";
+import { fetchAllPosts, fetchCategories } from "@/lib/github";
 
 export default async function Home() {
-  const data = await fetchCategories()
-  console.log(data);
+  const posts = await fetchAllPosts()
 
   return (
-    <div>
+    <div className="flex">
       <Sidebar/>
+      <main className="flex-1 p-8 overflow-auto">
+        <h1 className="text-3xl font-bold mb-6">📌 최신 포스트</h1>
+        <PostList posts={posts} />
+      </main>
     </div>
   );
 }
