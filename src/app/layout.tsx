@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { Inter } from 'next/font/google';
+import { Inter, Montserrat } from 'next/font/google';
 
-// 'Inter' 폰트 설정
 const inter = Inter({
-  subsets: ['latin'],  // 사용할 문자 집합
-  variable: '--font-inter',  // CSS 변수로 설정
+  subsets: ['latin'],
+  variable: '--font-inter'
+});
+
+const montserrat = Montserrat({ 
+  subsets: ['latin'],
+  weight: ['700']
 });
 
 export const metadata: Metadata = {
@@ -22,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className}`}
+        className={`${inter.className} ${montserrat.className}`}
       >
         {children}
       </body>
