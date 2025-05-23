@@ -8,7 +8,7 @@ const headers = {
   "Authorization": `token ${process.env.GITHUB_TOKEN}`
 };
 
-type PostItemType = {
+export type PostItemType = {
   name: string;
   path: string;
   type: string;
@@ -64,12 +64,20 @@ export async function fetchAllPosts(): Promise<PostMeta[]> {
       const res = await fetch(`https://raw.githubusercontent.com/Jaeseokkong/TIL/main/${category}/${file.name}`);
       
       const content = await res.text();
-
+      
       const { data, content: body } = matter(content);
 
+      const name = file.name.replace(".md", "");
+
+      const splitName = name.split("-");
+      console.log(splitName)
+
+      const title = splitName[3];
+      const date = splitName[0] + splitName[1] + splitName[2];
+
       posts.push({
-        title: data.title ?? file.name.replace(".md", ""),
-        date: data.date ?? "unknown",
+        title: title,
+        date: date,
         slug: file.name.replace(".md", ""),
         category,
         excerpt: data.excerpt ?? body.slice(0, 100) + "...",
