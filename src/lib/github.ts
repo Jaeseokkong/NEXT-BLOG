@@ -55,35 +55,37 @@ export async function fetchMarkdownFile(category: string, slug: string): Promise
 
 export async function fetchAllPosts(): Promise<PostMeta[]> {
   const categories = await fetchCategories();
-  const posts: PostMeta[] = [];
 
-  for (const category of categories) {
-    const files = await fetchFilesInCategory(category);
+  const postsPerCategory = await Promise.all(
+    categories.map(async (category) => {
+      const files = await fetchFilesInCategory(category);
 
-    for (const file of files) {
-      const res = await fetch(`https://raw.githubusercontent.com/Jaeseokkong/TIL/main/${category}/${file.name}`);
-      
-      const content = await res.text();
-      
-      const { data, content: body } = matter(content);
+      const fileFetches = await Promise.all(
+        files.map(async (file) => {
+          const res = await fetch(`https://raw.githubusercontent.com/Jaeseokkong/TIL/main/${category}/${file.name}`);
+          const content = await res.text();
+          const { data, content: body } = matter(content);
 
-      const name = file.name.replace(".md", "");
+          const name = file.name.replace(".md", "");
+          const splitName = name.split("-");
+          const title = splitName[3];
+          const date = splitName[0] + splitName[1] + splitName[2];
 
-      const splitName = name.split("-");
-      console.log(splitName)
+          return {
+            title,
+            date,
+            slug: name,
+            category,
+            excerpt: data.excerpt ?? body.slice(0, 100) + "...",
+          };
+        })
+      );
 
-      const title = splitName[3];
-      const date = splitName[0] + splitName[1] + splitName[2];
+      return fileFetches;
+    })
+  )
+  
+  const allPosts = postsPerCategory.flat();
 
-      posts.push({
-        title: title,
-        date: date,
-        slug: file.name.replace(".md", ""),
-        category,
-        excerpt: data.excerpt ?? body.slice(0, 100) + "...",
-      });
-    }
-  }
-
-  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+  return allPosts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
