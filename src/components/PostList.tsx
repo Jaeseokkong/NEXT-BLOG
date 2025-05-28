@@ -1,33 +1,51 @@
-import Link from 'next/link';
+'use client';
 
-interface Post {
-  title: string;
-  date: string;
-  slug: string;
-  category: string;
-  excerpt?: string;
-}
+import { useEffect, useState, useRef } from "react";
+import { PostMeta } from "@/lib/github"; 
+import PostCard from "./PostCard";
 
-const PostList = ({ posts }: { posts: Post[] }) => {
+const PostList = () => {
+  const [posts, setPosts] = useState<PostMeta[]>([]);
+  const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const loaderRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      setIsLoading(true);
+      const res = await fetch(`/api/posts?page=${page}`);
+      const newPosts = await res.json();
+      setPosts((prev) => [...prev, ...newPosts]);
+      setIsLoading(false);
+    }
+
+    loadPosts();
+  }, [page]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !isLoading) {
+          setPage((prev) => prev + 1);
+        }
+      },
+      { threshold: 1 }
+    );
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+
+    return () => {
+      if (loaderRef.current) observer.unobserve(loaderRef.current);
+    }
+  }, [loaderRef.current, isLoading]);
+
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {posts.map((post) => (
-        <Link
-          key={`${post.category}/${post.slug}`}
-          href={`/post/${post.category}/${post.slug}`}
-          className="block rounded-2xl shadow-md hover:shadow-lg transition bg-white dark:bg-zinc-900"
-        >
-          <div className='flex-1 h-[150px] bg-amber-200 rounded-t-2xl flex'>
-          </div>
-          <div className="py-2 px-4">
-            <h3 className="text-sm font-semibold mb-2">{post.title}</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
-              📅 {post.date} | 📂 {post.category}
-            </p>
-            <p className="text-gray-700 dark:text-gray-300 text-sm">{post.excerpt}</p>
-          </div>
-          
-        </Link>
+      {posts.map((post, idx) => (
+       <PostCard key={`${post.slug}-${idx}`} post={post} />
       ))}
   </div>
   )
