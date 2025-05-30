@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { Inter, Montserrat } from 'next/font/google';
+import Header from "@/components/Header";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -25,6 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Header />
       <body
         className={`${inter.className} ${montserrat.className}`}
       >
