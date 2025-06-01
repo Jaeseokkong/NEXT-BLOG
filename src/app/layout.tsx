@@ -26,10 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Header />
       <body
         className={`${inter.className} ${montserrat.className}`}
       >
+        <Header />
         {children}
       </body>
     </html>
