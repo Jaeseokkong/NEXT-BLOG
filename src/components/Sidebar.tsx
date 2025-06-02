@@ -1,12 +1,11 @@
-import { fetchCategories, PostItemType } from '@/lib/github';
+import { fetchCategories } from '@/lib/github';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
 
 const Sidebar = async () => {
   const categories = await fetchCategories();
 
   return (
-    <aside className="w-60 p-6 bg-zinc-50 dark:bg-zinc-800 rounded-xl shadow-md overflow-y-auto h-fit">
+    <aside className="hidden md:block w-60 p-6 bg-zinc-50 dark:bg-zinc-800 rounded-xl shadow-md h-fit">
       <h2 className="text-2xl font-semibold text-zinc-700 dark:text-zinc-200 mb-6">📚 카테고리</h2>
       <ul className="space-y-3">
         {categories?.map((category) => (
@@ -21,7 +20,7 @@ const Sidebar = async () => {
         ))}
       </ul>
     </aside>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
