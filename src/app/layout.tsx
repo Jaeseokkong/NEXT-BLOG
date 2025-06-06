@@ -4,7 +4,7 @@ import "./globals.css";
 import { Inter, Montserrat } from 'next/font/google';
 import Header from "@/components/Header";
 
-import { Provider } from './providers';
+import { Providers } from './providers';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -31,10 +31,10 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${montserrat.className}`}
       >
-        <Provider>
+        <Providers>
           <Header />
           {children}
-        </Provider>
+        </Providers>
       </body>
     </html>
   );
