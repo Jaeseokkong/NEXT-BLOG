@@ -5,7 +5,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Montserrat', 'Pretendard', 'Inter', 'sans-serif'],
+        sans: ['var(--font-inter)', 'var(--font-montserrat)', 'sans-serif'],
       },
     },
   },

@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} ${montserrat.className}`}
+        className={`${inter.className} ${montserrat.className} font-sans`}
       >
         <Providers>
           <Header />
