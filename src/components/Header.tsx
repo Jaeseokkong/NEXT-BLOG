@@ -15,8 +15,8 @@ export default function Header() {
     <header className="w-full bg-white dark:bg-zinc-900 shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center">
-          <div className="w-14 h-14 bg-[#f7df1e] flex items-center justify-center rounded-sm relative">
-            <div className="text-blue-500 text-lg font-extrabold">
+          <div className="w-14 h-14 bg-[#f7df1e] flex rounded-sm relative">
+            <div className="text-blue-500 text-lg font-extrabold absolute bottom-0 right-1">
               <span>H</span><span className="text-black">JS</span>
             </div>
           </div>
