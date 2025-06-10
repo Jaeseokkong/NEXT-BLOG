@@ -122,3 +122,39 @@ export async function fetchAllPostsPaginated(page: number, limit: number = 10): 
   const start = (page -1) * limit;
   return sortedPosts.slice(start, start + limit);
 }
+
+export async function fetchPostMetas(page: number, limit: number): Promise<PostMeta[]> {
+  const categories = await fetchCategories();
+  const metaList: { category: string; file: PostItemType }[] = [];
+
+  for (const category of categories) {
+    const files = await fetchFilesInCategory(category);
+    files.forEach((file) => {
+      metaList.push({ category, file });
+    });
+  }
+
+  const sorted = metaList.sort((a, b) => b.file.name.localeCompare(a.file.name));
+  const selected = sorted.slice((page - 1) * limit, page * limit);
+
+  const posts = await Promise.all(selected.map(async ({ category, file }) => {
+    const res = await fetch(`https://raw.githubusercontent.com/Jaeseokkong/TIL/main/${category}/${file.name}`);
+    const content = await res.text();
+    const { data, content: body } = matter(content);
+
+    const name = file.name.replace(".md", "");
+    const split = name.split("-");
+    const title = split[3];
+    const date = split.slice(0, 3).join("");
+
+    return {
+      title,
+      date,
+      slug: name,
+      category,
+      excerpt: data.excerpt ?? body.slice(0, 100) + "...",
+    };
+  }));
+
+  return posts;
+}
