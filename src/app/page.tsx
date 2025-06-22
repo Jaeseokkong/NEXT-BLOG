@@ -1,10 +1,10 @@
 import Intro from "@/components/Intro";
 import PostList from "@/components/PostList";
 import Sidebar from "@/components/Sidebar";
-import { fetchAllPostsPaginated } from "@/lib/github";
+import { fetchPostMetas } from "@/lib/github";
 
 export default async function Home() {
-  const initialPosts = await fetchAllPostsPaginated(1, 10);
+  const initialPosts = await fetchPostMetas(1, 10); // 최적화된 fetch 사용
 
   return (
     <div className="py-10 px-4">

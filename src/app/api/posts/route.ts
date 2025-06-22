@@ -1,10 +1,11 @@
-import { fetchAllPostsPaginated } from "@/lib/github";
+import { fetchPostMetas } from "@/lib/github";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
-  const page = parseInt(req.nextUrl.searchParams.get("page") ?? "1");
-  const limit = 10;
+  const pageParam = req.nextUrl.searchParams.get("page");
+  const page = pageParam ? parseInt(pageParam, 10) : 1;
 
-  const posts = await fetchAllPostsPaginated(page, limit);
+  const posts = await fetchPostMetas(page, 10);
+
   return NextResponse.json(posts);
 }
