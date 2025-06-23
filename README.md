@@ -59,4 +59,4 @@ Jaeseok Kong
  - [ ] GitHub 액션으로 자동 배포 설정
 
 ## 🌐 배포 주소
-???
+[NEXT-BLOG(HJS)](https://next-blog-fgz8xdpc3-jaeseokkongs-projects.vercel.app/)
