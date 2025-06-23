@@ -54,9 +54,11 @@ const PostList = ({ initialPosts }: { initialPosts: PostMeta[] }) => {
       { threshold: 1 }
     );
 
-    if (loaderRef.current) observer.observe(loaderRef.current);
+    const currentRef = loaderRef.current;
+    if (currentRef) observer.observe(currentRef);
+
     return () => {
-      if (loaderRef.current) observer.unobserve(loaderRef.current);
+      if (currentRef) observer.unobserve(currentRef);
     };
   }, [isLoading]);
 

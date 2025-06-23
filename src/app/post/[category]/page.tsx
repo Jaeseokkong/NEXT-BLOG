@@ -2,11 +2,15 @@ import { fetchFilesInCategory } from '@/lib/github';
 import { parseFileName } from '@/lib/utils';
 import Link from 'next/link';
 
-interface Props {
-  params: Promise<{ category: string }>;
-}
+type Params = {
+  category: string;
+};
 
-export default async function PostListPage({ params }: Props) {
+type Props = {
+  params: Promise<Params>;
+};
+
+export default async function CategoryPage({ params }: Props) {
   const { category } = await params;
   const files = await fetchFilesInCategory(category);
 
@@ -44,7 +48,13 @@ export default async function PostListPage({ params }: Props) {
 }
 
 function formatDate(dateString: string): string {
-  const d = new Date(dateString.slice(0, 4) + '-' + dateString.slice(4, 6) + '-' + dateString.slice(6));
+  const d = new Date(
+    dateString.slice(0, 4) +
+      '-' +
+      dateString.slice(4, 6) +
+      '-' +
+      dateString.slice(6)
+  );
   return d.toLocaleDateString('ko-KR', {
     year: 'numeric',
     month: 'long',
