@@ -30,22 +30,27 @@ export async function fetchCategories(): Promise<string[]> {
   return data.filter((item: PostItemType) => item.type === "dir" ).map((item: PostItemType) => item.name);
 }
 
-export async function fetchFilesInCategory(category: string): Promise<{name : string; path: string}[]> {
+export async function fetchFilesInCategory(category: string): Promise<PostItemType[]> {
   const res = await fetch(`${BASE_URL}/${category}`, {
     headers,
     next: { revalidate: 3600 }
   });
   const data = await res.json();
 
-  // data가 배열인지 확인
   if (Array.isArray(data)) {
-    return data.filter((item: PostItemType) => item.name.endsWith(".md"))
-      .map((item: PostItemType) => ({ name: item.name, path: item.path }));
+    return data
+      .filter((item: PostItemType) => item.name.endsWith(".md"))
+      .map((item: PostItemType) => ({
+        name: item.name,
+        path: item.path,
+        type: item.type,  // type 필드도 추가
+      }));
   } else {
     console.error("Expected an array but received:", data);
-    return [];  // 빈 배열을 반환하여 오류를 방지
+    return [];
   }
 }
+
 
 export async function fetchMarkdownFile(category: string, slug: string): Promise<string> {
   const res = await fetch(`https://raw.githubusercontent.com/Jaeseokkong/TIL/main/${category}/${slug}.md`, {

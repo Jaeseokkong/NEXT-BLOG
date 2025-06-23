@@ -3,13 +3,11 @@ import { parseFileName } from '@/lib/utils';
 import Link from 'next/link';
 
 interface Props {
-  params: {
-    category: string;
-  };
+  params: Promise<{ category: string }>;
 }
 
 export default async function PostListPage({ params }: Props) {
-  const { category } = params;
+  const { category } = await params;
   const files = await fetchFilesInCategory(category);
 
   return (

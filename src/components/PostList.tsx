@@ -31,6 +31,20 @@ const PostList = ({ initialPosts }: { initialPosts: PostMeta[] }) => {
   }, [page]);
 
   useEffect(() => {
+    if (!page) return;
+
+    const loadPosts = async () => {
+      setIsLoading(true);
+      const res = await fetch(`/api/posts?page=${page}`);
+      const newPosts = await res.json();
+      setPosts((prev) => [...prev, ...newPosts]);
+      setIsLoading(false);
+    }
+
+    loadPosts();
+  }, [page]);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !isLoading) {
