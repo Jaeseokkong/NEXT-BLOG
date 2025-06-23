@@ -6,13 +6,10 @@ import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github.css";
 import "@/styles/markdown.css";
 
-export default async function PostPage({
-  params,
-}: {
-  params: Promise<{ category: string; slug: string }>;
+export default async function PostPage({ params }: {
+  params: { category: string; slug: string }
 }) {
-	console.log("category => " , (await params).category, " / ", "slug => ", (await params).slug);
-  const { category, slug } = await params;
+  const { category, slug } = params;
   const markdown = await fetchMarkdownFile(category, slug);
 
   return (
