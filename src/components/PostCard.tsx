@@ -24,7 +24,7 @@ const PostCard = ({ post }: Props) => {
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
           📅 {post.date} | 📂 {post.category}
         </p>
-        <p className="text-gray-700 dark:text-gray-300 text-sm">
+        <p className="text-gray-700 dark:text-gray-300 text-sm line-clamp-3">
           {post.excerpt}
         </p>
       </div>
