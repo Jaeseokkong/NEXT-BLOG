@@ -1,4 +1,5 @@
 import matter from "gray-matter";
+import { markdownToPlainText } from "./stripMarkdown";
 
 const BASE_URL = "https://api.github.com/repos/Jaeseokkong/TIL/contents";
 
@@ -157,7 +158,9 @@ export async function fetchPostMetas(page: number, limit: number): Promise<PostM
       date,
       slug: name,
       category,
-      excerpt: data.excerpt ?? body.slice(0, 100) + "...",
+      excerpt: data.excerpt
+        ? markdownToPlainText(data.excerpt)
+        : markdownToPlainText(body),
     };
   }));
 
