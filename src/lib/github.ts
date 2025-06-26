@@ -27,8 +27,7 @@ export type PostMeta = {
 export async function fetchCategories(): Promise<string[]> {
   const res = await fetch(BASE_URL,  { headers, next: {revalidate: 3600 } });
   const data = await res.json();
-  console.log(data.filter((item: PostItemType) => item.type === "dir" ).map((item: PostItemType) => item.name));
-  return data.filter((item: PostItemType) => item.type === "dir" ).map((item: PostItemType) => item.name);
+  return data.filter((item: PostItemType) => item.type === "dir" && item.name !== "images").map((item: PostItemType) => item.name);
 }
 
 export async function fetchFilesInCategory(category: string): Promise<PostItemType[]> {
