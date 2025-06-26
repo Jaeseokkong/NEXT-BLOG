@@ -16,7 +16,7 @@ const PostCard = ({ post }: Props) => {
   return (
     <Link
       href={`/post/${post.category}/${post.slug}`}
-      className="block rounded-2xl shadow-md hover:shadow-lg transition bg-white dark:bg-zinc-900"
+      className="block rounded-2xl shadow-md hover:shadow-lg bg-white dark:bg-zinc-900"
     >
       <div className="flex-1 h-[150px] bg-amber-200 rounded-t-2xl flex"></div>
       <div className="py-2 px-4">
