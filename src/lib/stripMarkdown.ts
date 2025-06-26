@@ -10,7 +10,7 @@ export function markdownToPlainText(markdown: string, maxLength = 100): string {
 
   const boldHandled = noHeadings.replace(/\*\*(.+?)\*\*/g, (_, p1) => `${p1.toUpperCase()}`);
 
-  const html = marked.parse(boldHandled);
+  const html = marked.parse(boldHandled) as string;
 	
   const stripped = html
     .replace(/<\/?[^>]+(>|$)/g, "")   // HTML 태그 제거
