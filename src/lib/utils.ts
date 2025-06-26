@@ -11,3 +11,15 @@ export function parseFileName(fileName: string) {
     slug: withoutExtension
   }
 }
+
+export function extractFirstImage(markdown: string): string | null {
+  const match = markdown.match(/!\[.*?\]\((.*?)\)/);
+  if (match && match[1]) {
+    // 상대 경로면 raw.githubusercontent URL로 변환
+    const src = match[1];
+    return src.startsWith("http")
+      ? src
+      : `https://raw.githubusercontent.com/Jaeseokkong/TIL/main/${src.replace("../", "")}`;
+  }
+  return null;
+}

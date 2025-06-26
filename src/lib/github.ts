@@ -1,5 +1,6 @@
 import matter from "gray-matter";
 import { markdownToPlainText } from "./stripMarkdown";
+import { extractFirstImage } from "./utils";
 
 const GITHUB_API_BASE_URL = "https://api.github.com/repos/Jaeseokkong/TIL/contents";
 const GITHUB_RAW_BASE_URL = "https://raw.githubusercontent.com/Jaeseokkong/TIL/main";
@@ -22,6 +23,7 @@ export type PostMeta = {
   slug: string;
   category: string;
   excerpt?: string;
+  image?: string;
 };
 
 
@@ -87,7 +89,7 @@ export async function fetchAllPosts(): Promise<PostMeta[]> {
             date,
             slug: name,
             category,
-            excerpt: data.excerpt ?? body.slice(0, 100) + "...",
+            excerpt: data.excerpt ?? body.slice(0, 100),
           };
         })
       );
@@ -156,6 +158,7 @@ export async function fetchPostMetas(page: number, limit: number): Promise<PostM
     const split = name.split("-");
     const title = split[3];
     const date = split.slice(0, 3).join("");
+    const image = extractFirstImage(body);
 
     return {
       title,
@@ -165,6 +168,7 @@ export async function fetchPostMetas(page: number, limit: number): Promise<PostM
       excerpt: data.excerpt
         ? markdownToPlainText(data.excerpt)
         : markdownToPlainText(body),
+      image: image ?? undefined
     };
   }));
 
