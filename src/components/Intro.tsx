@@ -2,7 +2,7 @@ import React from 'react';
 
 const Intro = () => {
   return (
-    <section className="mb-10 rounded-xl bg-[#f7df1e]/30 dark:bg-[#f7df1e]/10 p-6 md:p-8">
+    <section className="rounded-xl bg-[#f7df1e]/30 dark:bg-[#f7df1e]/10 p-6 md:p-8">
       <h1 className="text-2xl font-bold text-yellow-700 dark:text-yellow-400 mb-4">
         👋 Welcome to HJS Blog
       </h1>
