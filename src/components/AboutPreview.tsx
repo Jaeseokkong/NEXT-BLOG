@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import TechBox from './ui/techBox';
 
 export default function AboutPreview() {
   return (
@@ -13,10 +14,10 @@ export default function AboutPreview() {
       </p>
 
       <div className="flex flex-wrap gap-2 text-sm text-zinc-600 dark:text-zinc-300">
-        <span className="px-2 py-1 bg-zinc-200 dark:bg-zinc-700 rounded">TypeScript</span>
-        <span className="px-2 py-1 bg-zinc-200 dark:bg-zinc-700 rounded">React</span>
-        <span className="px-2 py-1 bg-zinc-200 dark:bg-zinc-700 rounded">Next.js</span>
-        <span className="px-2 py-1 bg-zinc-200 dark:bg-zinc-700 rounded">TailwindCSS</span>
+        <TechBox techName="TypeScript"/>
+        <TechBox techName="React"/>
+        <TechBox techName="Next.js"/>
+        <TechBox techName="TailwindCSS"/>
       </div>
 
       <div className="mt-4">
