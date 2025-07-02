@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import PreviewSection from '../ui/PreviewSection';
+import TechContainer from '../ui/TechContainer';
 
 type Project = {
 	title: string;
@@ -6,7 +8,6 @@ type Project = {
 	tech: string[];
 	link: string;
 }
-
 
 const projects: Project[] = [
   {
@@ -25,8 +26,11 @@ const projects: Project[] = [
 
 export default function ProjectsPreview() {
 	return (
-		<section className="bg-zinc-50 dark:bg-zinc-800 rounded-xl p-6 shadow-sm">
-			<h2 className="text-2xl font-semibold mb-4 text-zinc-800 dark:text-zinc-100">🛠 Projects</h2>
+		<PreviewSection 
+			title="🛠 Projects"
+			content={`프론트엔드 개발자이며, 사용자 경험과 성능에 집중하여 웹 서비스를 만듭니다.\nReact와 Next.js를 주로 사용하며, 사이드 프로젝트와 기술 블로그 작성에도 열정이 있습니다.`}
+			moreButton={{ href:"/projects", label: "→ 전체 프로젝트 보기"}}
+		>
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 				{projects.map((project) => (
 					<Link 
@@ -38,25 +42,10 @@ export default function ProjectsPreview() {
 							{project.title}
 						</h3>
             	<p className="text-sm text-zinc-600 dark:text-zinc-300 mb-2">{project.description}</p>
-							<div className="flex flex-wrap gap-2 text-sm text-zinc-600 dark:text-zinc-300">
-								{project.tech.map((t) => (
-									<span
-										key={t}
-										className="px-2 py-1 bg-zinc-200 dark:bg-zinc-700 rounded"
-									>
-										{t}
-									</span>
-								))}
-							</div>
+							<TechContainer techList={project.tech}/>
 					</Link>
 				))}
 			</div>
-
-			<div className="mt-4">
-        <Link href="/projects" className="text-blue-500 hover:underline text-sm">
-          → 전체 프로젝트 보기
-        </Link>
-      </div>
-		</section>
+		</PreviewSection>
 	)
 }

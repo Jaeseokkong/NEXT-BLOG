@@ -1,6 +1,6 @@
-import AboutPreview from "@/components/AboutPreview";
+import AboutPreview from "@/components/home/AboutPreview";
 import Intro from "@/components/Intro";
-import ProjectsPreview from "@/components/ProjectsPreview";
+import ProjectsPreview from "@/components/home/ProjectsPreview";
 import { fetchPostMetas } from "@/lib/github";
 
 export default async function Home() {
