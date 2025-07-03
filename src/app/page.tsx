@@ -1,5 +1,4 @@
 import AboutPreview from "@/components/home/AboutPreview";
-import Intro from "@/components/Intro";
 import ProjectsPreview from "@/components/home/ProjectsPreview";
 import { fetchPostMetas } from "@/lib/github";
 import LatestPostsPreview from "@/components/home/LatestPostsPreview";

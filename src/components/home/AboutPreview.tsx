@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import PreviewSection from '../ui/PreviewSection';
 import TechContainer from '../ui/TechContainer';
 
