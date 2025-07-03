@@ -21,7 +21,7 @@ const PostCard = ({ post }: Props) => {
 
   return (
     <Link
-      href={`/post/${post.category}/${post.slug}`}
+      href={`/posts/${post.category}/${post.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700 shadow-sm hover:shadow-md transition-all bg-white dark:bg-zinc-900"
     >
       <div className="relative h-40 w-full">
