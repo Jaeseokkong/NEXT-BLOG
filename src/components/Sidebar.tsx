@@ -11,7 +11,7 @@ const Sidebar = async () => {
         {categories?.map((category) => (
           <li key={category}>
             <Link
-              href={`/post/${category}`}
+              href={`/posts/${category}`}
               className="block px-3 py-2 rounded-lg bg-zinc-100 dark:bg-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-600 text-zinc-800 dark:text-zinc-100 transition"
             >
               {category}
