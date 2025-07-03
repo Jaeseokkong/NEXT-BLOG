@@ -16,64 +16,49 @@ interface Post {
 }
 
 const PostCard = ({ post }: Props) => {
+  const hasImage = !!post.image;
+  const bgColor = categoryBgColors[post.category] ?? "bg-gray-100";
+
   return (
     <Link
       href={`/post/${post.category}/${post.slug}`}
-      className="
-        group block rounded-2xl overflow-hidden
-        shadow-md hover:shadow-lg
-        dark:shadow-md dark:hover:shadow-xl
-        bg-white dark:bg-zinc-900
-        border border-gray-100 dark:border-zinc-700
-        hover:bg-zinc-100 dark:hover:bg-zinc-800
-      ">
-      <div className="
-        relative flex-1 h-[150px] rounded-t-2xl flex overflow-hidden
-      group-hover:bg-zinc-700 dark:group-hover:bg-zinc-700
-      ">
-        {post.image ? (
+      className="group flex flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700 shadow-sm hover:shadow-md transition-all bg-white dark:bg-zinc-900"
+    >
+      <div className="relative h-40 w-full">
+        {hasImage ? (
           <>
             <Image
-              src={post.image}
+              src={post.image!}
               alt={post.title}
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-5 transition-opacity" />
+            <div className="absolute transition" />
           </>
         ) : (
-          <div
-            className={`${categoryBgColors[post.category]} flex flex-col w-full h-full px-2 text-center justify-center break-keep relative rounded-t-2xl overflow-hidden`}
-          >
-            <span className="font-extrabold text-lg" style={{ color: 'black' }}>
-              {post.title}
-            </span>
-            <span className="text-xs font-semibold" style={{ color: 'black' }}>
-              {post.category}
-            </span>
-          <div
-              className="
-                absolute inset-0 bg-gray-300 bg-opacity-20
-                dark:bg-gray-900 dark:bg-opacity-20
-                opacity-0 group-hover:opacity-20
-                transition-opacity rounded-t-2xl
-                pointer-events-none
-              "
-            />
+          <div className={`${bgColor} flex items-center justify-center h-full text-center transition-transform duration-300 group-hover:scale-105`}>
+            <span className="text-sm font-semibold text-black px-4">{post.title}</span>
           </div>
         )}
       </div>
-      <div className="py-2 px-4">
-        <h3 className="text-sm font-semibold mb-2">{post.title}</h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
-          📅 {post.date} | 📂 {post.category}
+
+      <div className="flex flex-col p-4 flex-1">
+        <span className="text-xs text-indigo-500 dark:text-indigo-400 font-medium uppercase tracking-wide mb-1">
+          {post.category}
+        </span>
+
+        <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 line-clamp-2 group-hover:underline">
+          {post.title}
+        </h3>
+
+        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
+          {post.excerpt ?? "내용 없음"}
         </p>
-        <p className="text-gray-700 dark:text-gray-300 text-sm line-clamp-3">
-          {post.excerpt}
-        </p>
+
+        <span className="mt-auto pt-3 text-xs text-zinc-400">📅 {post.date}</span>
       </div>
     </Link>
   );
 };
 
-export default PostCard; 
+export default PostCard;

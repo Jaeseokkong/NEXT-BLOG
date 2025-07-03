@@ -5,7 +5,7 @@ const Sidebar = async () => {
   const categories = await fetchCategories();
 
   return (
-    <aside className="hidden md:block w-60 p-6 bg-zinc-50 dark:bg-zinc-800 rounded-xl shadow-md h-fit">
+    <aside className="hidden md:block p-6 bg-zinc-50 dark:bg-zinc-800 rounded-xl shadow-md h-fit w-full md:w-1/4 lg:w-1/5 shrink-0 sticky top-24">
       <h2 className="text-2xl font-semibold text-zinc-700 dark:text-zinc-200 mb-6">📚 카테고리</h2>
       <ul className="space-y-3">
         {categories?.map((category) => (
