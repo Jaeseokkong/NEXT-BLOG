@@ -1,88 +1,118 @@
 import Image from "next/image";
+import { Briefcase, Mail, User } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center gap-10 text-zinc-800 dark:text-zinc-200">
-      <div className="flex-shrink-0">
-        <Image
-          src="/images/avatar-1.png" 
-          alt="HJS Avatar-1"
-          width={100}
-          height={100}
-          className="w-36 h-36 rounded-full border-zinc-300 dark:border-zinc-600 shadow-lg object-cover"
-          loading="lazy"
-          unoptimized
-        />
-      </div>
+    <div className="max-w-6xl mx-auto px-6 py-16 space-y-16 text-zinc-800 dark:text-zinc-100">
+      
+      {/* 소개 및 프로필 */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
+        <div className="flex justify-center">
+          <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-yellow-400 shadow-lg">
+            <Image
+              src="/images/avatar-1.png"
+              alt="HJS Avatar"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+        <div className="md:col-span-2 space-y-4 leading-relaxed">
+          <h1 className="text-4xl font-bold flex items-center gap-3">
+            <User className="w-8 h-8 text-yellow-500" />
+            About <span className="text-yellow-600 dark:text-yellow-400">HJS</span>
+          </h1>
+          <p>
+            안녕하세요! 👋 저는 <strong>HJS</strong>, 사용자 경험과 교육의 디지털 전환에 가치를 두는 프론트엔드 개발자입니다.
+          </p>
+          <p>
+            <strong>React, Next.js</strong> 등 최신 프론트엔드 기술을 바탕으로, 실질적인 사용자 편의를 고민하며 학습 효과를 높이는 서비스를 만들어 왔습니다. UI/UX 개선, 시스템 아키텍처 이해, API 연동, 모니터링 도구까지 전반에 걸쳐 능동적으로 참여하며 팀과 함께 성장해왔습니다.
+          </p>
+          <p>
+            특히, <span className="text-yellow-700 dark:text-yellow-400 font-semibold">교육 콘텐츠 플랫폼</span>과 <span className="text-yellow-700 dark:text-yellow-400 font-semibold">실시간 데이터 서비스</span> 등 사용자 중심 기능을 설계하고 개발하는 데 강점을 가지고 있습니다.
+          </p>
+        </div>
+      </section>
 
-      {/* 텍스트 섹션 */}
-      <div className="flex-1 bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-8 prose prose-zinc dark:prose-invert max-w-3xl">
-        <h1 className="text-4xl font-extrabold mb-6">About HJS</h1>
+      {/* 경력 소개 */}
+      <section className="space-y-8">
+        <h2 className="text-3xl font-bold flex items-center gap-3 border-b border-zinc-200 dark:border-zinc-700 pb-2">
+          <Briefcase className="w-6 h-6 text-yellow-500" />
+          💼 Career
+        </h2>
+
+        {/* 윤선생 */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold text-yellow-700 dark:text-yellow-400">
+            윤선생 기술본부 — 프론트엔드 개발 (2023.07 ~ 현재)
+          </h3>
+          <ul className="list-disc list-inside space-y-2 text-zinc-700 dark:text-zinc-300">
+            <li>
+              <strong>D-Book 서비스:</strong> 디지털 교재 개발 주도, 콘텐츠 자동 업데이트 및 인터랙티브 기능 구현으로 몰입형 학습 환경 제공
+            </li>
+            <li>
+              <strong>LMS 개발:</strong> 학습 진척도 추적 및 성과 분석 시스템 구축, AI 자동 코멘트 기능으로 <span className="text-yellow-700 dark:text-yellow-400 font-medium">리뷰 시간 30% 단축</span>
+            </li>
+            <li>
+              <strong>교사용 웹 서비스:</strong> 성적 평가, 리포트 시각화 기능 개발 → 학습자 관리 효율성 향상
+            </li>
+            <li>
+              <strong>웹뷰 앱 콘텐츠:</strong> 실시간 피드백 기능으로 학습자 참여율 20% 증가
+            </li>
+            <li>
+              <strong>API 헬스체크 시스템:</strong> Next.js 기반 대시보드로 API 상태 모니터링 → <span className="text-yellow-700 dark:text-yellow-400 font-medium">서비스 안정성 향상</span>
+            </li>
+            <li>
+              <strong>RD 리포트 디자인:</strong> 학습자/교사 대상 시각적 UX 최적화로 이해도 강화
+            </li>
+            <li>
+              <strong>YOONS.COM 유지보수:</strong> 사용자 중심 UI 개선 및 안정성 확보
+            </li>
+          </ul>
+        </div>
+
+        {/* 더리얼마케팅 */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold text-yellow-700 dark:text-yellow-400">
+            더리얼마케팅 — 웹/앱 개발자 (2021.06 ~ 2023.07)
+          </h3>
+          <ul className="list-disc list-inside space-y-2 text-zinc-700 dark:text-zinc-300">
+            <li>
+              <strong>Metacity Stamp:</strong> 전자영수증 스탬프 및 알림톡 발송 관리자 페이지 개발, JWT 기반 보안 강화
+            </li>
+            <li>
+              <strong>Fidelis:</strong> 그룹사 홈페이지 구축, Spring Security를 통한 인증/권한 관리
+            </li>
+            <li>
+              <strong>HoneymoonResort:</strong> 예약 시스템 및 필터링 기능 구현, 참여율 30% 증가
+            </li>
+            <li>
+              <strong>노마드노트 앱:</strong> React Native 기반 고도화 및 다국어, 보안 기능 탑재
+            </li>
+            <li>
+              <strong>실시간 VOC 앱:</strong> 웹소켓 기반 통신, 실시간 데이터 시각화로 사용자 경험 최적화
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* 연락처 */}
+      <section className="space-y-4">
+        <h2 className="text-3xl font-bold flex items-center gap-3 border-b border-zinc-200 dark:border-zinc-700 pb-2">
+          <Mail className="w-6 h-6 text-yellow-500" />
+          📬 Contact
+        </h2>
         <p>
-          안녕하세요! 👋 저는 <strong>HJS</strong>입니다.<br />
-          사용자 경험을 최우선으로 생각하며, 교육 분야의 디지털 전환을 위해 웹과 앱 기술을 통해 꾸준히 성장하고 있는 프론트엔드 개발자입니다.<br />
-          4년 이상의 경력을 바탕으로, 복잡한 시스템 설계부터 인터랙티브 UI 개발까지 폭넓은 프로젝트를 수행하며 실질적인 학습 경험 향상에 기여해왔습니다.
-        </p>
-
-        <h2 className="mt-10 mb-4 text-3xl font-semibold border-b-2 border-zinc-200 dark:border-zinc-700 pb-1">💼 Career</h2>
-        <h3 className="text-xl font-semibold mt-4">윤선생 기술본부 — 프론트엔드 개발(2023.07 ~ 현재)</h3>
-        <ul className="list-disc list-inside space-y-2 text-zinc-700 dark:text-zinc-400">
-          <li>
-            <strong>D-Book 서비스 개발</strong><br />
-            React, Spring, Oracle 환경에서 디지털 교재 서비스 기획과 프론트엔드 개발을 주도. 사용자 맞춤형 콘텐츠와 인터랙티브 학습 환경 구현.
-          </li>
-          <li>
-            <strong>LMS 개발</strong><br />
-            AI 코멘트 자동 생성으로 학습 리뷰 시간을 30% 단축하고 관리 효율성 40% 향상.
-          </li>
-          <li>
-            <strong>교육용 웹뷰 앱 및 교사용 웹 서비스</strong><br />
-            실시간 피드백 및 학습자 관리 대시보드 개발로 참여율과 관리 효율성 증대.
-          </li>
-          <li>
-            <strong>API 헬스 체크 및 모니터링</strong><br />
-            Next.js 기반 내부 API 모니터링 대시보드 개발로 장애 대응 및 운영 효율성 향상.
-          </li>
-        </ul>
-
-        <h3 className="text-xl font-semibold mt-8">더리얼마케팅 — 웹/앱 개발자 (2021.06 ~ 2023.07)</h3>
-        <ul className="list-disc list-inside space-y-2 text-zinc-700 dark:text-zinc-400">
-          <li>
-            <strong>전자영수증 관리자 페이지 (Metacity Stamp)</strong><br />
-            React와 Spring으로 보안 강화 및 알림톡 템플릿 승인 기능 구현.
-          </li>
-          <li>
-            <strong>그룹사 홈페이지 구축 (Fidelis)</strong><br />
-            사용자 친화적 UI/UX와 Spring Security 적용으로 안정적 운영.
-          </li>
-          <li>
-            <strong>여행사 웹/모바일 사이트 (HoneymoonResort)</strong><br />
-            예약 시스템 구축 및 검색 기능 최적화로 사용자 참여율 30% 증가.
-          </li>
-          <li>
-            <strong>SNS 여행 앱 (노마드노트) 고도화</strong><br />
-            React Native로 다국어 지원 및 보안 기능 강화, 앱 성능 20% 개선.
-          </li>
-        </ul>
-
-        <h2 className="mt-10 mb-4 text-3xl font-semibold border-b-2 border-zinc-200 dark:border-zinc-700 pb-1">🧠 관심 분야 & 가치관</h2>
-        <p>
-          유지보수성과 확장성을 고려한 프론트엔드 아키텍처 설계와 디자인 시스템 구축에 관심이 많습니다.<br />
-          React, Next.js, TypeScript, TailwindCSS를 기반으로 사용자 중심의 UI/UX와 웹 성능 최적화를 목표로 하고 있습니다.<br />
-          협업과 소통을 중요하게 생각하며, 교육 분야 혁신에 기여하는 개발자가 되고자 합니다.
-        </p>
-
-        <h2 className="mt-10 mb-4 text-3xl font-semibold border-b-2 border-zinc-200 dark:border-zinc-700 pb-1">📬 Contact</h2>
-        <p>
-          언제든지 편하게 연락 주세요!<br />
+          포트폴리오나 협업, 기술 토론에 관심이 있으시다면 언제든지 연락 주세요! <br />
           <a
             href="mailto:wotjr294@naver.com"
-            className="text-blue-600 dark:text-blue-400 underline font-medium"
+            className="text-yellow-700 dark:text-yellow-400 underline font-semibold"
           >
             wotjr294@naver.com
           </a>
         </p>
-      </div>
+      </section>
     </div>
   );
 }
