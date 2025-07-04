@@ -50,13 +50,18 @@ Jaeseok Kong
 ---
 
 ## 🪄 하고 싶은 것들 (To-do)
- - [ ] 마크다운 내부 코드 하이라이팅
-
- - [ ] 검색 기능 추가
-
- - [ ] 태그 기반 필터링
-
- - [ ] GitHub 액션으로 자동 배포 설정
+- [x] 블로그 기본 구조 구축 및 배포
+- [ ] 마크다운 내부 코드 하이라이팅
+- [ ] 검색 기능 추가
+- [ ] 태그 기반 필터링
+- [ ] GitHub 액션으로 자동 배포 설정
+- [ ] 다크/라이트 모드 전환 기능 개선 (아이콘 애니메이션 등)
+- [ ] 시리즈 기능 또는 카테고리별 글 분류
+- [ ] 글 공유 기능 (SNS/URL 복사)
+- [ ] 댓글 시스템 도입 (예: Giscus, Utterances)
+- [ ] 이미지 최적화 및 lazy loading 고도화
+- [ ] 구독 기능 또는 RSS 피드 추가
+- [ ] 페이지별 로딩 애니메이션
 
 ## 🌐 배포 주소
-[NEXT-BLOG(HJS)](https://next-blog-fgz8xdpc3-jaeseokkongs-projects.vercel.app/)
+[NEXT-BLOG(HJS)](https://hjs-blog.vercel.app/)
