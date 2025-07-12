@@ -38,3 +38,7 @@ export function formatDate(dateString: string): string {
     day: 'numeric',
   });
 }
+
+export function cn(...classes: (string | false | null | undefined)[]) {
+  return classes.filter(Boolean).join(" ");
+}
