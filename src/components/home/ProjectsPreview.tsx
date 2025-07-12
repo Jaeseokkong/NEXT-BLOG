@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import PreviewSection from '../ui/PreviewSection';
-import TechContainer from '../ui/TechContainer';
+import BadgeGroup from '../ui/BadgeGroup';
 
 type Project = {
 	title: string;
@@ -54,7 +54,7 @@ export default function ProjectsPreview() {
 							{project.title}
 						</h3>
             	<p className="text-sm text-zinc-600 dark:text-zinc-300 mb-2">{project.description}</p>
-							<TechContainer techList={project.tech}/>
+							<BadgeGroup labels={project.tech}/>
 					</Link>
 				))}
 			</div>
