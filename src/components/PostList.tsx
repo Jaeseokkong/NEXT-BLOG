@@ -17,21 +17,7 @@ const PostList = ({ initialPosts }: { initialPosts: PostMeta[] }) => {
   const loaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!page) return;
-
-    const loadPosts = async () => {
-      setIsLoading(true);
-      const res = await fetch(`/api/posts?page=${page}`);
-      const newPosts = await res.json();
-      setPosts((prev) => [...prev, ...newPosts]);
-      setIsLoading(false);
-    }
-
-    loadPosts();
-  }, [page]);
-
-  useEffect(() => {
-    if (!page) return;
+    if (!page || page <= 2) return;
 
     const loadPosts = async () => {
       setIsLoading(true);
