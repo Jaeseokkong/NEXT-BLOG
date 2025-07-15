@@ -1,0 +1,26 @@
+.coin {
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+}
+
+.flipped {
+  transform: rotateY(540deg);
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+.front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.back {
+  transform: rotateY(540deg);
+}

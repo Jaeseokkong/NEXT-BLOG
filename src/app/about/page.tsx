@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { Briefcase, Mail, User } from "lucide-react";
+import AboutAvatar from "@/components/AboutAvatar";
 
 export default function AboutPage() {
   return (
@@ -7,19 +7,7 @@ export default function AboutPage() {
       
       {/* 소개 및 프로필 */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
-        <div className="flex justify-center">
-          <div className="p-4 bg-white dark:bg-zinc-800 rounded-full shadow-lg border-2 border-yellow-200">
-            <div className="relative aspect-square w-40 rounded-full overflow-hidden">
-              <Image
-                src="/images/avatar-1.png"
-                alt="HJS Avatar"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          </div>
-        </div>
+        <AboutAvatar />
         <div className="md:col-span-2 space-y-4 leading-relaxed">
           <h1 className="text-4xl font-bold flex items-center gap-3">
             <User className="w-8 h-8 text-yellow-500" />
