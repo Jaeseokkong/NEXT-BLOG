@@ -1,5 +1,4 @@
 import BadgeGroup from "@/components/ui/BadgeGroup";
-import TechContainer from "@/components/ui/BadgeGroup";
 import { getAllProjects } from "@/lib/projects";
 import Link from "next/link";
 
