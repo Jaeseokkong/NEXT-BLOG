@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
   const page = pageParam ? parseInt(pageParam, 10) : 1;
   const posts = await fetchPostMetas(page, PAGE_SIZE);
 
-  const hasMore = posts.length === PAGE_SIZE;
+  const more = posts.length === PAGE_SIZE;
 
-  return NextResponse.json({posts, hasMore});
+  return NextResponse.json({posts, more});
 }

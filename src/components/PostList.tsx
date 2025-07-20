@@ -12,18 +12,26 @@ const Spinner = () => (
 
 const PostList = ({ initialPosts }: { initialPosts: PostMeta[] }) => {
   const [posts, setPosts] = useState<PostMeta[]>(initialPosts);
-  const [page, setPage] = useState(2); // 이미 1page 로드됨
+  const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
   const loaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!page || page <= 2) return;
+    if (page <= 1) return;
+    if (!hasMore) return;
 
     const loadPosts = async () => {
       setIsLoading(true);
       const res = await fetch(`/api/posts?page=${page}`);
-      const newPosts = await res.json();
-      setPosts((prev) => [...prev, ...newPosts]);
+      const { posts: newPosts, more } = await res.json();
+
+      console.log(newPosts)
+      if (newPosts.length > 0) {
+        setPosts((prev) => [...prev, ...newPosts]);
+      }
+
+      setHasMore(more);
       setIsLoading(false);
     }
 
@@ -31,9 +39,13 @@ const PostList = ({ initialPosts }: { initialPosts: PostMeta[] }) => {
   }, [page]);
 
   useEffect(() => {
+    console.log(page)
+  }, [page])
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !isLoading) {
+        if (entries[0].isIntersecting && !isLoading && hasMore) {
           setPage((prev) => prev + 1);
         }
       },

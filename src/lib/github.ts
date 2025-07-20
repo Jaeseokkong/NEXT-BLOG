@@ -26,6 +26,11 @@ export type PostMeta = {
   image?: string;
 };
 
+export type PostResponse = {
+  posts: PostMeta[];
+  more: boolean;
+}
+
 
 export async function fetchCategories(): Promise<string[]> {
   const res = await fetch(GITHUB_API_BASE_URL,  { headers, next: {revalidate: 3600 } });
@@ -175,12 +180,14 @@ export async function fetchPostMetas(page: number, limit: number): Promise<PostM
   return posts;
 }
 
-export async function fetchPosts(page: number = 1): Promise<PostMeta[]> {
+export async function fetchPosts(page: number = 1): Promise<PostResponse> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts?page=${page}`, {
     cache: "no-store",
   });
 
   if (!res.ok) throw new Error("게시글 데이터를 불러오지 못했습니다.");
 
-  return res.json();
+  const result = await res.json();
+
+  return result;
 }
