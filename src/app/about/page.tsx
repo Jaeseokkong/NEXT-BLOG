@@ -1,4 +1,3 @@
-import { Briefcase, Mail, User } from "lucide-react";
 import AboutAvatar from "@/components/AboutAvatar";
 
 export default function AboutPage() {
@@ -10,7 +9,6 @@ export default function AboutPage() {
         <AboutAvatar />
         <div className="md:col-span-2 space-y-6 leading-relaxed">
           <h1 className="text-4xl font-bold flex items-center gap-3">
-            <User className="w-8 h-8 text-yellow-500" />
             About <span className="text-yellow-500 dark:text-yellow-400">Me</span>
           </h1>
           <p>
@@ -48,14 +46,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 경력 */}
       <section className="space-y-10">
         <h2 className="text-3xl font-bold flex items-center gap-3 border-b border-zinc-200 dark:border-zinc-700 pb-2">
-          <Briefcase className="w-6 h-6 text-yellow-500" />
           💼 Career
         </h2>
 
-        {/* 윤선생 */}
         <div className="space-y-3">
           <h3 className="text-xl font-semibold text-yellow-500 dark:text-yellow-400">
             윤선생 기술본부 — 프론트엔드 개발 (2023.07 ~ 현재)
@@ -69,7 +64,6 @@ export default function AboutPage() {
           </ul>
         </div>
 
-        {/* 더리얼마케팅 */}
         <div className="space-y-3">
           <h3 className="text-xl font-semibold text-yellow-500 dark:text-yellow-400">
             더리얼마케팅 — 웹/앱 개발자 (2021.06 ~ 2023.07)
@@ -86,7 +80,6 @@ export default function AboutPage() {
       {/* 연락처 */}
       <section className="space-y-4">
         <h2 className="text-3xl font-bold flex items-center gap-3 border-b border-zinc-200 dark:border-zinc-700 pb-2">
-          <Mail className="w-6 h-6 text-yellow-500" />
           📬 Contact
         </h2>
         <p>
