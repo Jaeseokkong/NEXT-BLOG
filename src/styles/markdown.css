@@ -4,6 +4,7 @@
   line-height: 1.75;
 }
 
+/* 헤딩 */
 .markdown h1 {
   font-size: 2.25rem;
   font-weight: 800;
@@ -14,77 +15,39 @@
   font-size: 1.75rem;
   font-weight: 700;
   margin: 2rem 0 1rem;
-  border-bottom: 2px solid #e5e7eb;
-  padding-bottom: 0.25rem;
 }
 
-.markdown h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 1.5rem 0 0.75rem;
-}
-
-.markdown h4 {
+.markdown h3, .markdown h4 {
   font-size: 1.25rem;
   font-weight: 600;
   margin: 1.25rem 0 0.5rem;
 }
 
+/* 본문 */
 .markdown p {
   margin: 1rem 0;
 }
 
-.markdown ul {
-  list-style-type: disc;
+/* 리스트 */
+.markdown ul, .markdown ol {
   padding-left: 1.5rem;
   margin: 1rem 0;
-  color: inherit;
-}
-
-.markdown ol {
-  list-style-type: decimal;
-  padding-left: 1.5rem;
-  margin: 1rem 0;
-  color: inherit;
 }
 
 .markdown li {
   margin: 0.4rem 0;
-  line-height: 1.5;
 }
 
-.markdown ul ul,
-.markdown ol ol,
-.markdown ul ol,
-.markdown ol ul {
-  padding-left: 1.25rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
+/* 링크 */
+.markdown a {
+  color: #3b82f6;
+  text-decoration: underline;
 }
 
-.markdown table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 2rem 0;
-  font-size: 0.95rem;
-  overflow-x: auto;
-}
-
-.markdown th,
-.markdown td {
-  padding: 0.75rem 1rem;
-  border: 1px solid #e5e7eb;
-  text-align: left;
-}
-
-.markdown th {
-  background-color: #f9fafb;
-  font-weight: 600;
-}
-
+/* inline code */
 .markdown code {
-  background-color: #e0e7ff;
-  color: #1e40af;
+  background-color: #fef9c3; /* 연노랑 */
+  color: #92400e;
   padding: 0.25rem 0.5rem;
   border-radius: 6px;
   font-family: 'Fira Code', monospace;
@@ -92,9 +55,10 @@
   font-weight: 600;
 }
 
+/* pre block */
 .markdown pre {
   background-color: #0f172a;
-  color: #e0e7ff; 
+  color: #e0e7ff;
   padding: 1rem;
   border-radius: 0.5rem;
   overflow-x: auto;
@@ -106,47 +70,40 @@
 
 .markdown pre code {
   background: none;
-  color: inherit;
   padding: 0;
 }
 
+/* highlight.js specific */
 .markdown pre code .hljs-string {
-  color: #facc15 !important;
+  color: #facc15 !important; /* yellow-400 */
 }
-
 .markdown pre code .hljs-keyword {
   color: #f87171 !important;
   font-weight: 600;
 }
-
 .markdown pre code .hljs-title {
   color: #60a5fa !important;
   font-weight: 600;
 }
-
+.markdown pre code .hljs-function {
+  color: #38bdf8 !important;
+}
 .markdown pre code .hljs-comment {
   color: #64748b !important;
   font-style: italic;
 }
 
-.markdown pre code .hljs-function {
-  color: #38bdf8 !important; /* sky-400 */
-}
-
+/* blockquote */
 .markdown blockquote {
-  border-left: 4px solid #60a5fa; /* Tailwind blue-400 */
+  border-left: 4px solid #60a5fa;
+  background-color: #f9fafb;
   padding-left: 1rem;
   margin: 1.5rem 0;
-  color: #4b5563; /* gray-600 */
-  background-color: #f9fafb;
   font-style: italic;
+  color: #4b5563;
 }
 
-.markdown a {
-  color: #3b82f6;
-  text-decoration: underline;
-}
-
+/* details */
 .markdown details {
   margin: 1rem 0;
   background-color: #f9fafb;
@@ -161,6 +118,7 @@
   margin-bottom: 0.5rem;
 }
 
+/* hr */
 .markdown hr {
   border: none;
   border-top: 1px solid #94a3b8;
@@ -168,22 +126,9 @@
   opacity: 0.5;
 }
 
-/* 반응형 */
-@media (max-width: 768px) {
-  .markdown table {
-    display: block;
-    overflow-x: auto;
-  }
-
-  .markdown th,
-  .markdown td {
-    padding: 0.5rem;
-    font-size: 0.875rem;
-  }
-}
-
+/* 다크 모드 */
 .dark .markdown {
-  color: #c9d1d9;
+  color: #cbd5e1;
 }
 
 .dark .markdown h1,
@@ -193,70 +138,32 @@
   color: #e6edf3;
 }
 
-.dark .markdown th {
-  background-color: #161b22;
-  color: #f0f6fc;
-}
-
-.dark .markdown td {
-  border-color: #30363d;
-}
-
-.dark .markdown blockquote {
-  background-color: #161b22;
-  border-left-color: #58a6ff;
-  color: #8b949e;
-}
-
 .dark .markdown a {
   color: #58a6ff;
-  text-decoration: underline;
-}
-
-.dark .markdown details {
-  background-color: #161b22;
-  border-left-color: #3fb950;
 }
 
 .dark .markdown code {
-  background-color: #1e293b; 
-  color: #60a5fa;
-  border-radius: 6px;
-  font-family: 'Fira Code', monospace;
+  background-color: #1e293b;
+  color: #facc15;
 }
 
 .dark .markdown pre {
   background-color: #1e293b;
-  color: #cbd5e1; 
-  border: 1px solid #30363d;
+  color: #cbd5e1;
+  border: 1px solid #334155;
 }
 
-.dark .markdown pre code {
-  color: inherit;
+.dark .markdown blockquote {
+  background-color: #161b22;
+  border-left-color: #60a5fa;
+  color: #8b949e;
 }
 
-.dark .markdown pre code .hljs-keyword {
-  color: #f87171 !important;
-}
-
-.dark .markdown pre code .hljs-title {
-  color: #60a5fa !important;
-}
-
-.dark .markdown pre code .hljs-comment {
-  color: #64748b !important;
-  font-style: italic;
-}
-
-.dark .markdown pre code .hljs-function {
-  color: #38bdf8 !important;
+.dark .markdown details {
+  background-color: #161b22;
+  border-left-color: #3b82f6;
 }
 
 .dark .markdown summary {
   color: #e6edf3;
-}
-
-.dark .markdown hr {
-  border-top-color: #475569;
-  opacity: 0.4;
 }
