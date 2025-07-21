@@ -177,6 +177,7 @@ export async function fetchPostMetas(page: number, limit: number): Promise<PostM
     };
   }));
 
+  console.log(posts);
   return posts;
 }
 
