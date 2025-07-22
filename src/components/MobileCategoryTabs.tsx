@@ -62,7 +62,7 @@ const MobileCategoryTabs = () => {
 			onMouseLeave={handleMouseLeave}
 			onMouseUp={handleMouseUp}
 			onMouseMove={handleMouseMove}
-			className={`${styles["scrollbar-hide"]} flex gap-2 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none
+			className={`${styles["scrollbar-hide"]} md:hidden flex gap-2 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none
         -mx-4 px-4 py-2`}
       style={{ WebkitOverflowScrolling: 'touch' }}
 		>
