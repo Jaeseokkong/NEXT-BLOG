@@ -5,10 +5,10 @@ export async function GET(req: NextRequest) {
   const slug = req.nextUrl.searchParams.get("slug");
 
   const { data, error } = await supabase
-    .from("comments")
+    .from("COMMENTS")
     .select("*")
     .eq("slug", slug)
-    .order("create_at", { ascending: false });
+    .order("created_at", { ascending: false });
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
@@ -20,8 +20,8 @@ export async function POST(req: NextRequest) {
   const { slug, name, text } = body;
 
   const { error } = await supabase
-    .from("comments")
-    .insert([{ slug, name, text }]);
+  .from("COMMENTS")
+  .insert([{ slug, name, text }]);
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
