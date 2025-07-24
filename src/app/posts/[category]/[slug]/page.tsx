@@ -5,6 +5,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github.css";
 import "@/styles/markdown.css";
+import CommentSection from "@/components/CommentSection";
 
 type Params = {
   category: string;
@@ -27,6 +28,7 @@ export default async function PostPage({ params }: Props) {
 			>
 				{markdown}
 			</ReactMarkdown>
+			<CommentSection slug={slug} />
 		</div>
 	)
 }
