@@ -5,6 +5,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github.css";
 import "@/styles/markdown.css";
+import Script from "next/script";
 
 type Params = {
   category: string;
@@ -27,6 +28,24 @@ export default async function PostPage({ params }: Props) {
 			>
 				{markdown}
 			</ReactMarkdown>
+			<div id="comments" style={{ marginTop: '3rem' }} className="mx-10">
+				<Script
+					src="https://giscus.app/client.js"
+					data-repo="Jaeseokkong/BLOG-COMMENTS"
+					data-repo-id="R_kgDOPSpQbg"
+					data-category="General"
+					data-category-id="DIC_kwDOPSpQbs4CtZ8u"
+					data-mapping="pathname"
+					data-strict="0"
+					data-reactions-enabled="1"
+					data-emit-metadata="0"
+					data-input-position="bottom"
+					data-theme="preferred_color_scheme"
+					data-lang="ko"
+					crossOrigin="anonymous"
+					strategy="lazyOnload"
+				/>
+			</div>
 		</div>
 	)
 }
