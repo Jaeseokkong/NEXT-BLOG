@@ -6,17 +6,7 @@ import React, { useEffect, useState } from 'react'
 
 function GiscusComments() {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // 다크 모드 변경 시 Giscus에 메시지 전송
-  useEffect(() => {
-    const iframe = document.querySelector('iframe.giscus-frame')
-  
-  }, [resolvedTheme])
+ 
 
   return (
     <Script
@@ -30,7 +20,7 @@ function GiscusComments() {
       data-reactions-enabled="1"
       data-emit-metadata="0"
       data-input-position="bottom"
-      data-theme="preferred_color_scheme"
+      data-theme={resolvedTheme === 'dark' ? 'dark' : 'light'}
       data-lang="ko"
       crossOrigin="anonymous"
       strategy="lazyOnload"
