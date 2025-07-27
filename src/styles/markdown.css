@@ -171,8 +171,6 @@
 .giscus {
   max-width: 58rem;
   margin: 3rem auto 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-top: 1px solid var(--giscus-border, #e5e7eb); /* light-gray default */
+  border-top: 1px solid var(--giscus-border, #e5e7eb);
   padding-top: 2rem;
 }

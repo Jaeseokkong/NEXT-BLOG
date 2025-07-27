@@ -15,7 +15,7 @@ function GiscusComments() {
  
 
   return (
-    <div className="giscus max-w-4xl mx-auto px-4">
+    <div className="giscus">
       <Giscus
         id="comments"
         repo="Jaeseokkong/BLOG-COMMENTS"
