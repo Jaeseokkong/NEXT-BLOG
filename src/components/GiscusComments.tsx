@@ -1,30 +1,36 @@
 'use client';
 
+import Giscus from '@giscus/react';
 import { useTheme } from 'next-themes';
-import Script from 'next/script';
 import React, { useEffect, useState } from 'react'
 
 function GiscusComments() {
   const { resolvedTheme } = useTheme();
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  useEffect(() => {
+    if (resolvedTheme === 'dark') setTheme('dark');
+    else setTheme('light');
+  }, [resolvedTheme]);
  
 
   return (
-    <Script
-      src="https://giscus.app/client.js"
-      data-repo="Jaeseokkong/BLOG-COMMENTS"
-      data-repo-id="R_kgDOPSpQbg"
-      data-category="General"
-      data-category-id="DIC_kwDOPSpQbs4CtZ8u"
-      data-mapping="pathname"
-      data-strict="0"
-      data-reactions-enabled="1"
-      data-emit-metadata="0"
-      data-input-position="bottom"
-      data-theme={resolvedTheme === 'dark' ? 'dark' : 'light'}
-      data-lang="ko"
-      crossOrigin="anonymous"
-      strategy="lazyOnload"
-    />
+    <div className="giscus max-w-4xl mx-auto px-4">
+      <Giscus
+        id="comments"
+        repo="Jaeseokkong/BLOG-COMMENTS"
+        repoId="R_kgDOPSpQbg"
+        category="General"
+        categoryId="DIC_kwDOPSpQbs4CtZ8u"
+        mapping="pathname"
+        reactionsEnabled="1"
+        emitMetadata="0"
+        inputPosition="bottom"
+        theme={theme}
+        lang="ko"
+        loading="lazy"
+      />
+    </div>
   )
 }
 
