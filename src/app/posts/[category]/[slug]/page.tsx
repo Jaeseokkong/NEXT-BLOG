@@ -5,7 +5,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github.css";
 import "@/styles/markdown.css";
-import GiscusComments from "@/components/GiscusComments";
+import GiscusComments from "@/components/posts/GiscusComments";
 
 type Params = {
   category: string;

@@ -1,7 +1,7 @@
-import Intro from "@/components/Intro";
-import MobileCategoryTabs from "@/components/MobileCategoryTabs";
-import PostList from "@/components/PostList";
-import Sidebar from "@/components/Sidebar";
+import Intro from "@/components/posts/Intro";
+import MobileCategoryTabs from "@/components/posts/MobileCategoryTabs";
+import PostList from "@/components/posts/PostList";
+import Sidebar from "@/components/posts/Sidebar";
 import { fetchPosts } from "@/lib/github";
 
 

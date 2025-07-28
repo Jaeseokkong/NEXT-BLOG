@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import styles from "./AboutAvatar.module.css";
+import "@/styles/AboutAvatar.css"; // 일반 CSS import
 import { useState } from "react";
 
 export default function AboutAvatar() {
@@ -19,14 +19,14 @@ export default function AboutAvatar() {
       >
         <div
           className={`
-            ${styles.coin}
-            ${flipped ? styles.flipped : ""}
+            coin
+            ${flipped ? "flipped" : ""}
             bg-white dark:bg-zinc-800
             rounded-full shadow-lg border-2 border-yellow-200
             w-full h-full relative
           `}
         >
-          <div className={`${styles.face} ${styles.front}`}>
+          <div className="face front">
             <div className="relative w-[120%] h-[120%] left-[-10%] top-[-10%]">
               <Image
                 src="/images/avatar-1.png"
@@ -37,7 +37,7 @@ export default function AboutAvatar() {
               />
             </div>
           </div>
-          <div className={`${styles.face} ${styles.back}`}>
+          <div className="face back">
             <div className="relative w-[120%] h-[120%] left-[-10%] top-[-10%]">
               <Image
                 src="/images/avatar-2.png"

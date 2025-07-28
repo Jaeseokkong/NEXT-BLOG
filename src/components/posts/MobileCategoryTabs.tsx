@@ -1,12 +1,10 @@
 'use client'
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import styles from './MobileCategoryTabs.module.css'
+import '@/styles/MobileCategoryTabs.css'
 
 const MobileCategoryTabs = () => {
-  const pathname = usePathname();
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const [isDragging, setIsDragging] = useState(false);
 	const [startX, setStartX] = useState(0);
@@ -29,7 +27,7 @@ const MobileCategoryTabs = () => {
 		setScrollLeft(scrollRef.current.scrollLeft);
 	}
 
-	const handleMouseLeave = (e: React.MouseEvent) => {
+	const handleMouseLeave = () => {
 		setIsDragging(false);
 	}
 
@@ -62,9 +60,9 @@ const MobileCategoryTabs = () => {
 			onMouseLeave={handleMouseLeave}
 			onMouseUp={handleMouseUp}
 			onMouseMove={handleMouseMove}
-			className={`${styles["scrollbar-hide"]} md:hidden flex gap-2 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none
-        -mx-4 px-4 py-2`}
-      style={{ WebkitOverflowScrolling: 'touch' }}
+			className="scrollbar-hide md:hidden flex gap-2 overflow-x-auto cursor-grab active:cursor-grabbing select-none
+					-mx-4 px-4 py-2"
+			style={{ WebkitOverflowScrolling: 'touch' }}
 		>
 			{categories.map((category) => (
 				<Link 

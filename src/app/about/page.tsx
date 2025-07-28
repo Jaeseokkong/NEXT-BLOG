@@ -1,4 +1,4 @@
-import AboutAvatar from "@/components/AboutAvatar";
+import AboutAvatar from "@/components/about/AboutAvatar";
 
 export default function AboutPage() {
   return (

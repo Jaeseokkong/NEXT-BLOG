@@ -1,7 +1,7 @@
 // app/post/[category]/page.tsx
+import PostCard from "@/components/posts/PostCard";
 import { fetchFilesInCategory } from "@/lib/github";
 import { parseFileName } from "@/lib/utils";
-import PostCard from "@/components/PostCard";
 
 type Params = {
   title: string;
