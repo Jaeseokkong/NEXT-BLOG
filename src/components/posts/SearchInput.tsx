@@ -7,7 +7,7 @@ type SearchInputProps = {
   placeholder?: string;
 };
 
-const SearchInput = ({ onSearch, placeholder = "검색어를 입력하세요..." }: SearchInputProps): JSX.Element => {
+const SearchInput = ({ onSearch, placeholder = "검색어를 입력하세요..." }: SearchInputProps): React.ReactElement => {
   const [value, setValue] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
