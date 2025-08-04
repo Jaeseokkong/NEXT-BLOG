@@ -1,6 +1,6 @@
 import Intro from "@/components/posts/Intro";
 import MobileCategoryTabs from "@/components/posts/MobileCategoryTabs";
-import PostList from "@/components/posts/PostList";
+import PostsContainer from "@/components/posts/PostsContainer";
 import Sidebar from "@/components/posts/Sidebar";
 import { fetchPosts } from "@/lib/github";
 
@@ -15,7 +15,7 @@ export default async function PostsPage() {
       <div className="flex-1 flex flex-col gap-6">
         <Intro />
         <MobileCategoryTabs />
-        <PostList initialPosts={initialPosts}/>
+        <PostsContainer initialPosts={initialPosts}/>
       </div>
     </main>
   )
