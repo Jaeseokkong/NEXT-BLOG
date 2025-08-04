@@ -26,10 +26,10 @@ const PostsContainer = ({ initialPosts }: PostsContainerProps) => {
   }, [searchInput, initialPosts]);
 
   return (
-    <>
+    <div className="flex flex-col gap-6">
       <SearchInput onSearch={setSearchInput} />
       <PostList initialPosts={filteredPosts} />
-    </>
+    </div>
   );
 };
 

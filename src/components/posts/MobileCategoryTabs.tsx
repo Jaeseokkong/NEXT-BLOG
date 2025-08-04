@@ -20,7 +20,6 @@ const MobileCategoryTabs = () => {
   ];
 
 	const handleMouseDown = (e: React.MouseEvent) => {
-		console.log(scrollRef.current)
 		if (!scrollRef.current) return;
 		setIsDragging(true);
 		setStartX(e.pageX - scrollRef.current.offsetLeft);
@@ -42,16 +41,6 @@ const MobileCategoryTabs = () => {
 		const walk = (x - startX) * 1;
 		scrollRef.current.scrollLeft = scrollLeft - walk;
 	}
-
-	useEffect(() => {
-		if (isDragging) {
-			console.log("드래그 시작" , isDragging);
-		} else {
-			console.log("드래그 종료" , isDragging);
-		}
-		
-	}, [isDragging])
-
 
   return (
 		<div 

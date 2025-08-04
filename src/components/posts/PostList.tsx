@@ -26,7 +26,6 @@ const PostList = ({ initialPosts }: { initialPosts: PostMeta[] }) => {
       const res = await fetch(`/api/posts?page=${page}`);
       const { posts: newPosts, more } = await res.json();
 
-      console.log(newPosts)
       if (newPosts.length > 0) {
         setPosts((prev) => [...prev, ...newPosts]);
       }
@@ -37,10 +36,6 @@ const PostList = ({ initialPosts }: { initialPosts: PostMeta[] }) => {
 
     loadPosts();
   }, [page]);
-
-  useEffect(() => {
-    console.log(page)
-  }, [page])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
