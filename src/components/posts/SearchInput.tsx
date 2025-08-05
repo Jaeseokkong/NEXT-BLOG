@@ -17,7 +17,7 @@ const SearchInput = ({ onSearch, placeholder = "검색어를 입력하세요..."
   };
 
   return (
-    <div className="w-full max-w-md mx-auto mb-6">
+    <div className="w-full mx-auto mb-6 mt-3">
       <input
         type="text"
         value={value}
