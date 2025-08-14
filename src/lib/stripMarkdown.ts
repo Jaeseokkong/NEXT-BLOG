@@ -1,7 +1,7 @@
 import { marked } from "marked";
 
 /** 마크다운을 일반 텍스트로 변환하는 유틸 함수 */
-export function markdownToPlainText(markdown: string, maxLength = 100): string {
+export function markdownToPlainText(markdown: string, maxLength = 200): string {
 
 	const noHeadings = markdown
 		.split("\n")
