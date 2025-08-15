@@ -10,15 +10,42 @@ const Spinner = () => (
   </div>
 );
 
-const PostList = ({ initialPosts }: { initialPosts: PostMeta[] }) => {
+type PostListProps = {
+  initialPosts: PostMeta[];
+  searchKeyword?: string; // 검색 키워드 prop
+};
+
+const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
   const [posts, setPosts] = useState<PostMeta[]>(initialPosts);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const loaderRef = useRef<HTMLDivElement>(null);
 
+  // 검색어가 바뀌면 첫 페이지 데이터로 리셋
   useEffect(() => {
-    if (page <= 1) return;
+    if (!searchKeyword) {
+      setPosts(initialPosts);
+      setPage(1);
+      setHasMore(true);
+      return;
+    }
+
+    const fetchSearchResults = async () => {
+      setIsLoading(true);
+      const res = await fetch(`/api/posts?search=${encodeURIComponent(searchKeyword)}`);
+      const { posts: searchedPosts } = await res.json();
+      setPosts(searchedPosts);
+      setHasMore(false); // 검색 모드에서는 무한스크롤 비활성화
+      setIsLoading(false);
+    };
+
+    fetchSearchResults();
+  }, [searchKeyword, initialPosts]);
+
+  // 페이지 변경 시 무한 스크롤 데이터 로드
+  useEffect(() => {
+    if (page <= 1 || searchKeyword) return; // 검색 중이면 무한스크롤 건너뜀
     if (!hasMore) return;
 
     const loadPosts = async () => {
@@ -32,12 +59,15 @@ const PostList = ({ initialPosts }: { initialPosts: PostMeta[] }) => {
 
       setHasMore(more);
       setIsLoading(false);
-    }
+    };
 
     loadPosts();
-  }, [page]);
+  }, [page, hasMore, searchKeyword]);
 
+  // IntersectionObserver 등록
   useEffect(() => {
+    if (searchKeyword) return; // 검색 중이면 옵저버 비활성화
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !isLoading && hasMore) {
@@ -53,7 +83,7 @@ const PostList = ({ initialPosts }: { initialPosts: PostMeta[] }) => {
     return () => {
       if (currentRef) observer.unobserve(currentRef);
     };
-  }, [isLoading]);
+  }, [isLoading, hasMore, searchKeyword]);
 
   return (
     <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -61,7 +91,7 @@ const PostList = ({ initialPosts }: { initialPosts: PostMeta[] }) => {
         <PostCard key={post.slug} post={post} />
       ))}
       {isLoading && <Spinner />}
-      <div ref={loaderRef} />
+      {!searchKeyword && <div ref={loaderRef} />}
     </div>
   );
 };
