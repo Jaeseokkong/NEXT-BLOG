@@ -11,24 +11,33 @@ type PostsContainerProps = {
 
 const PostsContainer = ({ initialPosts }: PostsContainerProps) => {
   const [searchInput, setSearchInput] = useState('');
+  const [debouncedKeyword, setDebouncedKeyword] = useState('');
   const [filteredPosts, setFilteredPosts] = useState<PostMeta[]>(initialPosts);
 
   useEffect(() => {
-    if (!searchInput.trim()) {
+    const handler = setTimeout(() => {
+      setDebouncedKeyword(searchInput);
+    }, 500);
+
+    return () => clearTimeout(handler);
+  }, [searchInput]);
+
+  useEffect(() => {
+    if (!debouncedKeyword.trim()) {
       setFilteredPosts(initialPosts);
     } else {
       setFilteredPosts(
         initialPosts.filter(post =>
-          post.title.toLowerCase().includes(searchInput.toLowerCase())
+          post.title.toLowerCase().includes(debouncedKeyword.toLowerCase())
         )
       );
     }
-  }, [searchInput, initialPosts]);
+  }, [debouncedKeyword, initialPosts]);
 
   return (
     <div className="flex flex-col gap-6">
       <SearchInput onSearch={setSearchInput} placeholder="검색어를 입력하세요..." />
-      <PostList initialPosts={filteredPosts} searchKeyword={searchInput} />
+      <PostList initialPosts={filteredPosts} searchKeyword={debouncedKeyword} />
       {filteredPosts.length === 0 && (
         <p className="text-center text-gray-500">검색 결과가 없습니다.</p>
       )}
