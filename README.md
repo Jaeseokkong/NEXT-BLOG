@@ -1,33 +1,36 @@
 # 🧠 Jaeseok's TIL Blog
 
-> Today I Learned – 개발하며 배운 내용을 기록하는 나만의 블로그입니다.  
-> Markdown + GitHub + Next.js + Tailwind
+> Today I Learned – Next.js 15(App Router)와 Vercel을 활용해 **개발 학습 기록을 위한 블로그 플랫폼**을 직접 구축했습니다.  
+> 단순 기록을 넘어서, 최신 프론트엔드 기술을 실무 수준에서 실험하고 적용하는 것이 목표입니다.
 
 ---
 
-## 🚀 Stack
-- **Framework**: [Next.js](https://nextjs.org/) 15 (App Router)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Markdown**: GitHub에서 실시간 fetch
-- **Deploy**: Vercel
-- **TypeScript**: 타입 안정성 확보
+## 🚀 Tech Stack
+- **Framework**: Next.js 15 (App Router, SSR/ISR/SSG 학습 및 적용)
+- **Styling**: Tailwind CSS (다크/라이트 모드 지원)
+- **Language**: TypeScript (타입 안정성 및 유지보수성 확보)
+- **Deploy**: Vercel (CI/CD + ISR 배포)
 - **기타**:
-  - 다크모드 지원 🌙
-  - CSR/SSR/SSG/ISR 개념 학습을 겸함
-  - 카테고리 기반 사이드바 자동 구성
-  - 깃허브에서 마크다운 fetch → 렌더링
+  - GitHub API를 통한 Markdown 실시간 fetch
+  - react-markdown 기반 글 렌더링 + 코드 하이라이팅
+  - 카테고리 자동 생성 및 사이드바 구성
 
 ---
 
-## 📌 기능 정리
+## 📸 Preview
+(여기에 다크모드/포스트 화면 캡처 or GIF 첨부)
+
+---
+
+## 📌 주요 기능
 |기능|설명|
 |---|---|
-|📂 카테고리 자동 탐색|	GitHub에서 폴더명을 불러와 사이드바 메뉴로 구성|
-|📄 마크다운 리스트|	각 폴더 안의 .md 파일 목록 출력|
-|📘 마크다운 렌더링|	react-markdown으로 HTML로 변환|
-|🌙 다크모드|	Tailwind + dark: 클래스 사용|
-|🔁 ISR|	정적 생성 + 주기적 재생성 (revalidate: 3600s)|
-|⚡ 실시간 fetch|	최신 내용 반영 가능|
+|📂 카테고리 자동 탐색|GitHub Repo 폴더 구조 → 사이드바 메뉴 자동 구성|
+|📄 글 목록/상세|Markdown 파일 fetch & 렌더링|
+|🌙 다크모드|Tailwind dark: 클래스 활용, 전환 애니메이션|
+|⚡ ISR|정적 생성 + 주기적 갱신(revalidate: 3600s)|
+|💬 댓글|Giscus 연동, GitHub 계정 기반 댓글 시스템|
+|🔍 검색/필터링(예정)|태그 기반 글 필터링, 검색 기능 구현 예정|
 
 ---
 
@@ -44,24 +47,24 @@
 
 ---
 
-## 🧑‍💻 만든 사람
-Jaeseok Kong
+## 📝 프로젝트에서 배운 점
+- GitHub API를 통한 데이터 fetch 과정에서 발생하는 CORS 이슈 해결 경험
+- ISR을 적용하여 빌드 시간과 콘텐츠 갱신 속도의 균형 맞춤
+- 다크모드 및 코드 하이라이팅으로 사용자 경험(UX) 개선
+- 폴더 구조 기반 자동 라우팅/사이드바 설계 경험
 
 ---
 
-## 🪄 하고 싶은 것들 (To-do)
-- [x] 블로그 기본 구조 구축 및 배포
-- [x] 마크다운 내부 코드 하이라이팅
-- [ ] 검색 기능 추가
-- [ ] 태그 기반 필터링
-- [ ] GitHub 액션으로 자동 배포 설정
-- [x] 다크/라이트 모드 전환 기능 개선 (아이콘 애니메이션 등)
-- [ ] 시리즈 기능 또는 카테고리별 글 분류
-- [ ] 글 공유 기능 (SNS/URL 복사)
-- [x] 댓글 시스템 도입 (Giscus)
-- [ ] 이미지 최적화 및 lazy loading 고도화
-- [ ] 구독 기능 또는 RSS 피드 추가
-- [ ] 페이지별 로딩 애니메이션
+## 🪄 향후 계획
+- 🔍 검색 및 태그 기반 필터링
+- 🔗 SNS 공유 기능 추가
+- 📡 RSS/구독 기능
+- 🖼️ 이미지 최적화 및 lazy loading
+- ⚡ GitHub Action 기반 CI/CD 파이프라인 강화
+
+---
 
 ## 🌐 배포 주소
-[NEXT-BLOG(HJS)](https://hjs-blog.vercel.app/)
+👉 [NEXT-BLOG(HJS)](https://hjs-blog.vercel.app/)
+
+---
