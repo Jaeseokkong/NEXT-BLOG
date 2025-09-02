@@ -1,13 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import { Search, X } from 'lucide-react';
 
 type SearchInputProps = {
   onSearch: (keyword: string) => void;
   placeholder?: string;
 };
 
-const SearchInput = ({ onSearch, placeholder = "검색어를 입력하세요..." }: SearchInputProps): React.ReactElement => {
+const SearchInput = ({ onSearch, placeholder = "검색어를 입력하세요..." }: SearchInputProps) => {
   const [value, setValue] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,15 +17,26 @@ const SearchInput = ({ onSearch, placeholder = "검색어를 입력하세요..."
     onSearch(keyword);
   };
 
+  const handleClear = () => {
+    setValue('');
+    onSearch('');
+  };
+
   return (
-    <div className="w-full mx-auto mb-6 mt-3 flex gap-2">
+    <div className="w-full mx-auto mb-6 mt-3 flex items-center gap-2 px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-900 shadow-sm focus-within:ring-2 focus-within:ring-yellow-400 transition">
+      <Search className="w-5 h-5 text-zinc-400 dark:text-zinc-500" />
       <input
         type="text"
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
-        className="w-full px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100"
+        className="flex-1 bg-transparent focus:outline-none text-zinc-800 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
       />
+      {value && (
+        <button onClick={handleClear} className="p-1 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800">
+          <X className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
+        </button>
+      )}
     </div>
   );
 };
