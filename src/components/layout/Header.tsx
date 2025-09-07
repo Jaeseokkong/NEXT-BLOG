@@ -12,7 +12,7 @@ export default function Header() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <header className="w-full bg-white dark:bg-zinc-900 shadow-sm sticky top-0 z-50">
+    <header className="w-full bg-white dark:bg-zinc-900 border-b border-zinc-300 dark:border-zinc-600 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <div className="w-14 h-14 bg-[#f7df1e] flex rounded-sm relative">
