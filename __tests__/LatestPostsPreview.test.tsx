@@ -1,5 +1,23 @@
 import LatestPostsPreview from '@/components/home/LatestPostsPreview';
-import { render, screen, within } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
+import { useParams } from 'next/navigation';
+import { useRouter } from 'next/router';
+
+const pushMock = jest.fn();
+jest.mock('next/link', () => {
+  return ({ href, children, ...rest }: any) => (
+    <a
+      href={href}
+      onClick={(e) => {
+        e.preventDefault();
+        pushMock(href);
+      }}
+      {...rest}
+    >
+      {children}
+    </a>
+  );
+});
 
 describe('<LatestPostsPreview/>', () => {
   const basePosts = [
@@ -38,7 +56,9 @@ describe('<LatestPostsPreview/>', () => {
     },
   ]
 
+
   beforeEach(() => {
+    pushMock.mockClear();
     render(<LatestPostsPreview initialPosts={basePosts} />);
   }) 
   
@@ -61,4 +81,18 @@ describe('<LatestPostsPreview/>', () => {
     expect(postLinks).toHaveLength(4);
   })
 
+  function ParamsDisplay() {
+    const params = useParams();
+    return <div data-testid="params-display">{JSON.stringify(params)}</div>;
+  }
+
+  it('링크 클릭 시 올바른 URL로 이동하는지', () => {
+    const link = screen.getByTestId('post-link-포스트 슬러그1');
+    
+    fireEvent.click(link);
+    
+    expect(pushMock).toHaveBeenCalledWith(
+      '/posts/포스트 카테고리1/포스트 슬러그1'
+    );
+  })
 })
