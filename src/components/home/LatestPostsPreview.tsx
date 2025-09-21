@@ -17,6 +17,7 @@ export default function LatestPostsPreview({ initialPosts }: LatestPostsPreviewP
         {initialPosts.slice(0, 4).map((post) => (
           <li key={post.slug}>
             <Link
+              data-testid={`post-link-${post.slug}`}
               href={`/posts/${post.category}/${post.slug}`}
               className="block rounded-lg p-4 bg-white dark:bg-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-600 transition"
             >
