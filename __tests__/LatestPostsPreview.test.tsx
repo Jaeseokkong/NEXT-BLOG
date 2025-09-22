@@ -1,11 +1,16 @@
 import LatestPostsPreview from '@/components/home/LatestPostsPreview';
 import { fireEvent, render, screen, within } from '@testing-library/react';
-import { useParams } from 'next/navigation';
-import { useRouter } from 'next/router';
+import { AnchorHTMLAttributes, ReactNode } from 'react';
 
 const pushMock = jest.fn();
+
+type MockLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  href: string;
+  children: ReactNode;
+};
+
 jest.mock('next/link', () => {
-  return ({ href, children, ...rest }: any) => (
+  const MockLink = ({ href, children, ...rest }: MockLinkProps) => (
     <a
       href={href}
       onClick={(e) => {
@@ -17,6 +22,8 @@ jest.mock('next/link', () => {
       {children}
     </a>
   );
+
+  return MockLink;
 });
 
 describe('<LatestPostsPreview/>', () => {
@@ -81,10 +88,6 @@ describe('<LatestPostsPreview/>', () => {
     expect(postLinks).toHaveLength(4);
   })
 
-  function ParamsDisplay() {
-    const params = useParams();
-    return <div data-testid="params-display">{JSON.stringify(params)}</div>;
-  }
 
   it('링크 클릭 시 올바른 URL로 이동하는지', () => {
     const link = screen.getByTestId('post-link-포스트 슬러그1');
