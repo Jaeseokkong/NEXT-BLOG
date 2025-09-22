@@ -3,7 +3,7 @@
 import PreviewSection from '../ui/PreviewSection';
 import BadgeGroup from '../ui/BadgeGroup';
 
-const techList: string[] = [ "TeypScript", "React", "Next.js", "TailwindCSS" ];
+const techList: string[] = [ "JavaScript", "TypeScript", "React", "Next.js" ];
 
 export default function AboutPreview() {
   return (
