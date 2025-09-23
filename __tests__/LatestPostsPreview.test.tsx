@@ -98,4 +98,9 @@ describe('<LatestPostsPreview/>', () => {
       '/posts/포스트 카테고리1/포스트 슬러그1'
     );
   })
+
+  it('전체 글 보기 버튼이 올바르게 렌더링', () => {
+    const moreButton = screen.getByRole('link', { name: '→ 전체 글 보기' });
+    expect(moreButton).toHaveAttribute('href', '/posts')
+  })
 })
