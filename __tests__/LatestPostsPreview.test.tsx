@@ -55,11 +55,11 @@ describe('<LatestPostsPreview/>', () => {
       excerpt: '포스트 요약 정보4',
     },
     {
-      title: '포스트 타이틀4',
-      date: '2025-09-18',
-      slug: '포스트 슬러그4',
-      category: '포스트 카테고리4',
-      excerpt: '포스트 요약 정보4',
+      title: '포스트 타이틀5',
+      date: '2025-09-19',
+      slug: '포스트 슬러그5',
+      category: '포스트 카테고리5',
+      excerpt: '포스트 요약 정보5',
     },
   ]
 
