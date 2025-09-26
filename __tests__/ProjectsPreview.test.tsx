@@ -49,4 +49,9 @@ describe('<ProjectPreview />', () => {
 
 		expect(screen.queryByText('프로젝트 타이틀5')).not.toBeInTheDocument();
 	})
+
+	it('전체 프로젝트 보기 버튼이 올바른 링크를 가진다.', () => {
+		const moreButton = screen.getByRole('link', { name: '→ 전체 프로젝트 보기' });
+		expect(moreButton).toHaveAttribute('href', '/projects');
+	});
 })
