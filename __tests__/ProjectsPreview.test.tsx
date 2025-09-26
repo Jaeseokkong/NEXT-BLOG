@@ -33,13 +33,15 @@ jest.mock('@/lib/projects', () => ({
 }))
 
 describe('<ProjectPreview />', () => {
-	
-
-	
 
 	beforeEach(() => {
 		render(<ProjectsPreview />);
 	})
+
+	it('프로젝트 타이틀과 설명이 렌더링된다.', () => {
+		expect(screen.getByText('프로젝트 타이틀1')).toBeInTheDocument();
+		expect(screen.getByText('프로젝트 내용1')).toBeInTheDocument();
+	});
 
 	it('프로젝트 프리뷰가 4개만 렌더링된다.', () => {
 		const projects = screen.getAllByRole('heading', { level: 3 });
