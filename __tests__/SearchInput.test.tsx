@@ -30,11 +30,9 @@ describe('<SearchInput/>', () => {
   it('X 버튼 클릭하면 값이 지워지고 onSearch가 빈 문자열로 호출된다', () => {
     const input = screen.getByPlaceholderText(placeholderText) as HTMLInputElement;
 
-    // 입력
     fireEvent.change(input, { target: { value: 'Jest' } });
     expect(input.value).toBe('Jest');
 
-    // X 버튼 클릭
     const clearButton = screen.getByRole('button');
     fireEvent.click(clearButton);
 
