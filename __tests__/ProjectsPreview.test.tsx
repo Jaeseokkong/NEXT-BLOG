@@ -46,5 +46,7 @@ describe('<ProjectPreview />', () => {
 	it('프로젝트 프리뷰가 4개만 렌더링된다.', () => {
 		const projects = screen.getAllByRole('heading', { level: 3 });
 		expect(projects).toHaveLength(4);
+
+		expect(screen.queryByText('프로젝트 타이틀5')).not.toBeInTheDocument();
 	})
 })
