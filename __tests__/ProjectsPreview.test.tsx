@@ -54,4 +54,9 @@ describe('<ProjectPreview />', () => {
 		const moreButton = screen.getByRole('link', { name: '→ 전체 프로젝트 보기' });
 		expect(moreButton).toHaveAttribute('href', '/projects');
 	});
+
+	it('프로젝트 카드가 올바른 링크를 가진다.', () => {
+		const heading = screen.getByRole('heading', { name: '프로젝트 타이틀1' });
+		expect(heading.closest('a')).toHaveAttribute('href', '/projects/프로젝트 타이틀1');
+	});
 })
