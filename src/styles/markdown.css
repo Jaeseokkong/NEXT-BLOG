@@ -128,6 +128,29 @@
   opacity: 0.5;
 }
 
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid #d1d5db; /* gray-300 */
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+
+.markdown th {
+  background-color: #f3f4f6; /* gray-100 */
+  font-weight: 600;
+}
+
+.markdown tbody tr:nth-child(even) {
+  background-color: #f9fafb; /* gray-50 */
+}
+
+
 /* 다크 모드 */
 .dark .markdown {
   color: #cbd5e1;
@@ -168,6 +191,20 @@
 
 .dark .markdown summary {
   color: #e6edf3;
+}
+
+.dark .markdown th {
+  background-color: #1f2937; /* gray-800 */
+  border-color: #374151; /* gray-700 */
+  color: #e6edf3;
+}
+
+.dark .markdown td {
+  border-color: #374151; /* gray-700 */
+}
+
+.dark .markdown tbody tr:nth-child(even) {
+  background-color: #111827; /* gray-900 */
 }
 
 .giscus {
