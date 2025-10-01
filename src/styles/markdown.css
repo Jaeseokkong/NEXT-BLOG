@@ -37,7 +37,7 @@
   list-style-type: decimal;
 }
 .markdown li {
-  margin: 0.4rem 0;
+  margin: 0.4rem 0 0.4rem 1.7rem;
 }
 
 /* 링크 */
