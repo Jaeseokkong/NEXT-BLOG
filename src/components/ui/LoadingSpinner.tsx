@@ -24,8 +24,13 @@ export default function LoadingSpinner() {
   if (!loading) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-white/50 z-50">
-      <div className="w-12 h-12 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin"></div>
+    <div className="fixed inset-0 flex items-center justify-center bg-white/70 dark:bg-black/70 backdrop-blur-sm z-[9999]">
+      <div className="flex flex-col items-center space-y-3">
+        <div className="w-12 h-12 border-4 border-zinc-300 dark:border-zinc-600 border-t-yellow-500 dark:border-t-yellow-400 rounded-full animate-spin"></div>
+        <span className="text-sm font-medium text-yellow-600 dark:text-yellow-300">
+          Loading...
+        </span>
+      </div>
     </div>
   );
 }
