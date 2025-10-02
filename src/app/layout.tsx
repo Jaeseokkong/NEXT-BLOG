@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter, Montserrat } from 'next/font/google';
 import Header from "@/components/layout/Header";
 import { Providers } from './providers';
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html lang="ko" suppressHydrationWarning className={`${inter.className} ${montserrat.className}`}>
       <body className="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100 transition-colors">
         <Providers>
+          <LoadingSpinner />
           <Header />
           {children}
         </Providers>
