@@ -182,7 +182,7 @@ export async function fetchPostMetas(page: number, limit: number): Promise<PostM
 
 export async function fetchPosts(page: number = 1): Promise<PostResponse> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts?page=${page}`, {
-    cache: "no-store",
+    next: { revalidate: 300 },
   });
 
   if (!res.ok) throw new Error("게시글 데이터를 불러오지 못했습니다.");
