@@ -6,6 +6,8 @@ import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github.css";
 import "@/styles/markdown.css";
 import GiscusComments from "@/components/posts/GiscusComments";
+import { extractHeadings, injectHeadingAnchors } from "@/lib/utils";
+
 
 type Params = {
   category: string;
@@ -25,28 +27,9 @@ type Heading = {
 export default async function PostPage({ params }: Props) {
   const { category, slug } = await params;
   const markdown = await fetchMarkdownFile(category, slug);
-
-	const headings: Heading[] = Array.from(
-			markdown.matchAll(/^(#{1,3})\s+(.*)$/gm)
-		).map((match) => ({
-			level: match[1].length,
-    text: match[2].trim(),
-    id: match[2]
-      .toLowerCase()
-      .replace(/[^\w가-힣]+/g, "-")
-      .replace(/^-+|-+$/g, "")
-		}))
-
-	const markdownWithAnchors = markdown.replace(
-		/^(#{1,3})\s+(.*)$/gm,
-		(m, hashes, title) => {
-			const id = title
-				.toLowerCase()
-				.replace(/[^\w가-힣]+/g, "-")
-				.replace(/^-+|-+$/g, "");
-			return `${hashes} <a id="${id}"></a>${title}`;
-		}
-	);
+  
+  const headings = extractHeadings(markdown);
+  const markdownWithAnchors = injectHeadingAnchors(markdown);
 	
 	return (
     <div className="markdown prose prose-neutral max-w-4xl mx-auto dark:prose-invert prose-headings:scroll-mt-24 prose-h2:mt-12 prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900 py-10 px-4 lg:px-0">
