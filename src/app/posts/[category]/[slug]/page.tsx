@@ -19,11 +19,6 @@ type Props = {
   params: Promise<Params>;
 };
 
-type Heading = {
-	id: string;
-	text: string;
-	level: number;
-}
 
 export default async function PostPage({ params }: Props) {
   const { category, slug } = await params;
@@ -34,7 +29,7 @@ export default async function PostPage({ params }: Props) {
 	
 	return (
     <div className="markdown prose prose-neutral relative 2xl:flex-row-reverse max-w-4xl mx-auto dark:prose-invert prose-headings:scroll-mt-24 prose-h2:mt-12 prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900 py-10 px-4 lg:px-0">
-			<aside className="hidden 2xl:block fixed top-[40%] right-50 w-60 h-fit text-sm text-gray-600 dark:text-gray-300">
+			<aside className="hidden 2xl:block fixed top-[40%] right-50 w-60 h-fit text-sm text-gray-600 dark:text-gray-300 toc">
         <TOC headings={headings} />
       </aside>
 
