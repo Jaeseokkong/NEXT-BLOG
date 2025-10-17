@@ -1,4 +1,3 @@
-// components/TOC.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -13,74 +12,69 @@ export default function TOC({ headings }: { headings: Heading[] }) {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!headings || headings.length === 0) return;
+    const handleScroll = () => {
+      const headerOffset = 180;
+      let currentId: string | null = null;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // 가장 눈에 띄는(가장 많이 교차한) 항목을 찾기
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible.length > 0) {
-          setActiveId(visible[0].target.id || null);
-        } else {
-          // 교차하는 항목 없을 때는 스크롤 상단/하단에 따라 처리
-          // 그냥 첫번째로 리셋하지 않음
-        }
-      },
-      {
-        root: null,
-        rootMargin: "-20% 0px -60% 0px", // 중간 영역을 기준으로 잡음
-        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
+      for (const h of headings) {
+        const el = document.getElementById(h.id);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top - headerOffset;
+        if (top <= 0) currentId = h.id;
       }
-    );
 
-    // 관찰 대상 요소들
-    const elems = headings
-      .map((h) => document.getElementById(h.id))
-      .filter(Boolean) as HTMLElement[];
+      setActiveId(currentId);
+    };
 
-    elems.forEach((el) => observer.observe(el));
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
 
-    return () => observer.disconnect();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [headings]);
 
   const handleClick = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      // 주소창 해시 변경 (뒤로가기 동작을 위해)
+      const headerOffset = 180;
+      const offsetPosition = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      setActiveId(id); // 클릭 즉시 활성화
       history.replaceState(null, "", `#${id}`);
     }
   };
 
   return (
-    <aside className="sticky top-24 h-fit rounded-2xl p-4 border border-gray-200/60 bg-white/70 shadow-sm dark:border-gray-800/60 dark:bg-gray-900/60">
-      <h3 className="text-sm font-semibold mb-3">목차</h3>
+    <nav className="flex flex-col gap-1 text-sm font-light">
+      {headings.map((h) => {
+        const active = activeId === h.id;
+        const paddingLeft = `${(h.level - 1) * 8}px`;
+        const sizeClass =
+          h.level === 1
+            ? "text-base"
+            : h.level === 2
+            ? "text-sm"
+            : h.level === 3
+            ? "text-xs"
+            : "text-[0.75rem]"; // h4
 
-      {headings.length === 0 ? (
-        <p className="text-xs text-gray-500">본문에 제목이 없습니다.</p>
-      ) : (
-        <ul className="space-y-2 text-sm">
-          {headings.map((h) => (
-            <li key={h.id} style={{ paddingLeft: (h.level - 1) * 12 }}>
-              <a
-                href={`#${h.id}`}
-                onClick={(e) => handleClick(e, h.id)}
-                className={`block text-sm truncate ${
-                  activeId === h.id
-                    ? "font-semibold underline decoration-2 underline-offset-2"
-                    : "text-gray-700 dark:text-gray-300 hover:underline"
-                }`}
-                title={h.text}
-              >
-                {h.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
-    </aside>
+        const colorClass = active
+          ? "font-semibold text-gray-900 dark:text-gray-100"
+          : "text-gray-600 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200";
+
+        return (
+          <a
+            key={h.id}
+            href={`#${h.id}`}
+            onClick={(e) => handleClick(e, h.id)}
+            className={`${sizeClass} truncate transition-colors ${colorClass}`}
+            style={{ paddingLeft }}
+          >
+            {h.text}
+          </a>
+        );
+      })}
+    </nav>
   );
 }
