@@ -7,6 +7,7 @@ import "highlight.js/styles/github.css";
 import "@/styles/markdown.css";
 import GiscusComments from "@/components/posts/GiscusComments";
 import { extractHeadings, injectHeadingAnchors } from "@/lib/utils";
+import TOC from "@/components/posts/TOC";
 
 
 type Params = {
@@ -27,28 +28,17 @@ type Heading = {
 export default async function PostPage({ params }: Props) {
   const { category, slug } = await params;
   const markdown = await fetchMarkdownFile(category, slug);
-  
+
   const headings = extractHeadings(markdown);
   const markdownWithAnchors = injectHeadingAnchors(markdown);
 	
 	return (
-    <div className="markdown prose prose-neutral max-w-4xl mx-auto dark:prose-invert prose-headings:scroll-mt-24 prose-h2:mt-12 prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900 py-10 px-4 lg:px-0">
-			<aside className="lg:w-1/4 w-full lg:sticky lg:top-24 bg-gray-50 dark:bg-gray-900 p-4 rounded-2xl h-fit">
-        <h2 className="text-lg font-semibold mb-4">목차</h2>
-        <ul className="space-y-2 text-sm">
-          {headings.map((h) => (
-            <li key={h.id} className={`ml-${(h.level - 1) * 4}`}>
-              <a
-                href={`#${h.id}`}
-                className="text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                {h.text}
-              </a>
-            </li>
-          ))}
-        </ul>
+    <div className="markdown prose prose-neutral relative 2xl:flex-row-reverse max-w-4xl mx-auto dark:prose-invert prose-headings:scroll-mt-24 prose-h2:mt-12 prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900 py-10 px-4 lg:px-0">
+			<aside className="hidden 2xl:block fixed top-[40%] right-50 w-60 h-fit text-sm text-gray-600 dark:text-gray-300">
+        <TOC headings={headings} />
       </aside>
-      <article className="markdown prose prose-neutral max-w-4xl mx-auto dark:prose-invert prose-headings:scroll-mt-24 prose-h2:mt-12 prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900 flex-1">
+
+      <article className="prose prose-neutral dark:prose-invert flex-1 max-w-4xl mx-auto prose-headings:scroll-mt-24 prose-h2:mt-12 prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw, rehypeHighlight]}
