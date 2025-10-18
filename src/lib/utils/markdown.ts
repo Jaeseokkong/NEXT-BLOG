@@ -40,17 +40,29 @@ export function extractFirstImage(markdown: string): string | null {
 /**
  * 마크다운에서 h1~h3 제목 추출
  */
-export function extractHeadings(markdown: string): Heading[] {
-  const headingMatches = Array.from(markdown.matchAll(/^(#{1,3})\s+(.*)$/gm));
-  return headingMatches.map((m) => {
-    const hashes = m[1];
-    const title = m[2].trim();
-    return {
-      level: hashes.length,
-      text: title,
-      id: slugify(title),
-    };
-  });
+export function extractHeadings(markdown: string) {
+  const headingRegex = /^(#{1,4})\s+(.*)$/gm;
+  const headings: { id: string; text: string; level: number }[] = [];
+  const idCounts: Record<string, number> = {}; // 중복 체크용
+
+  let match;
+  while ((match = headingRegex.exec(markdown)) !== null) {
+    const level = match[1].length;
+    const text = match[2].trim();
+    let id = text.toLowerCase().replace(/[^\w가-힣]+/g, "-"); // 한글 포함 허용
+
+    // 중복 id 방지 처리
+    if (idCounts[id]) {
+      idCounts[id] += 1;
+      id = `${id}-${idCounts[id]}`;
+    } else {
+      idCounts[id] = 1;
+    }
+
+    headings.push({ id, text, level });
+  }
+
+  return headings;
 }
 
 /**
