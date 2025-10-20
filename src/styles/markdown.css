@@ -23,6 +23,15 @@
   margin: 1.25rem 0 0.5rem;
 }
 
+.markdown h1 code,
+.markdown h2 code,
+.markdown h3 code,
+.markdown h4 code {
+  font-size: 0.95em; 
+  padding: 0.15rem 0.4rem;
+  vertical-align: baseline;
+}
+
 /* 본문 */
 .markdown p {
   margin: 1rem 0;
