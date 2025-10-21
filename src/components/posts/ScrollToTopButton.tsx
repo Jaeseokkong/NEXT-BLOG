@@ -26,7 +26,7 @@ export default function ScrollToTopButton() {
       aria-label="Scroll to top"
       className={`
         fixed bottom-6 right-6 p-3 rounded-full shadow-md transition-all duration-300
-        bg-yellow-400 hover:bg-yellow-500 text-white 
+        bg-yellow-200  hover:bg-yellow-300 text-gray-400 hover:text-white cursor-pointer
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}
       `}
     >
