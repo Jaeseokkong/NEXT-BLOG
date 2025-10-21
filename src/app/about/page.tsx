@@ -36,25 +36,20 @@ export default function AboutPage() {
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">TypeScript</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">React</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Next.js</span>
-          <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Redux</span>
-          <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">React Query</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Tailwind CSS</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Styled Components</span>
 
           {/* Collaboration */}
-          <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Figma 협업</span>
+          <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Figma</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Git & GitHub</span>
-          <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Notion</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Confluence</span>
 
           {/* API / Backend */}
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">REST API</span>
-          <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">GraphQL</span>
 
           {/* Testing / Infra */}
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">React Testing Library</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Vercel</span>
-          <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">GitHub Actions (CI/CD)</span>
         </div>
       </section>
 
