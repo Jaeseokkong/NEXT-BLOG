@@ -100,7 +100,7 @@ describe('<LatestPostsPreview/>', () => {
   })
 
   it('전체 글 보기 버튼이 올바르게 렌더링', () => {
-    const moreButton = screen.getByRole('link', { name: '→ 전체 글 보기' });
+    const moreButton = screen.getByRole('link', { name: '전체 글 보기' });
     expect(moreButton).toHaveAttribute('href', '/posts')
   })
 })
