@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-
 interface PreviewSectionProps {
   title: string;
   content?: string;
@@ -11,30 +10,42 @@ interface PreviewSectionProps {
   children: React.ReactNode;
 }
 
-
-export default function PreviewSection({ title, content, moreButton, children }: PreviewSectionProps) {
+export default function PreviewSection({
+  title,
+  content,
+  moreButton,
+  children,
+}: PreviewSectionProps) {
   return (
     <section className="bg-zinc-100 dark:bg-zinc-800 rounded-xl p-6 shadow-sm">
-      <h2 className="text-2xl font-semibold mb-2 text-zinc-800 dark:text-zinc-100">{title}</h2>
-      {content && 
+      <h2 className="text-2xl font-semibold mb-2 text-zinc-800 dark:text-zinc-100">
+        {title}
+      </h2>
+
+      {content && (
         <p className="text-zinc-700 dark:text-zinc-300 mb-3 whitespace-pre-line">
           {content}
-        </p> 
-      }
-      {children}
-      <div className="mt-4">
-      {moreButton && (
-        <Link
-          href={moreButton.href}
-          className="inline-flex items-center gap-1 px-4 py-1.5 rounded-full text-sm font-medium
-            bg-yellow-200 text-yellow-900 hover:bg-yellow-300
-            dark:text-yellow-900 dark:bg-yellow-300 dark:hover:bg-yellow-400
-            transition-colors"
-        >
-          {moreButton.label || "→ 더 알아보기"}
-        </Link>
+        </p>
       )}
-      </div>
+
+      {children}
+
+      {moreButton && (
+        <div className="mt-6">
+          <Link
+            href={moreButton.href}
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium
+              bg-gradient-to-r from-yellow-300 to-amber-400 text-yellow-900
+              hover:from-yellow-400 hover:to-amber-500
+              dark:from-yellow-400 dark:to-amber-500 dark:hover:from-yellow-500 dark:hover:to-amber-600
+              shadow-sm hover:shadow-md transition-all duration-300
+              focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2"
+          >
+            <span>{moreButton.label || "더 알아보기"}</span>
+            <span className="transition-transform group-hover:translate-x-0.5">→</span>
+          </Link>
+        </div>
+      )}
     </section>
-  )
+  );
 }
