@@ -18,7 +18,7 @@ export default async function ProjectsPage() {
             href={`/projects/${project.slug}`}
             className="group block rounded-2xl bg-zinc-50 dark:bg-zinc-900 p-6 border border-zinc-200 dark:border-zinc-700 hover:shadow-lg hover:-translate-y-1 transition-transform"
           >
-            <h2 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2 group-hover:text-yellow-600">
+            <h2 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2 group-hover:text-indigo-600">
               {project.title}
             </h2>
 

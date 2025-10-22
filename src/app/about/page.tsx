@@ -9,10 +9,10 @@ export default function AboutPage() {
         <AboutAvatar />
         <div className="md:col-span-2 space-y-6 leading-relaxed">
           <h1 className="text-4xl font-bold flex items-center gap-3">
-            About <span className="text-yellow-500 dark:text-yellow-400">Me</span>
+            About <span className="text-indigo-500 dark:text-indigo-400">Me</span>
           </h1>
           <p>
-            안녕하세요! 👋 고객 경험과 가치를 중심에 두고 <strong className="text-yellow-500">사용자 친화적인 프론트엔드</strong>를 만드는 개발자 <strong className="text-yellow-500">한재석</strong>입니다.
+            안녕하세요! 👋 고객 경험과 가치를 중심에 두고 <strong className="text-indigo-500">사용자 친화적인 프론트엔드</strong>를 만드는 개발자 <strong className="text-indigo-500">한재석</strong>입니다.
           </p>
           <p>
             <strong>React & Next.js</strong> 기반의 대시보드, 데이터 시각화, 인터랙션 개발 경험이 있으며
@@ -60,16 +60,16 @@ export default function AboutPage() {
         </h2>
 
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold text-yellow-500 dark:text-yellow-400">
+          <h3 className="text-xl font-semibold text-indigo-500 dark:text-indigo-400">
             윤선생 기술본부 — 프론트엔드/웹 개발 (2023.07 ~ 현재)
           </h3>
           <ul className="list-disc list-inside space-y-1 text-zinc-700 dark:text-zinc-300">
             <li>
               <strong>D-Book 서비스:</strong> React & Spring 기반 디지털 교재 개발, 
-              맞춤형 학습 자료 및 인터랙티브 기능 구현 → <span className="text-yellow-500 font-medium">사용자 만족도 25% 상승</span>
+              맞춤형 학습 자료 및 인터랙티브 기능 구현 → <span className="text-indigo-500 font-medium">사용자 만족도 25% 상승</span>
             </li>
             <li>
-              <strong>LMS 개발:</strong> 학습 진척도 추적, 성과 시각화, AI 자동 코멘트 기능 탑재 → <span className="text-yellow-500 font-medium">리뷰 시간 30% 단축</span>
+              <strong>LMS 개발:</strong> 학습 진척도 추적, 성과 시각화, AI 자동 코멘트 기능 탑재 → <span className="text-indigo-500 font-medium">리뷰 시간 30% 단축</span>
             </li>
             <li>
               <strong>교육용 웹뷰/교사용 서비스:</strong> 멀티미디어 콘텐츠 제공, 학습자 데이터 시각화 → 교사 효율성 15~18% 향상
@@ -87,7 +87,7 @@ export default function AboutPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold text-yellow-500 dark:text-yellow-400">
+          <h3 className="text-xl font-semibold text-indigo-500 dark:text-indigo-400">
             더리얼마케팅 — 웹/앱 개발 (2021.06 ~ 2023.07)
           </h3>
           <ul className="list-disc list-inside space-y-1 text-zinc-700 dark:text-zinc-300">
@@ -122,7 +122,7 @@ export default function AboutPage() {
         </p>
         <a
           href="mailto:wotjr294@naver.com"
-          className="inline-block text-yellow-500 dark:text-yellow-400 underline font-semibold"
+          className="inline-block text-indigo-500 dark:text-indigo-400 underline font-semibold"
         >
           wotjr294@naver.com
         </a>

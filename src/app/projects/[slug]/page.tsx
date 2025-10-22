@@ -48,7 +48,7 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <section className="max-w-4xl mx-auto mt-5 px-6 py-10 prose dark:prose-invert bg-white dark:bg-zinc-900 rounded-xl shadow-lg border border-zinc-200 dark:border-zinc-700">
       <header className="mb-8 border-b border-zinc-300 dark:border-zinc-700 pb-4">
-        <h1 className="text-4xl font-extrabold text-yellow-600 dark:text-yellow-400">{frontmatter.title}</h1>
+        <h1 className="text-4xl font-extrabold text-indigo-600 dark:text-indigo-400">{frontmatter.title}</h1>
         <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">{frontmatter.date}</p>
       </header>
 
@@ -64,7 +64,7 @@ export default async function ProjectPage({ params }: Props) {
           {frontmatter.tech?.map((tech) => (
             <li
               key={tech}
-              className="px-3 py-1 rounded-full bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-300 font-medium text-sm shadow-sm"
+              className="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-300 font-medium text-sm shadow-sm"
             >
               {tech}
             </li>

@@ -91,7 +91,7 @@
 
 /* highlight.js specific */
 .markdown pre code .hljs-string {
-  color: #facc15 !important; /* yellow-400 */
+  color: #facc15 !important; /* indigo-400 */
 }
 .markdown pre code .hljs-keyword {
   color: #f87171 !important;

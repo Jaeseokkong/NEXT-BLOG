@@ -10,5 +10,5 @@ export const categoryBgColors: Record<string, string> = {
   Spring: "bg-lime-200",
   TypeScript: "bg-blue-100",
   Web3: "bg-purple-100",
-  images: "bg-yellow-100",
+  images: "bg-indigo-100",
 };

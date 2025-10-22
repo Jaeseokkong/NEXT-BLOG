@@ -22,7 +22,7 @@ export default function AboutAvatar() {
             coin
             ${flipped ? "flipped" : ""}
             bg-white dark:bg-zinc-800
-            rounded-full shadow-lg border-2 border-yellow-200
+            rounded-full shadow-lg border-2 border-indigo-200
             w-full h-full relative
           `}
         >

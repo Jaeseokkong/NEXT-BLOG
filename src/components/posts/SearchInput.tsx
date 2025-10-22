@@ -37,7 +37,7 @@ const SearchInput = ({ onSearch, placeholder = "검색어를 입력하세요..."
 
 
   return (
-    <div className="w-full mx-auto mb-6 mt-3 flex items-center gap-2 px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-900 shadow-sm focus-within:ring-2 focus-within:ring-yellow-400 transition">
+    <div className="w-full mx-auto mb-6 mt-3 flex items-center gap-2 px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-900 shadow-sm focus-within:ring-2 focus-within:ring-indigo-400 transition">
       <Search className="w-5 h-5 text-zinc-400 dark:text-zinc-500" />
       <input
         type="text"

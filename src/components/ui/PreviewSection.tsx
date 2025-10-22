@@ -35,11 +35,11 @@ export default function PreviewSection({
           <Link
             href={moreButton.href}
             className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium
-              bg-gradient-to-r from-yellow-300 to-amber-400 text-yellow-900
-              hover:from-yellow-400 hover:to-amber-500
-              dark:from-yellow-400 dark:to-amber-500 dark:hover:from-yellow-500 dark:hover:to-amber-600
+              bg-gradient-to-r from-indigo-400 to-indigo-600 text-white
+              hover:from-indigo-500 hover:to-indigo-700
+              dark:from-indigo-500 dark:to-indigo-700 dark:hover:from-indigo-600 dark:hover:to-indigo-800
               shadow-sm hover:shadow-md transition-all duration-300
-              focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2"
+              focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
             <span>{moreButton.label || "더 알아보기"}</span>
             <span className="transition-transform group-hover:translate-x-0.5">→</span>

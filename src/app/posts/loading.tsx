@@ -15,13 +15,13 @@ export default function Loading() {
       {/* --- 메인 컨텐츠 --- */}
       <div className="flex-1 flex flex-col gap-6">
         {/* Intro Section */}
-        <section className="rounded-2xl bg-yellow-100/40 dark:bg-yellow-300/10 p-6 md:p-8 shadow-sm border border-yellow-200 dark:border-yellow-400/20 space-y-4 animate-pulse">
-          <div className="h-8 w-1/2 bg-yellow-200 dark:bg-yellow-400/30 rounded" />
+        <section className="rounded-2xl bg-indigo-100/40 dark:bg-indigo-300/10 p-6 md:p-8 shadow-sm border border-indigo-200 dark:border-indigo-400/20 space-y-4 animate-pulse">
+          <div className="h-8 w-1/2 bg-indigo-200 dark:bg-indigo-400/30 rounded" />
           <div className="space-y-2">
             {[...Array(3)].map((_, i) => (
               <div
                 key={i}
-                className="h-4 w-full bg-yellow-200/60 dark:bg-yellow-400/20 rounded"
+                className="h-4 w-full bg-indigo-200/60 dark:bg-indigo-400/20 rounded"
               />
             ))}
           </div>
