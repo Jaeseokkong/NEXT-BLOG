@@ -47,7 +47,7 @@ const PostCard = ({ post }: Props) => {
           {post.category}
         </span>
 
-        <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 line-clamp-2 group-hover:underline">
+        <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 line-clamp-1 group-hover:underline">
           {post.title}
         </h3>
 
