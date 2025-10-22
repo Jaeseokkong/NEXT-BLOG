@@ -16,7 +16,7 @@ export default function ProjectsPreview() {
         {projects.map((project) => (
           <Link
             key={project.title}
-            href={`/projects/${project.title}`}
+            href={`/projects/${project.slug}`}
             className="group block rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 p-5"
           >
             <div className="flex flex-col h-full">
