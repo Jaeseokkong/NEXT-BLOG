@@ -32,8 +32,8 @@ export default async function CategoryPage({ params }: Props) {
       date,
       slug,
       category: category,
-      excerpt: "클릭하여 자세히 보기 →", // 필요한 경우 유동적으로
-      image: undefined, // 혹시 이미지 매핑 가능하면 여기에
+      // excerpt: "클릭하여 자세히 보기 →",
+      image: undefined,
     };
   });
 

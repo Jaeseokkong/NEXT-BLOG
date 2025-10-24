@@ -51,15 +51,28 @@ const PostCard = ({ post }: Props) => {
           {post.category}
         </span>
 
-        <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 line-clamp-1 group-hover:underline">
+        <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 line-clamp-2 group-hover:text-indigo-500 transition-colors">
           {post.title}
         </h3>
 
-        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
-          {post.excerpt ?? "내용 없음"}
-        </p>
+        <div className="mt-auto pt-4 flex justify-between items-center text-xs text-zinc-400">
+          <span>📅 {post.date}</span>
 
-        <span className="mt-auto pt-3 text-xs text-zinc-400">📅 {post.date}</span>
+          <span className="flex items-center gap-1 text-indigo-500 dark:text-indigo-400 font-medium 
+            opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-1 group-hover:translate-x-0">
+            더 보기
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-3.5 h-3.5"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
       </div>
     </Link>
   );
