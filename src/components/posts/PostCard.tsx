@@ -39,7 +39,7 @@ const PostCard = ({ post }: Props) => {
           <div
             className={`${bgColor} flex items-center justify-center h-full text-center transition-transform duration-300 group-hover:scale-105`}
           >
-            <span className="text-sm font-medium text-zinc-800 dark:text-zinc-100 opacity-80">
+            <span className="text-sm font-medium text-zinc-800 opacity-80">
               {post.category}
             </span>
           </div>
