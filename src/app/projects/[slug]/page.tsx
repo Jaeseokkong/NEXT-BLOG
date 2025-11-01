@@ -41,30 +41,43 @@ export default async function ProjectPage({ params }: Props) {
     options: {
       parseFrontmatter: true,
     },
-    components: MdxComponents, // 🔥 여기 추가
+    components: MdxComponents,
   });
 
 
   return (
-    <section className="max-w-4xl mx-auto mt-5 px-6 py-10 prose dark:prose-invert bg-white dark:bg-zinc-900 rounded-xl shadow-lg border border-zinc-200 dark:border-zinc-700">
-      <header className="mb-8 border-b border-zinc-300 dark:border-zinc-700 pb-4">
-        <h1 className="text-4xl font-extrabold text-indigo-600 dark:text-indigo-400">{frontmatter.title}</h1>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">{frontmatter.date}</p>
+    <section className="max-w-4xl mx-auto mt-10 px-6 py-10 bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-zinc-200 dark:border-zinc-700 transition-all duration-300">
+      <div className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">
+        <span className="hover:text-indigo-500 transition">Projects</span> /{" "}
+        <span className="font-medium text-zinc-700 dark:text-zinc-200">
+          {frontmatter.title}
+        </span>
+      </div>
+
+      <header className="mb-8 pb-6 border-b border-zinc-300 dark:border-zinc-700">
+        <h1 className="text-4xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-500 bg-clip-text text-transparent">
+          {frontmatter.title}
+        </h1>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+          {frontmatter.date}
+        </p>
+
+        {frontmatter.description && (
+          <p className="mt-5 text-lg leading-relaxed text-zinc-800 dark:text-zinc-200">
+            {frontmatter.description}
+          </p>
+        )}
       </header>
 
-      {frontmatter.description && (
-        <p className="mb-10 text-lg leading-relaxed text-zinc-800 dark:text-zinc-200">
-          {frontmatter.description}
-        </p>
-      )}
-
-      <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-3 text-zinc-900 dark:text-zinc-100">기술 스택</h2>
-        <ul className="flex flex-wrap gap-3">
+      <section className="mb-8">
+        <h2 className="text-xl font-semibold mb-3 text-zinc-900 dark:text-zinc-100">
+          기술 스택
+        </h2>
+        <ul className="flex flex-wrap gap-2">
           {frontmatter.tech?.map((tech) => (
             <li
               key={tech}
-              className="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-300 font-medium text-sm shadow-sm"
+              className="px-3 py-1 rounded-full bg-gradient-to-r from-indigo-100 to-indigo-200 dark:from-indigo-900 dark:to-indigo-800 text-indigo-800 dark:text-indigo-200 font-medium text-sm hover:scale-105 hover:shadow transition-transform duration-200"
             >
               {tech}
             </li>
@@ -72,18 +85,7 @@ export default async function ProjectPage({ params }: Props) {
         </ul>
       </section>
 
-      {frontmatter.github && (
-        <a
-          href={frontmatter.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block mb-12 text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-600 transition"
-        >
-          GitHub 저장소 보기 &rarr;
-        </a>
-      )}
-
-      <article className="prose prose-zinc dark:prose-invert max-w-none">
+      <article className="prose prose-zinc dark:prose-invert max-w-none prose-img:rounded-xl prose-img:shadow-lg prose-img:transition-transform hover:prose-img:scale-105">
         {content}
       </article>
     </section>
