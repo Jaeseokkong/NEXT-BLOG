@@ -46,7 +46,7 @@ export default async function ProjectPage({ params }: Props) {
 
 
   return (
-    <section className="max-w-4xl mx-auto mt-10 px-6 py-10 bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-zinc-200 dark:border-zinc-700 transition-all duration-300">
+    <section className="max-w-4xl mx-auto my-10 px-6 py-10 bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-zinc-200 dark:border-zinc-700 transition-all duration-300">
       <div className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">
         <span className="hover:text-indigo-500 transition">Projects</span> /{" "}
         <span className="font-medium text-zinc-700 dark:text-zinc-200">
