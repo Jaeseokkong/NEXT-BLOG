@@ -22,22 +22,24 @@ const PostCard = ({ post }: Props) => {
   return (
     <Link
       href={`/posts/${post.category}/${post.slug}`}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700 shadow-sm hover:shadow-md transition-all bg-white dark:bg-zinc-900"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700 
+      bg-white dark:bg-zinc-900 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
-      <div className="relative h-40 w-full">
+      <div className="relative h-40 w-full overflow-hidden">
         {hasImage ? (
           <>
             <Image
               src={post.image!}
               alt={post.title}
               fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
             />
-            <div className="absolute transition" />
+            {/* 어두운 오버레이 */}
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
           </>
         ) : (
           <div
-            className={`${bgColor} flex items-center justify-center h-full text-center transition-transform duration-300 group-hover:scale-105`}
+            className={`${bgColor} flex items-center justify-center h-full text-center transition-all duration-500 group-hover:scale-105`}
           >
             <span className="text-sm font-medium text-zinc-800 opacity-80">
               {post.category}
@@ -58,8 +60,11 @@ const PostCard = ({ post }: Props) => {
         <div className="mt-auto pt-4 flex justify-between items-center text-xs text-zinc-400">
           <span>📅 {post.date}</span>
 
-          <span className="flex items-center gap-1 text-indigo-500 dark:text-indigo-400 font-medium 
-            opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-1 group-hover:translate-x-0">
+          <span
+            className="flex items-center gap-1 text-indigo-500 dark:text-indigo-400 font-medium 
+            opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 
+            transition-all duration-300"
+          >
             더 보기
             <svg
               xmlns="http://www.w3.org/2000/svg"
