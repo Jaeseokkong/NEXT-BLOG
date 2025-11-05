@@ -16,7 +16,7 @@ type Params = {
 };
 
 type Props = {
-  params: Promise<Params>;
+  params: Params;
 };
 
 
