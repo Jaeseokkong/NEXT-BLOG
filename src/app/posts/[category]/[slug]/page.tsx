@@ -8,6 +8,7 @@ import "@/styles/markdown.css";
 import GiscusComments from "@/components/posts/GiscusComments";
 import { extractHeadings, injectHeadingAnchors } from "@/lib/utils";
 import TOC from "@/components/posts/TOC";
+import { notFound } from "next/navigation";
 
 
 type Params = {
@@ -22,7 +23,14 @@ type Props = {
 
 export default async function PostPage({ params }: Props) {
   const { category, slug } = await params;
-  const markdown = await fetchMarkdownFile(category, slug);
+
+  let markdown = "";
+  try {
+    markdown = await fetchMarkdownFile(category, slug);
+  } catch (error) {
+    console.error(error);
+    notFound();
+  }
 
   const headings = extractHeadings(markdown);
   const markdownWithAnchors = injectHeadingAnchors(markdown);
