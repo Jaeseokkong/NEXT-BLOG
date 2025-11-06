@@ -37,9 +37,16 @@ export default async function PostPage({ params }: Props) {
 	
 	return (
     <div className="flex flex-col xl:flex-row xl:justify-between max-w-6xl mx-auto py-10 px-4 md:px-8 lg:px-12">
-			<aside className="hidden 2xl:block fixed top-[40%] right-50 w-60 h-fit text-sm text-gray-600 dark:text-gray-300 toc">
-        <TOC headings={headings} />
-      </aside>
+			<div className="xl:hidden mb-6">
+        <details className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 shadow-sm">
+          <summary className="cursor-pointer font-semibold text-gray-700 dark:text-gray-200">
+            📑 목차 보기
+          </summary>
+          <div className="mt-3 text-sm text-gray-600 dark:text-gray-300">
+            <TOC headings={headings} />
+          </div>
+        </details>
+      </div>
 
       <article className="markdown prose prose-neutral dark:prose-invert flex-1 max-w-4xl mx-auto prose-headings:scroll-mt-24 prose-h2:mt-12 prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900">
         <ReactMarkdown
