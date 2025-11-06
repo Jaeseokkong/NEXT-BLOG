@@ -62,27 +62,28 @@
 
 /* inline code */
 .markdown code {
-  background-color: #1e293b;
-  color: #facc15;
+  background-color: #f3f4f6; 
+  color: #1e293b;
   padding: 0.25rem 0.5rem;
   border-radius: 6px;
   font-family: 'Fira Code', monospace;
   font-size: 0.9rem;
   font-weight: 600;
-  border: 1px solid #1e293b;
+  border: 1px solid #e5e7eb;
 }
+
 
 /* pre block */
 .markdown pre {
-  background-color: #0f172a;
-  color: #e0e7ff;
+  background-color: #f8fafc; 
+  color: #1e293b;
   padding: 1rem;
   border-radius: 0.5rem;
   overflow-x: auto;
   font-size: 0.875rem;
   line-height: 1.6;
   margin: 1.5rem 0;
-  border: 1px solid #1e293b;
+  border: 1px solid #e5e7eb;
 }
 
 .markdown pre code {
@@ -184,11 +185,18 @@
 }
 
 .dark .markdown code {
-  border: 1px solid #334155;
+  background-color: #334155; 
+  color: #f8fafc;
+  border: 1px solid #475569; 
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .dark .markdown pre {
-  background-color: #1e293b;
+  background-color: #334155; 
   color: #cbd5e1;
   border: 1px solid #334155;
 }
