@@ -36,7 +36,7 @@ export default async function PostPage({ params }: Props) {
   const markdownWithAnchors = injectHeadingAnchors(markdown);
 	
 	return (
-    <div className="prose prose-neutral relative 2xl:flex-row-reverse max-w-4xl mx-auto dark:prose-invert prose-headings:scroll-mt-24 prose-h2:mt-12 prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900 py-10 px-4 lg:px-0">
+    <div className="flex flex-col xl:flex-row xl:justify-between max-w-6xl mx-auto py-10 px-4 md:px-8 lg:px-12">
 			<aside className="hidden 2xl:block fixed top-[40%] right-50 w-60 h-fit text-sm text-gray-600 dark:text-gray-300 toc">
         <TOC headings={headings} />
       </aside>
