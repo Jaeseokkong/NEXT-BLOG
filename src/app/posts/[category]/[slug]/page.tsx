@@ -47,12 +47,12 @@ export default async function PostPage({ params }: Props) {
           </div>
         </details>
       </div>
-      
+
       <aside className="hidden xl:block sticky top-32 self-start w-64 h-fit text-sm text-gray-600 dark:text-gray-300 shrink-0 mr-8">
         <TOC headings={headings} />
       </aside>
 
-      <article className="markdown prose prose-neutral dark:prose-invert flex-1 max-w-4xl mx-auto prose-headings:scroll-mt-24 prose-h2:mt-12 prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900">
+      <article className="markdown prose prose-neutral dark:prose-invert flex-1 max-w-none prose-headings:scroll-mt-24 prose-h2:mt-12 prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw, rehypeHighlight]}
