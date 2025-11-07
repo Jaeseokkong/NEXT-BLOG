@@ -26,13 +26,14 @@ export default async function CategoryPage({ params }: Props) {
   const files = await fetchFilesInCategory(category);
 
   const posts = files.map((file) => {
-    const { date, title, slug } = parseFileName(file.name);
+    const parsed = parseFileName(file.name);
+    if (!parsed) return null;
+    const { date, title, slug } = parsed;
     return {
       title,
       date,
       slug,
       category: category,
-      // excerpt: "클릭하여 자세히 보기 →",
       image: undefined,
     };
   });
