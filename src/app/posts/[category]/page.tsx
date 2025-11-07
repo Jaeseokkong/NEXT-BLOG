@@ -3,7 +3,7 @@ import PostCard from "@/components/posts/PostCard";
 import { fetchFilesInCategory } from "@/lib/github";
 import { parseFileName } from "@/lib/utils";
 
-type Params = {
+type Post = {
   title: string;
   date: string;
   slug: string;
@@ -13,7 +13,7 @@ type Params = {
 };
 
 type Props = {
-  params: Promise<Params>;
+  params: { category: string };
 };
 
 export default async function CategoryPage({ params }: Props) {
