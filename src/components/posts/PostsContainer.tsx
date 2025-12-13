@@ -46,7 +46,7 @@ const PostsContainer = ({ initialPosts }: PostsContainerProps) => {
   }, [debouncedKeyword, initialPosts]);
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-3">
       <SearchInput onSearch={setSearchInput} placeholder="검색어를 입력하세요..." />
       {loading ? (
         <p className="text-center text-gray-500">검색 중...</p>
