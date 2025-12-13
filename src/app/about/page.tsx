@@ -72,16 +72,16 @@ export default function AboutPage() {
               <strong>LMS 개발:</strong> 학습 진척도 추적, 성과 시각화, AI 자동 코멘트 기능 탑재 → <span className="text-indigo-500 font-medium">리뷰 시간 30% 단축</span>
             </li>
             <li>
-              <strong>교육용 웹뷰/교사용 서비스:</strong> 멀티미디어 콘텐츠 제공, 학습자 데이터 시각화 → 교사 효율성 15~18% 향상
+              <strong>교육용 웹뷰/교사용 서비스:</strong> 멀티미디어 콘텐츠 제공, 학습자 데이터 시각화 → <span className="text-indigo-500 font-medium">교사 효율성 15~18% 향상</span>
             </li>
             <li>
-              <strong>YOONS.COM 유지보수:</strong> UX 개선 및 시스템 안정성 확보 → 관리자 시간 30% 절감
+              <strong>YOONS.COM 유지보수:</strong> UX 개선 및 시스템 안정성 확보 → <span className="text-indigo-500 font-medium">관리자 시간 30% 절감</span>
             </li>
             <li>
-              <strong>API 헬스 체크 & 모니터링:</strong> Next.js 기반 대시보드 구현 → 운영팀 및 개발팀 서비스 인지 시간 단축
+              <strong>API 헬스 체크 & 모니터링:</strong> Next.js 기반 대시보드 구현 → <span className="text-indigo-500 font-medium">운영팀 및 개발팀 서비스 인지 시간 단축</span>
             </li>
             <li>
-              <strong>RD 리포트 디자인:</strong> Crownix 기반 학습 진단 리포트 시각화 → 교사/학습자 이해도 향상
+              <strong>RD 리포트 디자인:</strong> Crownix 기반 학습 진단 리포트 시각화 → <span className="text-indigo-500 font-medium">교사/학습자 이해도 향상</span>
             </li>
           </ul>
         </div>
