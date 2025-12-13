@@ -30,7 +30,7 @@ export default function Header() {
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               aria-label="Toggle Dark Mode"
-              className="text-xl"
+              className="text-xl cursor-pointer"
             >
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
