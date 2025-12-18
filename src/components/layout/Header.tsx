@@ -1,13 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
-import { Sun, Moon } from 'lucide-react'; // 또는 다른 아이콘
 import Logo from '../atoms/Logo';
+import ThemeToggle from '../atoms/ThemeToggle';
 
 export default function Header() {
-    const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => setMounted(true), []);
@@ -24,13 +22,7 @@ export default function Header() {
                     <Link href="/posts" className="hover:underline">Posts</Link>
                     <Link href="/projects" className="hover:underline">Projects</Link>
                     {mounted && (
-                        <button
-                        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                        aria-label="Toggle Dark Mode"
-                        className="text-xl cursor-pointer"
-                        >
-                        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-                        </button>
+                        <ThemeToggle />
                     )}
                 </div>
             </div>
