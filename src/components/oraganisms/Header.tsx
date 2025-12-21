@@ -22,9 +22,6 @@ export default function Header() {
                     <HeaderLink name="About" href="/about"/>
                     <HeaderLink name="Posts" href="/posts"/>
                     <HeaderLink name="Projects" href="/projects"/>
-                    <Link href="/about" className="hover:underline">About</Link>
-                    <Link href="/posts" className="hover:underline">Posts</Link>
-                    <Link href="/projects" className="hover:underline">Projects</Link>
                     {mounted && (
                         <ThemeToggle />
                     )}
