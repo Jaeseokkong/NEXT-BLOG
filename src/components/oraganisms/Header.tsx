@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Logo from '../atoms/Logo';
-import ThemeToggle from '../atoms/ThemeToggle';
+import ThemeToggle from '../molecules/ThemeToggle';
 import HeaderLink from '../atoms/HeaderLink';
 
 export default function Header() {
