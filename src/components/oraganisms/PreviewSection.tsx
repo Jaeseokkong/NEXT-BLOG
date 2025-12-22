@@ -1,8 +1,10 @@
 import Link from "next/link";
+import PreviewTitle from "../atoms/PreviewTitle";
+import PreviewContext from "../atoms/PreviewContext";
 
 interface PreviewSectionProps {
   title: string;
-  content?: string;
+  context?: string;
   moreButton?: {
     href: string;
     label?: string;
@@ -12,24 +14,15 @@ interface PreviewSectionProps {
 
 export default function PreviewSection({
   title,
-  content,
+  context,
   moreButton,
   children,
 }: PreviewSectionProps) {
   return (
     <section className="bg-zinc-100 dark:bg-zinc-800 rounded-xl p-6 shadow-sm">
-      <h2 className="text-2xl font-semibold mb-2 text-zinc-800 dark:text-zinc-100">
-        {title}
-      </h2>
-
-      {content && (
-        <p className="text-zinc-700 dark:text-zinc-300 mb-3 whitespace-pre-line">
-          {content}
-        </p>
-      )}
-
+      <PreviewTitle title={title} />
+      {context && <PreviewContext context={context} />}
       {children}
-
       {moreButton && (
         <div className="mt-6">
           <Link
