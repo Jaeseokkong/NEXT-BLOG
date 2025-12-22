@@ -1,4 +1,4 @@
-import PreviewSection from "@/components/ui/PreviewSection";
+import PreviewSection from "@/components/oraganisms/PreviewSection";
 import { render, screen } from "@testing-library/react";
 
 describe("<PreviewSection />", () => {

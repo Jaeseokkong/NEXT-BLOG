@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PostMeta } from "@/lib/github";
-import PreviewSection from "../ui/PreviewSection";
+import PreviewSection from "../oraganisms/PreviewSection";
 
 interface LatestPostsPreviewProps {
   initialPosts: PostMeta[];
