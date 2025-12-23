@@ -1,7 +1,7 @@
-import AboutPreview from "@/components/home/AboutPreview";
-import ProjectsPreview from "@/components/home/ProjectsPreview";
+import AboutPreview from "@/components/templates/AboutPreview";
+import ProjectsPreview from "@/components/templates/ProjectsPreview";
 import { fetchPostMetas } from "@/lib/github";
-import LatestPostsPreview from "@/components/home/LatestPostsPreview";
+import LatestPostsPreview from "@/components/templates/LatestPostsPreview";
 
 export default async function Home() {
   const initialPosts = await fetchPostMetas(1, 10);

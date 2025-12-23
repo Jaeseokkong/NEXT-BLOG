@@ -1,4 +1,4 @@
-import LatestPostsPreview from '@/components/home/LatestPostsPreview';
+import LatestPostsPreview from '@/components/templates/LatestPostsPreview';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { AnchorHTMLAttributes, ReactNode } from 'react';
 

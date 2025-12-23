@@ -1,4 +1,4 @@
-import ProjectsPreview from "@/components/home/ProjectsPreview"
+import ProjectsPreview from "@/components/templates/ProjectsPreview"
 import { render, screen } from "@testing-library/react";
 
 jest.mock('@/lib/projects', () => ({
