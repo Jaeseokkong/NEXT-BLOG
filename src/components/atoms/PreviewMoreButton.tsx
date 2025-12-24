@@ -13,7 +13,7 @@ export default function PreviewMoreButton({ href, label }: PreviewMoreButtonProp
                 href={href}
                 className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium
                     bg-gradient-to-r from-indigo-400 to-indigo-600 text-white
-S                hover:from-indigo-500 hover:to-indigo-700
+                   hover:from-indigo-500 hover:to-indigo-700
                     dark:from-indigo-500 dark:to-indigo-700 dark:hover:from-indigo-600 dark:hover:to-indigo-800
                     shadow-sm hover:shadow-md transition-all duration-300
                     focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
