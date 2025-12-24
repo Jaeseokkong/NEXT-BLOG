@@ -34,7 +34,6 @@ const PostCard = ({ post }: Props) => {
               fill
               className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
             />
-            {/* 어두운 오버레이 */}
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
           </>
         ) : (
