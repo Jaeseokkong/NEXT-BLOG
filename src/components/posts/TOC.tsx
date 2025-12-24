@@ -40,7 +40,7 @@ export default function TOC({ headings }: { headings: Heading[] }) {
       const offsetPosition = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
 
       window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-      setActiveId(id); // 클릭 즉시 활성화
+      setActiveId(id);
       history.replaceState(null, "", `#${id}`);
     }
   };
@@ -57,7 +57,7 @@ export default function TOC({ headings }: { headings: Heading[] }) {
             ? "text-sm"
             : h.level === 3
             ? "text-xs"
-            : "text-[0.75rem]"; // h4
+            : "text-[0.75rem]";
 
         const colorClass = active
           ? "font-semibold text-gray-900 dark:text-gray-100"
