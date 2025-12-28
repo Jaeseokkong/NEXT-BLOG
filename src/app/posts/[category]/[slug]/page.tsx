@@ -28,7 +28,6 @@ export default async function PostPage({ params }: Props) {
   try {
     markdown = await fetchMarkdownFile(category, slug);
   } catch (error) {
-    console.error(error);
     notFound();
   }
 
