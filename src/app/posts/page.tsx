@@ -1,4 +1,4 @@
-import Intro from "@/components/posts/Intro";
+import Intro from "@/components/atoms/Intro";
 import MobileCategoryTabs from "@/components/posts/MobileCategoryTabs";
 import PostsContainer from "@/components/posts/PostsContainer";
 import ScrollToTopButton from "@/components/posts/ScrollToTopButton";
