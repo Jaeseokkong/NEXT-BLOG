@@ -1,8 +1,8 @@
-import Intro from "@/components/posts/Intro";
+import Intro from "@/components/atoms/Intro";
 import MobileCategoryTabs from "@/components/posts/MobileCategoryTabs";
 import PostsContainer from "@/components/posts/PostsContainer";
 import ScrollToTopButton from "@/components/posts/ScrollToTopButton";
-import Sidebar from "@/components/posts/Sidebar";
+import Sidebar from "@/components/molecules/Sidebar";
 import { fetchPosts } from "@/lib/github";
 
 
