@@ -20,7 +20,7 @@ export default function LatestPostsPreview({ initialPosts }: LatestPostsPreviewP
     >
       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
         {initialPosts.slice(0, 4).map((post) => (
-          <PreviewPostCard post={post}/>
+          <PreviewPostCard key={post.title} post={post}/>
         ))}
       </ul>
     </PreviewSection>
