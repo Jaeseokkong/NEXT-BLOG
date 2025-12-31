@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { PostMeta } from "@/lib/github";
-import PostCard from "./PostCard";
+import PostCard from "../oraganisms/PostCard";
 
 const Spinner = () => (
   <div className="col-span-full flex justify-center py-6">
