@@ -1,6 +1,7 @@
 import { categoryBgColors } from "@/lib/categoryColors";
 import Image from "next/image";
 import Link from "next/link";
+import PreviewImage from "../atoms/PreviewImage";
 
 interface Props {
   post: Post;
@@ -16,8 +17,6 @@ interface Post {
 }
 
 const PostCard = ({ post }: Props) => {
-  const hasImage = !!post.image;
-  const bgColor = categoryBgColors[post.category] ?? "bg-gray-100";
 
   return (
     <Link
@@ -25,28 +24,7 @@ const PostCard = ({ post }: Props) => {
       className="group flex flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700 
       bg-white dark:bg-zinc-900 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
-      <div className="relative h-40 w-full overflow-hidden">
-        {hasImage ? (
-          <>
-            <Image
-              src={post.image!}
-              alt={post.title}
-              fill
-              className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-          </>
-        ) : (
-          <div
-            className={`${bgColor} flex items-center justify-center h-full text-center transition-all duration-500 group-hover:scale-105`}
-          >
-            <span className="text-sm font-medium text-zinc-800 opacity-80">
-              {post.category}
-            </span>
-          </div>
-        )}
-      </div>
-
+      <PreviewImage image={post.image} title={post.title} category={post.category} />
       <div className="flex flex-col p-4 flex-1">
         <span className="text-xs text-indigo-500 dark:text-indigo-400 font-medium uppercase tracking-wide mb-1">
           {post.category}
