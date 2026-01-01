@@ -1,14 +1,24 @@
+import { categoryBgColors } from '@/lib/categoryColors';
 import Image from 'next/image'
 import React from 'react'
 
-export default function PreviewImage() {
+interface PreviewImageProps {
+    image?: string;
+    title: string;
+    category: string;
+}
+
+export default function PreviewImage({ image, title, category }: PreviewImageProps) {
+
+    const bgColor = categoryBgColors[category] ?? "bg-gray-100";
+
     return (
         <div className="relative h-40 w-full overflow-hidden">
-            {hasImage ? (
+            {!!image ? (
             <>
                 <Image
-                src={post.image!}
-                alt={post.title}
+                src={image!}
+                alt={title}
                 fill
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
@@ -19,7 +29,7 @@ export default function PreviewImage() {
                 className={`${bgColor} flex items-center justify-center h-full text-center transition-all duration-500 group-hover:scale-105`}
             >
                 <span className="text-sm font-medium text-zinc-800 opacity-80">
-                {post.category}
+                {category}
                 </span>
             </div>
             )}
