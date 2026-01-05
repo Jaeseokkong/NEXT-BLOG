@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PostMeta } from "@/lib/github";
-import PreviewSection from "../oraganisms/PreviewSection";
+import PreviewSection from "../organisms/PreviewSection";
 import PostPreviewCardTop from "../atoms/PostPreviewCardTop";
 import PostPreviewCardTitle from "../atoms/PostPreviewCardTitle";
 import PostPreviewCardContext from "../atoms/PostPreviewCardContext";

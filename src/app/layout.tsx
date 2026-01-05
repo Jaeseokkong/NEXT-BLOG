@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter, Montserrat } from 'next/font/google';
-import Header from "@/components/oraganisms/Header";
+import Header from "@/components/organisms/Header";
 import { Providers } from './providers';
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 

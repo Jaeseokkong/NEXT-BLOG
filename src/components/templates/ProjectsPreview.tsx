@@ -1,5 +1,5 @@
 import Link from "next/link";
-import PreviewSection from "../oraganisms/PreviewSection";
+import PreviewSection from "../organisms/PreviewSection";
 import BadgeGroup from "../ui/BadgeGroup";
 import { getAllProjects } from "@/lib/projects";
 
