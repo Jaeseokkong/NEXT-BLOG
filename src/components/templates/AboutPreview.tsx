@@ -1,6 +1,6 @@
 'use client';
 
-import PreviewSection from '../oraganisms/PreviewSection';
+import PreviewSection from '../organisms/PreviewSection';
 import BadgeGroup from '../ui/BadgeGroup';
 
 const techList: string[] = [ "JavaScript", "TypeScript", "React", "Next.js" ];

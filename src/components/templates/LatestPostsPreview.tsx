@@ -1,6 +1,6 @@
 import { PostMeta } from "@/lib/github";
-import PreviewSection from "../oraganisms/PreviewSection";
 import PreviewPostCard from "../molecules/PreviewPostCard";
+import PreviewSection from "../organisms/PreviewSection";
 
 interface LatestPostsPreviewProps {
   initialPosts: PostMeta[];

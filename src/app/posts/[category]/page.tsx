@@ -1,5 +1,5 @@
 // app/post/[category]/page.tsx
-import PostCard from "@/components/oraganisms/PostCard";
+import PostCard from "@/components/organisms/PostCard";
 import { fetchFilesInCategory } from "@/lib/github";
 import { parseFileName } from "@/lib/utils";
 

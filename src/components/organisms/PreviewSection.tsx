@@ -19,7 +19,6 @@ export default function PreviewSection({
   moreButton,
   children,
 }: PreviewSectionProps) {
-  console.log(moreButton)
   return (
     <section className="bg-zinc-100 dark:bg-zinc-800 rounded-xl p-6 shadow-sm">
       <PreviewTitle title={title} />

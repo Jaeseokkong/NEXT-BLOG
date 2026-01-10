@@ -3,8 +3,7 @@ import AboutAvatar from "@/components/about/AboutAvatar";
 export default function AboutPage() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-20 space-y-24 text-zinc-800 dark:text-zinc-100">
-      
-      {/* 소개 */}
+  
       <section className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
         <AboutAvatar />
         <div className="md:col-span-2 space-y-6 leading-relaxed">
@@ -25,7 +24,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 기술 스택 */}
       <section className="space-y-8">
         <h2 className="text-3xl font-bold border-b border-zinc-200 dark:border-zinc-700 pb-2">
           🚀 Skill Set
