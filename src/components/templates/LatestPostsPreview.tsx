@@ -1,10 +1,5 @@
-import Link from "next/link";
 import { PostMeta } from "@/lib/github";
 import PreviewSection from "../oraganisms/PreviewSection";
-import PostPreviewCardTop from "../atoms/PostPreviewCardTop";
-import PostPreviewCardTitle from "../atoms/PostPreviewCardTitle";
-import PostPreviewCardContext from "../atoms/PostPreviewCardContext";
-import PostPreviewCardMoreButton from "../atoms/PostPreviewCardMoreButton";
 import PreviewPostCard from "../molecules/PreviewPostCard";
 
 interface LatestPostsPreviewProps {
