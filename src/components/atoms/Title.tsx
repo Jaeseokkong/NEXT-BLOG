@@ -3,10 +3,10 @@ import React from 'react'
 interface TitleProps {
 	level?: 1 | 2 | 3 | 4 | 5;
 	children: React.ReactNode;
-	className: string;
+	className?: string;
 }
 
-export default function Title({ level = 3, children, className }: TitleProps) {
+export default function Title({ level = 3, children, className = ""}: TitleProps) {
 	const Tag = `h${level}` as const;
 
 	const style = {

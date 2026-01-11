@@ -4,7 +4,7 @@ interface TextProps {
 	children: React.ReactNode;
 	as?: 'p' | 'span' | 'div';
 	size?: 'sm' | 'base' | 'lg';
-	className: string;
+	className?: string;
 }
 
 export default function Text({ children, as = 'p', size = 'base', className }: TextProps) {

@@ -4,7 +4,7 @@ export default function ResumeTemplate({ children }: { children: React.ReactNode
 	return (
 		<div
 			className="
-				bg-gray-100 py-10
+				bg-gray-100 py-10 px-7.5
 				print:bg-white print:py-0">
 			<div
 				className="

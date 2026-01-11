@@ -1,3 +1,4 @@
+import Title from "@/components/atoms/Title";
 import BadgeGroup from "@/components/ui/BadgeGroup";
 import { getAllProjects } from "@/lib/projects";
 import Link from "next/link";
@@ -29,9 +30,7 @@ export default async function ProjectsPage() {
             </div>
 
             <div className="flex flex-col flex-1 p-6">
-              <h2 className="text-lg font-semibold mb-2 text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600">
-                {project.title}
-              </h2>
+              <Title level={2} className="mb-2">{project.title}</Title>
 
               <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4 line-clamp-3 flex-1">
                 {project.description}

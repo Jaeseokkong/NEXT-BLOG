@@ -1,7 +1,10 @@
-export default function page() {
+import ResumeHeader from "./components/organisms/ResumeHeader";
+import ResumeTemplate from "./components/templates/ResumeTemplate";
+
+export default function ResumePage() {
 	return (
-		<div>
-			Resume
-		</div>
+		<ResumeTemplate>
+			<ResumeHeader/>
+		</ResumeTemplate>
 	)
 }
