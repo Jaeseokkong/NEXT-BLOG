@@ -1,14 +1,31 @@
+import Divider from "@/components/atoms/Divider";
 import Text from "@/components/atoms/Text";
 import Title from "@/components/atoms/Title";
+import { LuGithub, LuLaptop, LuMail, LuSmartphone } from "react-icons/lu";
 
 export default function ResumeHeader() {
 	return (
-		<header className="mb-8 space-y-2">
-			<Title level={1}>한재석</Title>
-			<Text size="base">Frontend Enginner</Text>
-			<Text className="mt-3 max-w-2xl">
-				React, Next.js, TypeScript 기반으로 사용자 경험과 비지니스 가치르 함께 개선해온 프론트엔드 개발자
-			</Text>
+		<header className="mb-8 flex space-x-10">
+			<div className="flex-1">
+				<Title level={1}>한재석</Title>
+				<Text size="sm">Frontend Enginner</Text>
+			</div>
+			<div className="space-y-1">
+				<div className="flex gap-2">
+					<LuSmartphone size={15} className="mt-1"/>
+					<Text size="sm"> 010-5124-2934</Text>
+					<Divider variant="inline" />
+					<LuMail size={15} className="mt-1"/>
+					<Text size="sm">wotjr294@naver.com</Text>
+				</div>
+				<div className="flex gap-2">
+					<LuGithub size={15} className="mt-1"/>
+					<Text size="sm">github.com/Jaeseokkong</Text>
+					<Divider variant="inline" />
+					<LuLaptop size={15} className="mt-1" />
+					<Text size="sm">blog: hjs-blog.vercel.app</Text>
+				</div>
+			</div>
 		</header>
 	)
 }
