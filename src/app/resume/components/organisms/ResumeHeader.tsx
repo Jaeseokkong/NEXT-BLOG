@@ -1,6 +1,7 @@
 import Divider from "@/components/atoms/Divider";
 import Text from "@/components/atoms/Text";
 import Title from "@/components/atoms/Title";
+import Link from "next/link";
 import { LuGithub, LuLaptop, LuMail, LuSmartphone } from "react-icons/lu";
 
 export default function ResumeHeader() {
@@ -20,10 +21,10 @@ export default function ResumeHeader() {
 				</div>
 				<div className="flex gap-2">
 					<LuGithub size={15} className="mt-1"/>
-					<Text size="sm">github.com/Jaeseokkong</Text>
+					<Text size="sm"><Link href="https://github.com/Jaeseokkong">github.com/Jaeseokkong</Link></Text>
 					<Divider variant="inline" />
 					<LuLaptop size={15} className="mt-1" />
-					<Text size="sm">blog: hjs-blog.vercel.app</Text>
+					<Text size="sm"><Link href="https://hjs-blog.vercel.app/">blog: hjs-blog.vercel.app</Link></Text>
 				</div>
 			</div>
 		</header>
