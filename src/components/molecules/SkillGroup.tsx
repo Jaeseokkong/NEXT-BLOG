@@ -1,4 +1,5 @@
 import Text from "../atoms/Text";
+import Title from "../atoms/Title";
 import SkillList from "./SkillList";
 
 interface SkillGroupProps {
@@ -8,10 +9,10 @@ interface SkillGroupProps {
 
 export default function SkillGroup({ title, skills }: SkillGroupProps) {
     return (
-        <div>
-            <Text size="sm" className="font-medium text-gray-800 md-b">
+        <div className="space-y-2">
+            <Title level={3} className="uppercase tracking-wide">
                 {title}
-            </Text>
+            </Title>
             <SkillList skills={skills} />
         </div>
     )
