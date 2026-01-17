@@ -6,7 +6,7 @@ export default function SkillSection() {
         <section className="mb-8">
             <SectionTitle>Skills</SectionTitle>
 
-            <div className="mt-4 space-y-8">
+            <div className="mt-4 space-y-6">
                 <SkillGroup 
                     title="Core"
                     skills={[ "JavaScript", "TypeScript" ]}
