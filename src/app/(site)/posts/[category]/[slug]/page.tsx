@@ -27,8 +27,8 @@ export default async function PostPage({ params }: Props) {
   let markdown = "";
   try {
     markdown = await fetchMarkdownFile(category, slug);
-  } catch (error) {
-    notFound();
+  } catch {
+    notFound()
   }
 
   const headings = extractHeadings(markdown);
