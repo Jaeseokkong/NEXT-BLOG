@@ -1,4 +1,3 @@
-import Text from "../atoms/Text";
 import Title from "../atoms/Title";
 import SkillList from "./SkillList";
 

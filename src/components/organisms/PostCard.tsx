@@ -1,10 +1,6 @@
-import { categoryBgColors } from "@/lib/categoryColors";
-import Image from "next/image";
 import Link from "next/link";
 import PreviewImage from "../atoms/PreviewImage";
 import PostCardBottom from "../molecules/PostCardBottom";
-
-
 
 interface PostCardProps {
   title: string;
