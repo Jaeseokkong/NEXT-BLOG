@@ -4,11 +4,9 @@ import Link from "next/link";
 import PreviewImage from "../atoms/PreviewImage";
 import PostCardBottom from "../molecules/PostCardBottom";
 
-interface Props {
-  post: Post;
-}
 
-interface Post {
+
+interface PostCardProps {
   title: string;
   date: string;
   slug: string;
@@ -17,7 +15,7 @@ interface Post {
   image?: string;
 }
 
-const PostCard = ({ post }: Props) => {
+const PostCard = ({ post }: { post: PostCardProps }) => {
 
   return (
     <Link

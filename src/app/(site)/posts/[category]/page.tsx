@@ -3,15 +3,6 @@ import PostCard from "@/components/organisms/PostCard";
 import { fetchFilesInCategory } from "@/lib/github";
 import { parseFileName } from "@/lib/utils";
 
-type Post = {
-  title: string;
-  date: string;
-  slug: string;
-  category?: string;
-  excerpt: string;
-  image?: string;
-};
-
 type Props = {
   params: { category: string };
 };
@@ -36,7 +27,8 @@ export default async function CategoryPage({ params }: Props) {
       category: category,
       image: undefined,
     };
-  });
+  })
+  .filter((post): post is NonNullable<typeof post> => post !== null);
 
   return (
     <section className="max-w-5xl mx-auto px-4 py-10">
