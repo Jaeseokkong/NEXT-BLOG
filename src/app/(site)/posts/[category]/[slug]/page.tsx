@@ -10,19 +10,14 @@ import { extractHeadings, injectHeadingAnchors } from "@/lib/utils";
 import TOC from "@/components/posts/TOC";
 import { notFound } from "next/navigation";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-type Params = {
-  category: string;
-  slug: string;
-};
-
-type Props = {
-  params: Params;
-};
-
-
-export default async function PostPage({ params }: Props) {
-  const { category, slug } = await params;
+export default async function PostPage(props: any) {
+  const { params } = props;
+  const { category, slug } = params as {
+    category: string;
+    slug: string;
+  };
 
   let markdown = "";
   try {

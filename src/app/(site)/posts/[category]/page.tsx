@@ -1,14 +1,12 @@
-// app/post/[category]/page.tsx
 import PostCard from "@/components/organisms/PostCard";
 import { fetchFilesInCategory } from "@/lib/github";
 import { parseFileName } from "@/lib/utils";
 
-type Props = {
-  params: { category: string };
-};
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-export default async function CategoryPage({ params }: Props) {
-  const { category } = await params;
+export default async function CategoryPage(props: any) {
+  const { params } = props;
+  const { category } = params as { category: string; };
 
   if (!category) {
     return <p>Category not found.</p>;
@@ -24,7 +22,7 @@ export default async function CategoryPage({ params }: Props) {
       title,
       date,
       slug,
-      category: category,
+      category,
       image: undefined,
     };
   })
