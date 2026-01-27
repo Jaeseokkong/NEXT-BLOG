@@ -29,29 +29,21 @@ export default function AboutPage() {
           🚀 Skill Set
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">
-          {/* Core */}
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">JavaScript (ES6+)</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">TypeScript</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">React</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Next.js</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Tailwind CSS</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Styled Components</span>
-
-          {/* Collaboration */}
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Figma</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Git & GitHub</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Confluence</span>
-
-          {/* API / Backend */}
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">REST API</span>
-
-          {/* Testing / Infra */}
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">React Testing Library</span>
           <span className="px-3 py-2 rounded bg-zinc-100 dark:bg-zinc-800">Vercel</span>
         </div>
       </section>
 
-      {/* 커리어 */}
       <section className="space-y-10">
         <h2 className="text-3xl font-bold flex items-center gap-3 border-b border-zinc-200 dark:border-zinc-700 pb-2">
           💼 Career
@@ -108,8 +100,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-
-      {/* 연락처 */}
       <section className="space-y-4">
         <h2 className="text-3xl font-bold flex items-center gap-3 border-b border-zinc-200 dark:border-zinc-700 pb-2">
           📬 Contact
