@@ -22,7 +22,6 @@ export default async function ProjectsPage() {
             href={`/projects/${project.slug}`}
             className="group flex flex-col rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 hover:border-indigo-400 hover:shadow-lg transition-all duration-300"
           >
-            {/* 이미지 대신 placeholder */}
             <div className="h-40 w-full bg-gradient-to-br from-indigo-100 to-indigo-200 dark:from-zinc-800 dark:to-zinc-700 flex items-center justify-center">
               <span className="text-sm text-indigo-500 dark:text-indigo-300 font-medium tracking-wide">
                 Image coming soon...
