@@ -20,7 +20,7 @@ export default function ExperienceSection() {
                     ]}
                 />
                 <ExperienceItem 
-                    company="더리얼마케팅"
+                    company="더리얼"
                     role="Web Developer"
                     period="2021.06 ~ 2023.07"
                     achievements={[
