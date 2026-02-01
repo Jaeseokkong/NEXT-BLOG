@@ -14,10 +14,10 @@ export default function ResumeHeader() {
 			<div className="space-y-1">
 				<div className="flex gap-2">
 					<LuSmartphone size={15} className="mt-1"/>
-					<Text size="sm"> 010-5124-2934</Text>
+					<Text size="sm" as="a" href="tel:01051242934">010-5124-2934</Text>
 					<Divider variant="inline" />
 					<LuMail size={15} className="mt-1"/>
-					<Text size="sm">wotjr294@naver.com</Text>
+					<Text size="sm" as="a" href="mailto:wotjr294@naver.com">wotjr294@naver.com</Text>
 				</div>
 				<div className="flex gap-2">
 					<LuGithub size={15} className="mt-1"/>
