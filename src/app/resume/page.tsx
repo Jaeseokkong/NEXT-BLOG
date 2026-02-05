@@ -3,6 +3,7 @@ import ResumeTemplate from "./components/templates/ResumeTemplate";
 import SkillSection from "./components/organisms/SkillSection";
 import ExperienceSection from "./components/organisms/ExperienceSection";
 import ProjectSection from "./components/organisms/ProjectSection";
+import PersonalSection from "./components/organisms/PersonalSection";
 
 export default function ResumePage() {
 	return (
@@ -11,6 +12,7 @@ export default function ResumePage() {
 			<SkillSection />
 			<ExperienceSection />
 			<ProjectSection />
+			<PersonalSection />
 		</ResumeTemplate>
 	)
 }
