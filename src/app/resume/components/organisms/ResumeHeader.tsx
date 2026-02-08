@@ -6,7 +6,7 @@ import { LuGithub, LuLaptop, LuMail, LuSmartphone } from "react-icons/lu";
 
 export default function ResumeHeader() {
 	return (
-		<header className="mb-8 flex space-x-10">
+		<header className="mb-4 flex space-x-10">
 			<div className="flex-1">
 				<Title level={1}>한재석</Title>
 				<Text size="sm">Frontend Engineer</Text>
