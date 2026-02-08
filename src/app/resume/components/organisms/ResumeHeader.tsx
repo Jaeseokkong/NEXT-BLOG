@@ -9,7 +9,7 @@ export default function ResumeHeader() {
 		<header className="mb-8 flex space-x-10">
 			<div className="flex-1">
 				<Title level={1}>한재석</Title>
-				<Text size="sm">Frontend Enginner</Text>
+				<Text size="sm">Frontend Engineer</Text>
 			</div>
 			<div className="space-y-1">
 				<div className="flex gap-2">
