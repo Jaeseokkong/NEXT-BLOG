@@ -4,11 +4,13 @@ import SkillSection from "./components/organisms/SkillSection";
 import ExperienceSection from "./components/organisms/ExperienceSection";
 import ProjectSection from "./components/organisms/ProjectSection";
 import PersonalSection from "./components/organisms/PersonalSection";
+import ResumeSummary from "./components/organisms/ResumeSummary";
 
 export default function ResumePage() {
 	return (
 		<ResumeTemplate>
 			<ResumeHeader />
+			<ResumeSummary />
 			<SkillSection />
 			<ExperienceSection />
 			<ProjectSection />
