@@ -32,7 +32,7 @@ export default function PersonalItem({ title, description, highlights, link }: P
 			</Text>
 
 			{highlights && (
-				<ul className="mt-2 list-disc pl-5 space-y-1 text-sm text-grayl-700">
+				<ul className="mt-2 list-disc pl-5 space-y-1 text-sm text-gray-700">
 					{highlights.map((item, idx) => (
 						<li key={idx}>
 							<Text size="sm">{item}</Text>
