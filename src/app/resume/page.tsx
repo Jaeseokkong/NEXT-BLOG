@@ -5,16 +5,21 @@ import ExperienceSection from "./components/organisms/ExperienceSection";
 import ProjectSection from "./components/organisms/ProjectSection";
 import PersonalSection from "./components/organisms/PersonalSection";
 import ResumeSummary from "./components/organisms/ResumeSummary";
+import PrintButton from "@/components/atoms/PrintButton";
 
 export default function ResumePage() {
 	return (
-		<ResumeTemplate>
-			<ResumeHeader />
-			<ResumeSummary />
-			<SkillSection />
-			<ExperienceSection />
-			<ProjectSection />
-			<PersonalSection />
-		</ResumeTemplate>
+		<>
+			<ResumeTemplate>
+				<ResumeHeader />
+				<ResumeSummary />
+				<SkillSection />
+				<ExperienceSection />
+				<ProjectSection />
+				<PersonalSection />
+			</ResumeTemplate>
+
+			<PrintButton />
+		</>
 	)
 }

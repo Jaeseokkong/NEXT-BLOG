@@ -20,7 +20,7 @@ export default function ProjectItem({ title, description, highlights, techStack 
 				{description}
 			</Text>
 
-			<ul className="mt-2 list-disc pl-5 space-y-1 text-sm text-grayl-700">
+			<ul className="mt-2 list-disc pl-5 space-y-1 text-sm text-gray-700">
 				{highlights.map((item, idx) => (
 					<li key={idx}>{item}</li>
 				))}
