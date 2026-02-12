@@ -11,7 +11,7 @@ export default function AboutPage() {
           <div className="inline-block relative">
             <Link
               href="/resume"
-              className="absolute -top-6 -right-14 bg-indigo-500 text-white text-xs px-2 py-2 rounded-xl shadow-md"
+              className="absolute -top-6 -right-6 bg-indigo-500 text-white text-xs px-2 py-2 rounded-xl shadow-md md:-right-10"
             >
               Resume
               <span className="absolute -bottom-1 left-3 w-3 h-3 bg-indigo-500 rotate-45"></span>
