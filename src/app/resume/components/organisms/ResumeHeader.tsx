@@ -21,10 +21,10 @@ export default function ResumeHeader() {
 				</div>
 				<div className="flex gap-2">
 					<LuGithub size={15} className="mt-1"/>
-					<Text size="sm"><Link target="_blank" href="https://github.com/Jaeseokkong">github.com/Jaeseokkong</Link></Text>
+					<Text size="sm"><Link target="_blank" rel="noopener noreferrer" href="https://github.com/Jaeseokkong">github.com/Jaeseokkong</Link></Text>
 					<Divider variant="inline" />
 					<LuLaptop size={15} className="mt-1" />
-					<Text size="sm"><Link target="_blank" href="https://hjs-blog.vercel.app/">blog: hjs-blog.vercel.app</Link></Text>
+					<Text size="sm"><Link target="_blank" rel="noopener noreferrer" href="https://hjs-blog.vercel.app/">blog: hjs-blog.vercel.app</Link></Text>
 				</div>
 			</div>
 		</header>
