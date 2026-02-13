@@ -24,7 +24,7 @@ export default function ResumeHeader() {
 					<Text size="sm"><Link target="_blank" rel="noopener noreferrer" href="https://github.com/Jaeseokkong">github.com/Jaeseokkong</Link></Text>
 					<Divider variant="inline" />
 					<LuLaptop size={15} className="mt-1" />
-					<Text size="sm"><Link target="_blank" rel="noopener noreferrer" href="https://hjs-blog.vercel.app/">blog: hjs-blog.vercel.app</Link></Text>
+					<Text size="sm"><Link target="_blank" rel="noopener noreferrer" href="https://hjs-blog.vercel.app/">Tech Blog</Link></Text>
 				</div>
 			</div>
 		</header>
