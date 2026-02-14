@@ -13,14 +13,14 @@ export default function SkillSection() {
                 />
 
                 <SkillGroup 
-                    title="Core"
+                    title="Language"
                     skills={[ "JavaScript", "TypeScript" ]}
                 />
                 
                 <SkillGroup
                     title="State & Data"
                     skills={[
-                        'Redux',
+                        'Redux Toolkit',
                         'RTK Query',
                         'WebSocket',
                         'Chart.js',
@@ -34,7 +34,7 @@ export default function SkillSection() {
                     title="Style"
                     skills={[
                         'Tailwind CSS',
-                        'Styled Component',
+                        'Styled-components',
                         'CSS',
                     ]}
                 />
