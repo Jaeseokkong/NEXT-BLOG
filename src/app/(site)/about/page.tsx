@@ -1,4 +1,5 @@
 import AboutAvatar from "@/components/about/AboutAvatar";
+import Link from "next/link";
 
 export default function AboutPage() {
   return (
@@ -6,10 +7,20 @@ export default function AboutPage() {
   
       <section className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
         <AboutAvatar />
-        <div className="md:col-span-2 space-y-6 leading-relaxed">
-          <h1 className="text-4xl font-bold flex items-center gap-3">
-            About <span className="text-indigo-500 dark:text-indigo-400">Me</span>
-          </h1>
+        <div className="md:col-span-2 space-y-6 leading-relaxed inline-block relative">
+          <div className="inline-block relative">
+            <Link
+              href="/resume"
+              className="absolute -top-6 -right-6 bg-indigo-500 text-white text-xs px-2 py-2 rounded-xl shadow-md md:-right-10"
+            >
+              Resume
+              <span className="absolute -bottom-1 left-3 w-3 h-3 bg-indigo-500 rotate-45"></span>
+            </Link>
+
+            <h1 className="text-4xl font-bold">
+              About <span className="text-indigo-500 dark:text-indigo-400">Me</span>
+            </h1>
+          </div>  
           <p>
             안녕하세요! 👋 고객 경험과 가치를 중심에 두고 <strong className="text-indigo-500">사용자 친화적인 프론트엔드</strong>를 만드는 개발자 <strong className="text-indigo-500">한재석</strong>입니다.
           </p>
