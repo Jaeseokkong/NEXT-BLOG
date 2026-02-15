@@ -11,12 +11,10 @@ export default function SkillSection() {
                     title="Frontend"
                     skills={[ "React", "Next.js" ]}
                 />
-
                 <SkillGroup 
                     title="Language"
                     skills={[ "JavaScript", "TypeScript" ]}
                 />
-                
                 <SkillGroup
                     title="State & Data"
                     skills={[
@@ -29,7 +27,6 @@ export default function SkillSection() {
                         "Axios"
                     ]}
                 />
-
                 <SkillGroup
                     title="Style"
                     skills={[
@@ -38,7 +35,6 @@ export default function SkillSection() {
                         'CSS',
                     ]}
                 />
-                
                 <SkillGroup
                     title="Tools & Collaboration"
                     skills={[
