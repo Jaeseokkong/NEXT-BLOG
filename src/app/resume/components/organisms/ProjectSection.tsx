@@ -29,7 +29,7 @@ export default function ProjectSection() {
 						"컴포넌트 단위 구조 개선으로 유지보수성과 확장성 강화",
 						"현재 운영 중인 실서비스로 비즈니스 프로세스에 직접 활용",
 					]}
-					techStack={['React', 'TypeScript', 'React Hook Form', 'Atomic Design']}
+					techStack={['React', 'TypeScript', 'React Hook Form', 'Atomic Design Pattern']}
 				/>
 
 				<ProjectItem
