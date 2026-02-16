@@ -36,7 +36,7 @@ export default function ProjectSection() {
 					title="학습 진단 리포트 프론트엔드 고도화"
 					description="학습 진단 결과를 기반으로 다양한 출력 환경을 지원하는 교육 리포트"
 					highlights={[
-						"Vanilla JavaScript 기반으로 학습 리포트 전체 렌더링 구조 설계 및 구현",
+						"JavaScript (Vanilla) 기반으로 학습 리포트 전체 렌더링 구조 설계 및 구현",
 						"대규모 진단 데이터(JSON)를 가공하여 그래프·지표·테이블 형태로 동적 시각화",
 						"옵션 설정에 따른 섹션 노출, 성취도 표현 방식 등을 유연하게 제어하는 로직 구현",
 						"iframe, 새 창, 인쇄 모드 등 다양한 사용 시나리오를 고려한 UI/UX 개선",
