@@ -88,7 +88,7 @@ const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
   return (
     <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {posts.map((post) => (
-        <PostCard key={post.slug} post={post} />
+        <PostCard key={post.title} post={post} />
       ))}
       {isLoading && <Spinner />}
       {!searchKeyword && <div ref={loaderRef} />}
