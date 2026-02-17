@@ -1,17 +1,21 @@
 import AboutAvatar from "@/components/about/AboutAvatar";
 import Link from "next/link";
 
+const skills = {
+  Core: ["TypeScript", "React", "Next.js", "JavaScript (ES6+)"],
+  "Styling / UI": ["Tailwind CSS", "Styled Components", "Responsive Design"],
+  "Data & State": ["REST API", "React Query", "Axios"],
+  "Testing / Dev": ["React Testing Library", "Git / GitHub", "CI/CD"],
+};
+
 export default function AboutPage() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-20 space-y-28 text-zinc-800 dark:text-zinc-100">
-
-      {/* ================= ABOUT ================= */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
         <AboutAvatar />
 
         <div className="md:col-span-2 space-y-8">
 
-          {/* Title + Resume Bubble */}
           <div className="relative inline-block">
             <Link
               href="/resume"
@@ -28,7 +32,6 @@ export default function AboutPage() {
             </h1>
           </div>
 
-          {/* Intro Text */}
           <div className="space-y-5 leading-relaxed max-w-2xl text-zinc-700 dark:text-zinc-300">
             <p>
               안녕하세요 👋 고객 경험과 가치를 중심에 두고
@@ -48,41 +51,37 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ================= SKILLS ================= */}
       <section className="space-y-10">
         <h2 className="text-3xl font-bold border-b border-zinc-200 dark:border-zinc-700 pb-3">
           🚀 Skill Set
         </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
-          {[
-            "JavaScript (ES6+)",
-            "TypeScript",
-            "React",
-            "Next.js",
-            "Tailwind CSS",
-            "Styled Components",
-            "React Testing Library",
-            "REST API",
-            "Git & GitHub",
-            "Vercel",
-            "Figma",
-            "Confluence",
-          ].map((skill) => (
-            <div
-              key={skill}
-              className="px-4 py-3 rounded-xl bg-zinc-100 dark:bg-zinc-800
-              border border-zinc-200 dark:border-zinc-700
-              text-sm font-medium text-center
-              hover:shadow-md hover:-translate-y-1 transition-all duration-200"
-            >
-              {skill}
+        <div className="space-y-10">
+          {Object.entries(skills).map(([category, items]) => (
+            <div key={category} className="space-y-4">
+              <h3 className="text-lg font-semibold text-indigo-500">
+                {category}
+              </h3>
+
+              <div className="flex flex-wrap gap-4">
+                {items.map((skill) => (
+                  <div
+                    key={skill}
+                    className="px-4 py-2 rounded-full 
+                    bg-zinc-100 dark:bg-zinc-800
+                    border border-zinc-200 dark:border-zinc-700
+                    text-sm font-medium
+                    hover:shadow-md hover:-translate-y-1 transition-all duration-200"
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ================= CAREER ================= */}
       <section className="space-y-12">
         <h2 className="text-3xl font-bold border-b border-zinc-200 dark:border-zinc-700 pb-3">
           💼 Career
@@ -90,7 +89,6 @@ export default function AboutPage() {
 
         <div className="relative border-l-2 border-indigo-500 pl-8 space-y-12">
 
-          {/* Current Company */}
           <div className="relative">
             <div className="absolute -left-[10px] top-2 w-4 h-4 bg-indigo-500 rounded-full"></div>
 
@@ -109,7 +107,6 @@ export default function AboutPage() {
             </ul>
           </div>
 
-          {/* Previous Company */}
           <div className="relative">
             <div className="absolute -left-[10px] top-2 w-4 h-4 bg-indigo-500 rounded-full"></div>
 
@@ -130,7 +127,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ================= CONTACT ================= */}
       <section className="space-y-6">
         <h2 className="text-3xl font-bold border-b border-zinc-200 dark:border-zinc-700 pb-3">
           📬 Contact
