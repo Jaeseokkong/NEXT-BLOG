@@ -90,8 +90,6 @@ export default function AboutPage() {
         <div className="relative border-l-2 border-indigo-500 pl-8 space-y-12">
 
           <div className="relative">
-            <div className="absolute -left-[10px] top-2 w-4 h-4 bg-indigo-500 rounded-full"></div>
-
             <h3 className="text-xl font-semibold text-indigo-500">
               윤선생 기술본부
             </h3>
@@ -99,17 +97,27 @@ export default function AboutPage() {
               프론트엔드/웹 개발 · 2023.07 ~ 현재
             </p>
 
-            <ul className="space-y-2 text-zinc-700 dark:text-zinc-300">
-              <li>• D-Book 디지털 교재 개발 → 사용자 만족도 25% 상승</li>
-              <li>• LMS 학습 진척도 시각화 → 리뷰 시간 30% 단축</li>
-              <li>• 교사용 웹뷰 시스템 → 효율성 15~18% 향상</li>
-              <li>• API 헬스체크 대시보드 구축</li>
+            <ul className="space-y-3 text-zinc-700 dark:text-zinc-300">
+              <li className="flex gap-3">
+                <span className="mt-2 w-2 h-2 bg-indigo-500 rounded-full"></span>
+                <span>D-Book 디지털 교재 개발 → 사용자 만족도 <strong className="text-indigo-500">25% 상승</strong></span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-2 w-2 h-2 bg-indigo-500 rounded-full"></span>
+                <span>LMS 학습 진척도 시각화 → 리뷰 시간 <strong className="text-indigo-500">30% 단축</strong></span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-2 w-2 h-2 bg-indigo-500 rounded-full"></span>
+                <span>교사용 웹뷰 시스템 → 효율성 <strong className="text-indigo-500">15~18% 향상</strong></span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-2 w-2 h-2 bg-indigo-500 rounded-full"></span>
+                <span>API 헬스체크 대시보드 구축</span>
+              </li>
             </ul>
           </div>
 
           <div className="relative">
-            <div className="absolute -left-[10px] top-2 w-4 h-4 bg-indigo-500 rounded-full"></div>
-
             <h3 className="text-xl font-semibold text-indigo-500">
               더리얼마케팅
             </h3>
@@ -117,11 +125,23 @@ export default function AboutPage() {
               웹/앱 개발 · 2021.06 ~ 2023.07
             </p>
 
-            <ul className="space-y-2 text-zinc-700 dark:text-zinc-300">
-              <li>• Metacity Stamp → 알림톡 전송 성공률 95%</li>
-              <li>• Spring 기반 그룹사 통합 웹사이트 구축</li>
-              <li>• HoneymoonResort 예약 시스템 → 예약 효율 40% 향상</li>
-              <li>• React Native 앱 성능 20% 개선</li>
+            <ul className="space-y-3 text-zinc-700 dark:text-zinc-300">
+              <li className="flex gap-3">
+                <span className="mt-2 w-2 h-2 bg-indigo-500 rounded-full"></span>
+                <span>Metacity Stamp → 알림톡 전송 성공률 <strong className="text-indigo-500">95%</strong></span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-2 w-2 h-2 bg-indigo-500 rounded-full"></span>
+                <span>Spring 기반 그룹사 통합 웹사이트 구축</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-2 w-2 h-2 bg-indigo-500 rounded-full"></span>
+                <span>HoneymoonResort 예약 시스템 → 예약 효율 <strong className="text-indigo-500">40% 향상</strong></span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-2 w-2 h-2 bg-indigo-500 rounded-full"></span>
+                <span>React Native 앱 성능 <strong className="text-indigo-500">20% 개선</strong></span>
+              </li>
             </ul>
           </div>
         </div>
