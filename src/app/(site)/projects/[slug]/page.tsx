@@ -3,6 +3,7 @@ import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { MdxComponents } from "@/components/mdx/MdxComponents";
 import Title from "@/components/atoms/Title";
+import Text from "@/components/atoms/Text";
 
 type ProjectMeta = {
   title: string;
@@ -58,9 +59,9 @@ export default async function ProjectPage({ params }: Props) {
         <Title level={1} className="bg-gradient-to-r from-indigo-600 to-purple-500 bg-clip-text text-transparent">
           {frontmatter.title}
         </Title>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+        <Text size="sm" className="text-zinc-500 dark:text-zinc-400 mt-1">
           {frontmatter.date}
-        </p>
+        </Text>
 
         {frontmatter.description && (
           <p className="mt-5 text-lg leading-relaxed text-zinc-800 dark:text-zinc-200">
