@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { MdxComponents } from "@/components/mdx/MdxComponents";
+import Title from "@/components/atoms/Title";
 
 type ProjectMeta = {
   title: string;
@@ -49,15 +50,14 @@ export default async function ProjectPage({ params }: Props) {
     <section className="max-w-4xl mx-auto my-10 px-6 py-10 bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-zinc-200 dark:border-zinc-700 transition-all duration-300">
       <div className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">
         <span className="hover:text-indigo-500 transition">Projects</span> /{" "}
-        <span className="font-medium text-zinc-700 dark:text-zinc-200">
+        <Title level={4} className="text-zinc-700 dark:text-zinc-200">
           {frontmatter.title}
-        </span>
+        </Title>
       </div>
-
       <header className="mb-8 pb-6 border-b border-zinc-300 dark:border-zinc-700">
-        <h1 className="text-4xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-500 bg-clip-text text-transparent">
+        <Title level={1} className="bg-gradient-to-r from-indigo-600 to-purple-500 bg-clip-text text-transparent">
           {frontmatter.title}
-        </h1>
+        </Title>
         <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
           {frontmatter.date}
         </p>
