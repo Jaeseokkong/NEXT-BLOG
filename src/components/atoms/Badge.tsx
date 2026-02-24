@@ -1,14 +1,18 @@
-import React from 'react'
+import { techIcons } from "@/lib/techIcons";
 
 interface BadgeProps {
-	children: React.ReactNode;
-	className?: string;
+  label: string;
+  className?: string;
 }
 
-export default function Badge({ children, className = "" }: BadgeProps) {
-	return (
-		<span className={`inline-block rounded-sm bg-gray-100 text-sm px-2 py-0.5 text-gray-700 ${className}`}>
-			{children}
-		</span>
-	)
+export default function Badge({ label, className = "" }: BadgeProps) {
+  const Icon = techIcons[label];
+  return (
+    <span
+      className={`px-2 py-1 rounded bg-zinc-200 dark:bg-zinc-700 text-sm text-zinc-700 dark:text-zinc-300 ${className}`}
+    >
+      {Icon}
+      {label}
+    </span>
+  );
 }

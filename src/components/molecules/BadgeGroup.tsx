@@ -1,4 +1,4 @@
-import Badge from "./Badge";
+import Badge from "../atoms/Badge";
 
 interface BadgeGroupProps {
   labels: string[];
