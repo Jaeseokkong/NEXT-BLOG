@@ -1,5 +1,5 @@
 import Title from "@/components/atoms/Title";
-import BadgeGroup from "@/components/ui/BadgeGroup";
+import BadgeGroup from "@/components/molecules/BadgeGroup";
 import { getAllProjects } from "@/lib/projects";
 import Link from "next/link";
 

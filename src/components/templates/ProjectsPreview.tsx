@@ -1,6 +1,6 @@
 import Link from "next/link";
 import PreviewSection from "../organisms/PreviewSection";
-import BadgeGroup from "../ui/BadgeGroup";
+import BadgeGroup from "../molecules/BadgeGroup";
 import { getAllProjects } from "@/lib/projects";
 
 export default function ProjectsPreview() {
