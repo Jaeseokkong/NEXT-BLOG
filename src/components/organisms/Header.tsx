@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Logo from '../atoms/Logo';
 import ThemeToggle from '../molecules/ThemeToggle';
-import HeaderLink from '../atoms/HeaderLink';
 
 export default function Header() {
     const [mounted, setMounted] = useState(false);
@@ -19,9 +18,9 @@ export default function Header() {
                 </Link>
 
                 <div className="flex items-center space-x-6 font-medium text-sm text-zinc-700 dark:text-zinc-200">
-                    <HeaderLink name="About" href="/about"/>
-                    <HeaderLink name="Posts" href="/posts"/>
-                    <HeaderLink name="Projects" href="/projects"/>
+                    <Link href="/about" className="hover:underline">About</Link>
+                    <Link href="/posts" className="hover:underline">Posts</Link>
+                    <Link href="/projects" className="hover:underline">Projects</Link>
                     {mounted && (
                         <ThemeToggle />
                     )}
