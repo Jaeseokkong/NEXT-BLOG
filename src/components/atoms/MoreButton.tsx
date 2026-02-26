@@ -2,6 +2,7 @@ import React from 'react'
 
 interface MoreButtonProps {
     children: React.ReactNode;
+    className?: string;
 }
 
 export default function MoreButton({ children }: MoreButtonProps) {
