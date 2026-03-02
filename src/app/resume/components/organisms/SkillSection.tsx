@@ -9,45 +9,29 @@ export default function SkillSection() {
             <div className="mt-4 space-y-6">
                 <SkillGroup 
                     title="Frontend"
-                    skills={[ "React", "Next.js" ]}
-                />
-
-                <SkillGroup 
-                    title="Language"
-                    skills={[ "TypeScript", "JavaScript" ]}
+                    skills={[
+                        "React",
+                        "Next.js",
+                        "TypeScript"
+                    ]}
                 />
 
                 <SkillGroup
                     title="State & Data"
                     skills={[
-                        'Redux Toolkit',
-                        'RTK Query',
-                        'WebSocket',
-                        'REST API',
-                        "Axios"
+                        "Redux Toolkit",
+                        "RTK Query",
+                        "TanStack Query"
                     ]}
                 />
 
                 <SkillGroup
                     title="UI & Styling"
                     skills={[
-                        'Tailwind CSS',
-                        'Styled-components',
-                        'CSS',
-                        'Chart.js',
-                        "React Hook Form"
-                    ]}
-                />
-
-                <SkillGroup
-                    title="Tools"
-                    skills={[
-                        "Git",
-                        "GitHub",
-                        "Figma",
-                        "Vercel",
-                        "ESLint",
-                        "Prettier"
+                        "Tailwind CSS",
+                        "Styled-components",
+                        "React Hook Form",
+                        "Chart.js"
                     ]}
                 />
             </div>
