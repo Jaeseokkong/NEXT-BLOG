@@ -9,7 +9,7 @@ export default function SkillList({ skills }: SkillListProps) {
 		<ul className="flex flex-wrap gap-2">
 			{skills.map(skill => (
 				<li key={skill}>
-					<Badge>{skill}</Badge>
+					<Badge label={skill}/>
 				</li>
 			))}
 		</ul>
