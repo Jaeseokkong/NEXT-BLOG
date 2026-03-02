@@ -2,13 +2,13 @@ import { categoryBgColors } from '@/lib/categoryColors';
 import Image from 'next/image'
 import React from 'react'
 
-interface PreviewImageProps {
+interface ThumbnailProps {
     image?: string;
     title: string;
     category: string;
 }
 
-export default function PreviewImage({ image, title, category }: PreviewImageProps) {
+export default function Thumbnail({ image, title, category }: ThumbnailProps) {
 
     const bgColor = categoryBgColors[category] ?? "bg-gray-100";
 
@@ -29,7 +29,7 @@ export default function PreviewImage({ image, title, category }: PreviewImagePro
                 className={`${bgColor} flex items-center justify-center h-full text-center transition-all duration-500 group-hover:scale-105`}
             >
                 <span className="text-sm font-medium text-zinc-800 opacity-80">
-                {category}
+                    {category}
                 </span>
             </div>
             )}
