@@ -1,4 +1,4 @@
-import PreviewMoreButton from "../atoms/PreviewMoreButton";
+import SectionMoreButton from "../atoms/SectionMoreButton";
 import Title from "../atoms/Title";
 import Text from "../atoms/Text";
 
@@ -29,7 +29,7 @@ export default function PreviewSection({
         </Text>
       }
       {children}
-      {moreButton && <PreviewMoreButton href={moreButton.href} label={moreButton.label} />}
+      {moreButton && <SectionMoreButton href={moreButton.href} label={moreButton.label} />}
     </section>
   );
 }

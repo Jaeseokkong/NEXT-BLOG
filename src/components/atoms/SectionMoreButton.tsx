@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import React from 'react'
 
-interface PreviewMoreButtonProps {
+interface SectionMoreButtonProps {
     href: string;
     label?: string;
 }
 
-export default function PreviewMoreButton({ href, label }: PreviewMoreButtonProps) {
+export default function SectionMoreButton({ href, label }: SectionMoreButtonProps) {
     return (
         <div className="mt-6">
             <Link
