@@ -39,24 +39,7 @@ export async function fetchCategories(): Promise<string[]> {
 }
 
 export async function fetchFilesInCategory(category: string): Promise<PostItemType[]> {
-  const res = await fetch(`${GITHUB_API_BASE_URL}/${category}`, {
-    headers,
-    next: { revalidate: 3600 }
-  });
-  const data = await res.json();
-
-  if (Array.isArray(data)) {
-    return data
-      .filter((item: PostItemType) => item.name.endsWith(".md"))
-      .map((item: PostItemType) => ({
-        name: item.name,
-        path: item.path,
-        type: item.type,  // type 필드도 추가
-      }));
-  } else {
-    console.error("Expected an array but received:", data);
-    return [];
-  }
+  return fetchMarkdownFilesRecursive(category);
 }
 
 
@@ -190,4 +173,34 @@ export async function fetchPosts(page: number = 1): Promise<PostResponse> {
   const result = await res.json();
 
   return result;
+}
+
+async function fetchMarkdownFilesRecursive(path: string): Promise<PostItemType[]> {
+  const res = await fetch(`${GITHUB_API_BASE_URL}/${path}`, {
+    headers,
+    next: { revalidate: 3600 }
+  });
+
+  const data = await res.json();
+
+  if (!Array.isArray(data)) return [];
+
+  let results: PostItemType[] = [];
+
+  for (const item of data) {
+    if (item.type === "file" && item.name.endsWith(".md")) {
+      results.push({
+        name: item.name,
+        path: item.path,
+        type: item.type,
+      });
+    }
+
+    if (item.type === "dir") {
+      const nested = await fetchMarkdownFilesRecursive(item.path);
+      results = results.concat(nested);
+    }
+  }
+
+  return results;
 }
