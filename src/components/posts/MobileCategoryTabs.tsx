@@ -56,7 +56,7 @@ const MobileCategoryTabs = () => {
 			{categories.map((category) => (
 				<Link 
 					key={category}
-					href={`/posts/${category}`}
+					href={`/posts/category/${category}`}
 					className="
 						px-4 py-2 rounded-full border text-sm font-medium transition flex-shrink-0
 					bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border-zinc-300 dark:border-zinc-600 
