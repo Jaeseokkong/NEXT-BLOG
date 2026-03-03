@@ -22,6 +22,7 @@ export type PostMeta = {
   date: string;
   slug: string;
   category: string;
+  path: string;
   excerpt?: string;
   image?: string;
 };
@@ -43,13 +44,17 @@ export async function fetchFilesInCategory(category: string): Promise<PostItemTy
 }
 
 
-export async function fetchMarkdownFile(category: string, slug: string): Promise<string> {
-  const res = await fetch(`${GITHUB_RAW_BASE_URL}/${category}/${slug}.md`, {
+export async function fetchMarkdownFileByPath(path: string): Promise<string> {
+  const res = await fetch(`${GITHUB_RAW_BASE_URL}/${path}`, {
     next: { revalidate: 60 }
   });
+
   let content = await res.text();
-  content = content.replace(/\.\.\/images\/([\w-]+\.\w+)/g, `${GITHUB_RAW_BASE_URL}/images/$1`);
-  // 상대 경로로 된 이미지 결로를 절대 GitHub raw 경로로 변경
+
+  content = content.replace(
+    /\.\.\/images\/([\w-]+\.\w+)/g,
+    `${GITHUB_RAW_BASE_URL}/images/$1`
+  );
 
   return content;
 }
@@ -57,110 +62,88 @@ export async function fetchMarkdownFile(category: string, slug: string): Promise
 export async function fetchAllPosts(): Promise<PostMeta[]> {
   const categories = await fetchCategories();
 
-  const postsPerCategory = await Promise.all(
-    categories.map(async (category) => {
-      const files = await fetchFilesInCategory(category);
-
-      const fileFetches = await Promise.all(
-        files.map(async (file) => {
-          const res = await fetch(`${GITHUB_RAW_BASE_URL}/${category}/${file.name}`);
-          const content = await res.text();
-          const { data, content: body } = matter(content);
-
-          const name = file.name.replace(".md", "");
-          const splitName = name.split("-");
-          const title = splitName[3];
-          const date = splitName[0] + splitName[1] + splitName[2];
-
-          return {
-            title,
-            date,
-            slug: name,
-            category,
-            excerpt: data.excerpt ?? body.slice(0, 100),
-          };
-        })
-      );
-
-      return fileFetches;
-    })
-  )
-  
-  const allPosts = postsPerCategory.flat();
-
-  return allPosts.sort((a, b) => (a.date < b.date ? 1 : -1));
-}
-
-export async function fetchAllPostsPaginated(page: number, limit: number = 10): Promise<PostMeta[]>  {
-  const categories = await fetchCategories();
   const posts: PostMeta[] = [];
 
   for (const category of categories) {
     const files = await fetchFilesInCategory(category);
 
     for (const file of files) {
-      const res = await fetch(`${GITHUB_API_BASE_URL}/main/${category}/${file.name}`);
+      const res = await fetch(`${GITHUB_RAW_BASE_URL}/${file.path}`);
       const content = await res.text();
       const { data, content: body } = matter(content);
 
       const name = file.name.replace(".md", "");
-      const splitName = name.split("-");
-      const title = splitName[3];
-      const date = splitName[0] + splitName[1] + splitName[2];
+      const split = name.split("-");
+      const title = split[3];
+      const date = split.slice(0, 3).join("");
 
       posts.push({
         title,
         date,
         slug: name,
-        category,
-        excerpt: data.excerpt ?? body.slice(0, 100) + "...",
-      })
+        category: file.path.split("/")[0],
+        path: file.path,
+        excerpt: data.excerpt ?? body.slice(0, 100),
+      });
     }
   }
 
-  const sortedPosts = posts.sort((a, b) => (a.date < b.date ? 1 : -1));
-  const start = (page -1) * limit;
-  return sortedPosts.slice(start, start + limit);
+  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export async function fetchPostMetas(page: number, limit: number): Promise<PostMeta[]> {
+export async function fetchAllPostsPaginated(
+  page: number,
+  limit: number = 10
+): Promise<PostMeta[]> {
+
+  const allPosts = await fetchAllPosts();
+
+  const start = (page - 1) * limit;
+  return allPosts.slice(start, start + limit);
+}
+
+export async function fetchPostMetas(
+  page: number,
+  limit: number
+): Promise<PostMeta[]> {
+
   const categories = await fetchCategories();
-  const metaList: { category: string; file: PostItemType }[] = [];
+  const metaList: PostMeta[] = [];
 
   for (const category of categories) {
     const files = await fetchFilesInCategory(category);
-    files.forEach((file) => {
-      metaList.push({ category, file });
-    });
+
+    for (const file of files) {
+      const res = await fetch(`${GITHUB_RAW_BASE_URL}/${file.path}`);
+      const content = await res.text();
+      const { data, content: body } = matter(content);
+
+      const name = file.name.replace(".md", "");
+      const split = name.split("-");
+      const title = split[3];
+      const date = split.slice(0, 3).join("");
+      const image = extractFirstImage(body);
+
+      metaList.push({
+        title,
+        date,
+        slug: name,
+        category: file.path.split("/")[0],
+        path: file.path,
+        excerpt: data.excerpt
+          ? markdownToPlainText(data.excerpt)
+          : markdownToPlainText(body),
+        image: image ?? undefined,
+      });
+    }
   }
 
-  const sorted = metaList.sort((a, b) => b.file.name.localeCompare(a.file.name));
-  const selected = sorted.slice((page - 1) * limit, page * limit);
+  const sorted = metaList.sort((a, b) =>
+    a.date < b.date ? 1 : -1
+  );
 
-  const posts = await Promise.all(selected.map(async ({ category, file }) => {
-    const res = await fetch(`${GITHUB_RAW_BASE_URL}/${category}/${file.name}`);
-    const content = await res.text();
-    const { data, content: body } = matter(content);
-
-    const name = file.name.replace(".md", "");
-    const split = name.split("-");
-    const title = split[3];
-    const date = split.slice(0, 3).join("");
-    const image = extractFirstImage(body);
-
-    return {
-      title,
-      date,
-      slug: name,
-      category,
-      excerpt: data.excerpt
-        ? markdownToPlainText(data.excerpt)
-        : markdownToPlainText(body),
-      image: image ?? undefined
-    };
-  }));
-
-  return posts;
+  const start = (page - 1) * limit;
+  return sorted.slice(start, start + limit);
 }
 
 export async function fetchPosts(page: number = 1): Promise<PostResponse> {
