@@ -39,30 +39,8 @@ export async function fetchCategories(): Promise<string[]> {
   return data.filter((item: PostItemType) => item.type === "dir" && item.name !== "images").map((item: PostItemType) => item.name);
 }
 
-export async function fetchFilesRecursive(path: string): Promise<PostItemType[]> {
-  const res = await fetch(`${GITHUB_API_BASE_URL}/${path}`, {
-    headers,
-    next: { revalidate: 3600 }
-  });
-  const data = await res.json();
-  let files: PostItemType[] = [];
-
-  for (const item of data) {
-    if (item.type === "file" && item.name.endsWith(".md")) {
-      files.push({
-        name: item.name,
-        path: item.path,
-        type: item.type
-      });
-    }
-
-    if (item.type === "dir") {
-      const subFiles = await fetchFilesRecursive(item.path);
-      files = files.concat(subFiles);
-    }
-  }
-
-  return files;
+export async function fetchFilesInCategory(category: string): Promise<PostItemType[]> {
+  return fetchMarkdownFilesRecursive(category);
 }
 
 
@@ -83,47 +61,11 @@ export async function fetchMarkdownFileByPath(path: string): Promise<string> {
 
 export async function fetchAllPosts(): Promise<PostMeta[]> {
   const categories = await fetchCategories();
-  console.log(categories)
-  const postsPerCategory = await Promise.all(
-    categories.map(async (category) => {
-      const files = await fetchFilesRecursive(category);
 
-      const fileFetches = await Promise.all(
-        files.map(async (file) => {
-          const res = await fetch(`${GITHUB_RAW_BASE_URL}/${category}/${file.name}`);
-          const content = await res.text();
-          const { data, content: body } = matter(content);
-
-          const name = file.name.replace(".md", "");
-          const splitName = name.split("-");
-          const title = splitName[3];
-          const date = splitName[0] + splitName[1] + splitName[2];
-
-          return {
-            title,
-            date,
-            slug: name,
-            category,
-            excerpt: data.excerpt ?? body.slice(0, 100),
-          };
-        })
-      );
-
-      return fileFetches;
-    })
-  )
-  
-  const allPosts = postsPerCategory.flat();
-
-  return allPosts.sort((a, b) => (a.date < b.date ? 1 : -1));
-}
-
-export async function fetchAllPostsPaginated(page: number, limit: number = 10): Promise<PostMeta[]>  {
-  const categories = await fetchCategories();
   const posts: PostMeta[] = [];
 
   for (const category of categories) {
-    const files = await fetchFilesRecursive(category);
+    const files = await fetchFilesInCategory(category);
 
     for (const file of files) {
       const res = await fetch(`${GITHUB_RAW_BASE_URL}/${file.path}`);
@@ -169,19 +111,12 @@ export async function fetchPostMetas(
   const metaList: PostMeta[] = [];
 
   for (const category of categories) {
-    const files = await fetchFilesRecursive(category);
-    files.forEach((file) => {
-      metaList.push({ category, file });
-    });
-  }
+    const files = await fetchFilesInCategory(category);
 
-  const sorted = metaList.sort((a, b) => b.file.name.localeCompare(a.file.name));
-  const selected = sorted.slice((page - 1) * limit, page * limit);
-
-  const posts = await Promise.all(selected.map(async ({ category, file }) => {
-    const res = await fetch(`${GITHUB_RAW_BASE_URL}/${category}/${file.name}`);
-    const content = await res.text();
-    const { data, content: body } = matter(content);
+    for (const file of files) {
+      const res = await fetch(`${GITHUB_RAW_BASE_URL}/${file.path}`);
+      const content = await res.text();
+      const { data, content: body } = matter(content);
 
       const name = file.name.replace(".md", "");
       const split = name.split("-");
