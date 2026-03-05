@@ -14,7 +14,7 @@ import { notFound } from "next/navigation";
 
 export default async function PostPage(props: any) {
   const { params } = props;
-  const { category, slug } = params as {
+  const { category, slug } = await params as {
     category: string;
     slug: string;
   };
