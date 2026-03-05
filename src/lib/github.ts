@@ -38,25 +38,30 @@ export async function fetchCategories(): Promise<string[]> {
   return data.filter((item: PostItemType) => item.type === "dir" && item.name !== "images").map((item: PostItemType) => item.name);
 }
 
-export async function fetchFilesInCategory(category: string): Promise<PostItemType[]> {
-  const res = await fetch(`${GITHUB_API_BASE_URL}/${category}`, {
+export async function fetchFilesRecursive(path: string): Promise<PostItemType[]> {
+  const res = await fetch(`${GITHUB_API_BASE_URL}/${path}`, {
     headers,
     next: { revalidate: 3600 }
   });
   const data = await res.json();
+  let files: PostItemType[] = [];
 
-  if (Array.isArray(data)) {
-    return data
-      .filter((item: PostItemType) => item.name.endsWith(".md"))
-      .map((item: PostItemType) => ({
+  for (const item of data) {
+    if (item.type === "file" && item.name.endsWith(".md")) {
+      files.push({
         name: item.name,
         path: item.path,
-        type: item.type,  // type 필드도 추가
-      }));
-  } else {
-    console.error("Expected an array but received:", data);
-    return [];
+        type: item.type
+      });
+    }
+
+    if (item.type === "dir") {
+      const subFiles = await fetchFilesRecursive(item.path);
+      files = files.concat(subFiles);
+    }
   }
+
+  return files;
 }
 
 
@@ -73,10 +78,10 @@ export async function fetchMarkdownFile(category: string, slug: string): Promise
 
 export async function fetchAllPosts(): Promise<PostMeta[]> {
   const categories = await fetchCategories();
-
+  console.log(categories)
   const postsPerCategory = await Promise.all(
     categories.map(async (category) => {
-      const files = await fetchFilesInCategory(category);
+      const files = await fetchFilesRecursive(category);
 
       const fileFetches = await Promise.all(
         files.map(async (file) => {
@@ -113,7 +118,7 @@ export async function fetchAllPostsPaginated(page: number, limit: number = 10): 
   const posts: PostMeta[] = [];
 
   for (const category of categories) {
-    const files = await fetchFilesInCategory(category);
+    const files = await fetchFilesRecursive(category);
 
     for (const file of files) {
       const res = await fetch(`${GITHUB_API_BASE_URL}/main/${category}/${file.name}`);
@@ -145,7 +150,7 @@ export async function fetchPostMetas(page: number, limit: number): Promise<PostM
   const metaList: { category: string; file: PostItemType }[] = [];
 
   for (const category of categories) {
-    const files = await fetchFilesInCategory(category);
+    const files = await fetchFilesRecursive(category);
     files.forEach((file) => {
       metaList.push({ category, file });
     });
@@ -184,7 +189,7 @@ export async function fetchPosts(page: number = 1): Promise<PostResponse> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts?page=${page}`, {
     next: { revalidate: 300 },
   });
-
+  console.log()
   if (!res.ok) throw new Error("게시글 데이터를 불러오지 못했습니다.");
 
   const result = await res.json();
