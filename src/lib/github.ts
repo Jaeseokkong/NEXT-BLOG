@@ -107,35 +107,35 @@ export async function fetchPostMetas(
   limit: number
 ): Promise<PostMeta[]> {
 
-  const categories = await fetchCategories();
+  const files = await fetchMarkdownFilesRecursive();
+
   const metaList: PostMeta[] = [];
 
-  for (const category of categories) {
-    const files = await fetchFilesInCategory(category);
+  for (const file of files) {
+    const res = await fetch(`${GITHUB_RAW_BASE_URL}/${file.path}`);
+    const content = await res.text();
+    const { data, content: body } = matter(content);
 
-    for (const file of files) {
-      const res = await fetch(`${GITHUB_RAW_BASE_URL}/${file.path}`);
-      const content = await res.text();
-      const { data, content: body } = matter(content);
+    const name = file.name.replace(".md", "");
+    const split = name.split("-");
+    const title = split.slice(3).join("-");
+    const date = split.slice(0, 3).join("");
 
-      const name = file.name.replace(".md", "");
-      const split = name.split("-");
-      const title = split[3];
-      const date = split.slice(0, 3).join("");
-      const image = extractFirstImage(body);
+    const image = extractFirstImage(body);
 
-      metaList.push({
-        title,
-        date,
-        slug: name,
-        category: file.path.split("/")[0],
-        path: file.path,
-        excerpt: data.excerpt
-          ? markdownToPlainText(data.excerpt)
-          : markdownToPlainText(body),
-        image: image ?? undefined,
-      });
-    }
+    const category = file.path.split("/")[0]; // depth 상관없이 root category
+
+    metaList.push({
+      title,
+      date,
+      slug: name,
+      category,
+      path: file.path,
+      excerpt: data.excerpt
+        ? markdownToPlainText(data.excerpt)
+        : markdownToPlainText(body),
+      image: image ?? undefined,
+    });
   }
 
   const sorted = metaList.sort((a, b) =>
@@ -143,9 +143,9 @@ export async function fetchPostMetas(
   );
 
   const start = (page - 1) * limit;
+
   return sorted.slice(start, start + limit);
 }
-
 export async function fetchPosts(page: number = 1): Promise<PostResponse> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts?page=${page}`, {
     next: { revalidate: 300 },
