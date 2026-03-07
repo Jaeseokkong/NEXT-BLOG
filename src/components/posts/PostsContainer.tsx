@@ -12,7 +12,6 @@ type PostsContainerProps = {
 const PostsContainer = ({ initialPosts }: PostsContainerProps) => {
   const [searchInput, setSearchInput] = useState('');
   const [debouncedKeyword, setDebouncedKeyword] = useState('');
-  const [filteredPosts, setFilteredPosts] = useState<PostMeta[]>(initialPosts);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -23,27 +22,6 @@ const PostsContainer = ({ initialPosts }: PostsContainerProps) => {
     return () => clearTimeout(handler);
   }, [searchInput]);
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(`/api/posts?search=${encodeURIComponent(debouncedKeyword)}`);
-        const data = await res.json();
-        setFilteredPosts(data.posts);
-      } catch (e) {
-        console.error("검색 실패:", e);
-        setFilteredPosts([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (debouncedKeyword.trim()) {
-      fetchPosts();
-    } else {
-      setFilteredPosts(initialPosts);
-    }
-  }, [debouncedKeyword, initialPosts]);
 
   return (
     <div className="flex flex-col gap-3">
@@ -51,9 +29,9 @@ const PostsContainer = ({ initialPosts }: PostsContainerProps) => {
       {loading ? (
         <p className="text-center text-gray-500">검색 중...</p>
       ) : (
-        <PostList initialPosts={filteredPosts} searchKeyword={debouncedKeyword} />
+        <PostList initialPosts={initialPosts} searchKeyword={debouncedKeyword} />
       )}
-      {!loading && filteredPosts.length === 0 && (
+      {!loading && initialPosts.length === 0 && (
         <p className="text-center text-gray-500">검색 결과가 없습니다.</p>
       )}
     </div>
