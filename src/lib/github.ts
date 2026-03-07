@@ -158,10 +158,14 @@ export async function fetchPosts(page: number = 1): Promise<PostResponse> {
   return result;
 }
 
-async function fetchMarkdownFilesRecursive(path: string): Promise<PostItemType[]> {
-  const res = await fetch(`${GITHUB_API_BASE_URL}/${path}`, {
+async function fetchMarkdownFilesRecursive(path: string = ""): Promise<PostItemType[]> {
+  const url = path
+    ? `${GITHUB_API_BASE_URL}/${path}`
+    : GITHUB_API_BASE_URL;
+
+  const res = await fetch(url, {
     headers,
-    next: { revalidate: 3600 }
+    next: { revalidate: 3600 },
   });
 
   const data = await res.json();
@@ -179,7 +183,7 @@ async function fetchMarkdownFilesRecursive(path: string): Promise<PostItemType[]
       });
     }
 
-    if (item.type === "dir") {
+    if (item.type === "dir" && item.name !== "images") {
       const nested = await fetchMarkdownFilesRecursive(item.path);
       results = results.concat(nested);
     }
