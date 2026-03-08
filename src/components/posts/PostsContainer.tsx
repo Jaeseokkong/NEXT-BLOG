@@ -12,7 +12,6 @@ type PostsContainerProps = {
 const PostsContainer = ({ initialPosts }: PostsContainerProps) => {
   const [searchInput, setSearchInput] = useState('');
   const [debouncedKeyword, setDebouncedKeyword] = useState('');
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -25,15 +24,12 @@ const PostsContainer = ({ initialPosts }: PostsContainerProps) => {
 
   return (
     <div className="flex flex-col gap-3">
-      <SearchInput onSearch={setSearchInput} placeholder="검색어를 입력하세요..." />
-      {loading ? (
-        <p className="text-center text-gray-500">검색 중...</p>
-      ) : (
-        <PostList initialPosts={initialPosts} searchKeyword={debouncedKeyword} />
-      )}
-      {!loading && initialPosts.length === 0 && (
+      <SearchInput onSearch={setSearchInput} placeholder="검색어를 입력하세요..." />        
+      {initialPosts.length === 0 ? 
         <p className="text-center text-gray-500">검색 결과가 없습니다.</p>
-      )}
+       : 
+        <PostList initialPosts={initialPosts} searchKeyword={debouncedKeyword} />
+      }
     </div>
   );
 };
