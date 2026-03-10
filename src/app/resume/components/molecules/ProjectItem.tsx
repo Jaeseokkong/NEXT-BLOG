@@ -28,7 +28,7 @@ export default function ProjectItem({ title, description, highlights, techStack 
 
 			<div className="mt-2 flex flex-wrap gap-2">
 				{techStack.map((tech) => (
-					<Badge key={tech}>{tech}</Badge>
+					<Badge key={tech} label={tech} />
 				))}
 			</div>
 		</div>
