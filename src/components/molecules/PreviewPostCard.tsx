@@ -7,10 +7,10 @@ import MoreButton from '../atoms/MoreButton'
 
 export default function PreviewPostCard({ post }: { post : PostMeta }) {
     return (
-        <li key={post.slug}>
+        <li key={post.path}>
             <Link
-                data-testid={`post-link-${post.slug}`}
-                href={`/posts/${post.path.replace(".md", "")}`}
+                data-testid={`post-link-${post.path}`}
+                href={`/posts/${post.path}`}
                 className="group block rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all p-5 hover:-translate-y-1"
             >
                 <div className="flex flex-col h-full">
