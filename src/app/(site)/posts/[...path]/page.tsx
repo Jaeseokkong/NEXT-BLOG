@@ -8,18 +8,17 @@ import "@/styles/markdown.css";
 import { notFound } from "next/navigation";
 
 interface PostPageProps {
-  params: {
-    slug: string[];
-  };
+  params: Promise<{ path: string[] }>;
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const path = params.slug.join("/") + ".md";
+  const { path } = await params;
+  const pathStr = path.join("/")
 
   let markdown = "";
 
   try {
-    markdown = await fetchMarkdownFileByPath(path);
+    markdown = await fetchMarkdownFileByPath(pathStr);
   } catch {
     notFound();
   }
