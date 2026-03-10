@@ -175,7 +175,7 @@ async function fetchMarkdownFilesRecursive(path: string = ""): Promise<PostItemT
   let results: PostItemType[] = [];
 
   for (const item of data) {
-    if (item.type === "file" && item.name.endsWith(".md")) {
+    if (item.type === "file" && item.name.endsWith(".md") && item.name.toLowerCase() !== "readme.md") {
       results.push({
         name: item.name,
         path: item.path,
