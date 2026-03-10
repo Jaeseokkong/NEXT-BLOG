@@ -1,13 +1,8 @@
 import { fetchAllPosts } from "@/lib/github";
 import PostsContainer from "@/components/posts/PostsContainer";
 
-interface Props {
-  params: { category: string };
-}
-
-export default async function CategoryPage({ params }: Props) {
-  const { category } = params;
-  
+export default async function CategoryPage({ params }: { params: Promise<{ category: string }>}) {
+  const { category } = await params;
   const allPosts = await fetchAllPosts();
 
   const filtered = allPosts.filter(
