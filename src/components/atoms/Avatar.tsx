@@ -1,10 +1,10 @@
 'use client';
 
 import Image from "next/image";
-import "@/styles/AboutAvatar.css"; // 일반 CSS import
+import "@/styles/Avatar.css"; // 일반 CSS import
 import { useState } from "react";
 
-export default function AboutAvatar() {
+export default function Avatar() {
   const [flipped, setFlipped] = useState(false);
 
   return (

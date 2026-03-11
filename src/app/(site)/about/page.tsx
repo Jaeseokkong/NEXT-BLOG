@@ -1,4 +1,4 @@
-import AboutAvatar from "@/components/about/AboutAvatar";
+import Avatar from "@/components/atoms/Avatar";
 import Link from "next/link";
 
 const skills = {
@@ -12,7 +12,7 @@ export default function AboutPage() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-20 space-y-28 text-zinc-800 dark:text-zinc-100">
       <section className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
-        <AboutAvatar />
+        <Avatar />
 
         <div className="md:col-span-2 space-y-8">
 
