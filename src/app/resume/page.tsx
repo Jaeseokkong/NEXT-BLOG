@@ -5,7 +5,7 @@ import ExperienceSection from "./components/organisms/ExperienceSection";
 import ProjectSection from "./components/organisms/ProjectSection";
 import PersonalSection from "./components/organisms/PersonalSection";
 import ResumeSummary from "./components/organisms/ResumeSummary";
-import PrintButton from "@/components/atoms/PrintButton";
+import Print from "@/components/atoms/Print";
 
 export default function ResumePage() {
 	return (
@@ -19,7 +19,7 @@ export default function ResumePage() {
 				<PersonalSection />
 			</ResumeTemplate>
 
-			<PrintButton />
+			<Print text="PDF"/>
 		</>
 	)
 }
