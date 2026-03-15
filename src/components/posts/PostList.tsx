@@ -30,17 +30,31 @@ const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
       setHasMore(true);
       return;
     }
-
+  
+    const controller = new AbortController();
+  
     const fetchSearchResults = async () => {
-      setIsLoading(true);
-      const res = await fetch(`/api/posts?search=${encodeURIComponent(searchKeyword)}`);
-      const { posts: searchedPosts } = await res.json();
-      setPosts(searchedPosts);
-      setHasMore(false); // 검색 모드에서는 무한스크롤 비활성화
-      setIsLoading(false);
+      try {
+        setIsLoading(true);
+  
+        const res = await fetch(
+          `/api/posts?search=${encodeURIComponent(searchKeyword)}`,
+          { signal: controller.signal }
+        );
+  
+        const { posts } = await res.json();
+        setPosts(posts);
+        setHasMore(false);
+      } catch (err) {
+        if (err.name !== "AbortError") console.error(err);
+      } finally {
+        setIsLoading(false);
+      }
     };
-
+  
     fetchSearchResults();
+  
+    return () => controller.abort();
   }, [searchKeyword]);
 
   // 페이지 변경 시 무한 스크롤 데이터 로드
