@@ -46,7 +46,7 @@ const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
         setPosts(posts);
         setHasMore(false);
       } catch (err) {
-        if (err.name !== "AbortError") console.error(err);
+        if (err instanceof Error && err.name !== "AbortError") console.error(err);
       } finally {
         setIsLoading(false);
       }
