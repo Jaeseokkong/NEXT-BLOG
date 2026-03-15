@@ -41,7 +41,7 @@ const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
     };
 
     fetchSearchResults();
-  }, [searchKeyword, initialPosts]);
+  }, [searchKeyword]);
 
   // 페이지 변경 시 무한 스크롤 데이터 로드
   useEffect(() => {
