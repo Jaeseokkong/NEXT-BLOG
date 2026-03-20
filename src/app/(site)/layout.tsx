@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
   ),
-  title: "개발 블로그 | TIL & 기술 기록",
+  title: "HJS 블로그 | TIL & 기술 기록",
   description: "Next.js 기반 개발 블로그입니다.",
 };
 

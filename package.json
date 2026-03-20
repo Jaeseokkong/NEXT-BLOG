@@ -12,6 +12,8 @@
   "dependencies": {
     "@giscus/react": "^3.1.0",
     "@tailwindcss/line-clamp": "^0.4.4",
+    "@tanstack/react-query": "^5.90.21",
+    "@tanstack/react-query-devtools": "^5.91.3",
     "gray-matter": "^4.0.3",
     "lodash": "^4.17.21",
     "lucide-react": "^0.513.0",
