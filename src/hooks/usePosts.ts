@@ -3,9 +3,11 @@ import { fetchPosts } from "@/lib/api/posts";
 import { PostResponse } from "@/types/post";
 
 export function usePosts(page: number = 1, category?: string) {
-  return useQuery<PostResponse>({
+  const { data, isLoading  } = useQuery<PostResponse>({
     queryKey: ["posts", page, category],
     queryFn: () => fetchPosts(page, category),
     staleTime: 1000 * 60 * 5
   });
+
+  return { data, isLoading };
 }
