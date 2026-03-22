@@ -3,14 +3,17 @@
 import { useState, useEffect } from "react";
 import SearchInput from "@/components/posts/SearchInput";
 import PostList from "@/components/posts/PostList";
-import { PostMeta } from "@/lib/github";
 import { usePosts } from "@/hooks/usePosts";
+import { PostResponse } from "@/types/post";
 
+interface PostsContainerProps {
+  initialPosts: PostResponse;
+};
 
-const PostsContainer = () => {
+const PostsContainer = ({ initialPosts }: PostsContainerProps) => {
   const [searchInput, setSearchInput] = useState('');
   const [debouncedKeyword, setDebouncedKeyword] = useState('');
-  const { data, isLoading } = usePosts(1);
+  const { data, isLoading } = usePosts(1, undefined, initialPosts);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -20,8 +23,8 @@ const PostsContainer = () => {
     return () => clearTimeout(handler);
   }, [searchInput]);
 
-  if (isLoading) {
-    return <div>Loading..</div>
+  if(isLoading) {
+    return <div></div>
   }
 
   return (
