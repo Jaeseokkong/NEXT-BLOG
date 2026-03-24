@@ -10,5 +10,7 @@ export function usePosts(page: number = 1, category?: string, initialPosts?: Pos
     initialData: initialPosts
   });
 
-  return { data, isLoading };
+  const posts = data?.posts ?? [];
+
+  return { posts, isLoading };
 }
