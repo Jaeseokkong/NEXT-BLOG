@@ -13,7 +13,7 @@ interface PostsContainerProps {
 const PostsContainer = ({ initialPosts }: PostsContainerProps) => {
   const [searchInput, setSearchInput] = useState('');
   const [debouncedKeyword, setDebouncedKeyword] = useState('');
-  const { data, isLoading } = usePosts(1, undefined, initialPosts);
+  const { posts, isLoading } = usePosts(1, undefined, initialPosts);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -30,10 +30,10 @@ const PostsContainer = ({ initialPosts }: PostsContainerProps) => {
   return (
     <div className="flex flex-col gap-3">
       <SearchInput onSearch={setSearchInput} placeholder="검색어를 입력하세요..." />        
-      {data.posts.length === 0 ? 
+      {posts.length === 0 ? 
         <p className="text-center text-gray-500">검색 결과가 없습니다.</p>
        : 
-        <PostList initialPosts={data.posts} searchKeyword={debouncedKeyword} />
+        <PostList initialPosts={posts} searchKeyword={debouncedKeyword} />
       }
     </div>
   );
