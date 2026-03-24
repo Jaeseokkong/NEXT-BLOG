@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "@/lib/api/posts";
 import { PostResponse } from "@/types/post";
+import { queryKeys } from "@/lib/contants";
 
 export function usePosts(page: number = 1, category?: string, initialPosts?: PostResponse) {
   const { data, isLoading  } = useQuery<PostResponse>({
-    queryKey: ["posts", page, category],
+    queryKey: [queryKeys.posts, page, category],
     queryFn: () => fetchPosts(page, category),
     staleTime: 1000 * 60 * 5,
     initialData: initialPosts
