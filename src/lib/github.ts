@@ -1,6 +1,7 @@
 import matter from "gray-matter";
 import { markdownToPlainText } from "./stripMarkdown";
 import { extractFirstImage } from "./utils";
+import { RepoTreeItem } from "@/types/post";
 
 const GITHUB_API_BASE_URL = "https://api.github.com/repos/Jaeseokkong/TIL/contents";
 const GITHUB_RAW_BASE_URL = "https://raw.githubusercontent.com/Jaeseokkong/TIL/main";
@@ -204,4 +205,18 @@ async function fetchMarkdownFilesRecursive(path: string = ""): Promise<PostItemT
   }
 
   return results;
+}
+
+
+export async function fetchAllMarkdownFilesWithTree(): Promise<PostItemType[]> {
+  const res = await fetch(
+    `https://api.github.com/repos/Jaeseokkong/TIL/git/trees/main?recursive=1`,
+    {
+      headers,
+      next: { revalidate: 3600 }
+    });
+
+  const data = await res.json();
+
+  return data.tree.filter((item: RepoTreeItem) => item.type == "blob" && item.path.endsWith(".md") && !item.path.toLowerCase().includes("readme.md"))
 }
