@@ -18,3 +18,11 @@ export type PostResponse = {
     posts: PostMeta[];
     more: boolean;
 }
+
+export type RepoTreeItem = {
+    path: string;
+    mode: string;
+    type: string;
+    sha: string;
+    url: string;
+}
