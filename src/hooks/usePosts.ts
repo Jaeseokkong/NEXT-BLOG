@@ -4,15 +4,18 @@ import { PostResponse } from "@/types/post";
 import { queryKeys } from "@/lib/contants";
 
 export function usePosts(page: number = 1, category?: string, initialPosts?: PostResponse) {
-
-  const { data, isLoading  } = useQuery<PostResponse>({
+  const fallback = {
+    posts: [],
+    more: false
+  }
+  const { data = fallback, isLoading  } = useQuery<PostResponse>({
     queryKey: [queryKeys.posts, page, category],
-    queryFn: () => fetchPosts({ page }),
+    queryFn: () => fetchPosts({ page, category }),
     staleTime: 1000 * 60 * 5,
     initialData: initialPosts
   });
 
-  const posts = data?.posts ?? [];
-
-  return { posts, isLoading };
+  const posts = data.posts;
+  const more = data.more;
+  return { posts, more, isLoading };
 }
