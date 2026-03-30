@@ -1,15 +1,15 @@
 import AboutPreview from "@/components/templates/AboutPreview";
 import ProjectsPreview from "@/components/templates/ProjectsPreview";
-import { fetchPostMetas } from "@/lib/github";
 import LatestPostsPreview from "@/components/templates/LatestPostsPreview";
+import { fetchPosts } from "@/lib/api/posts";
 
 export default async function Home() {
-  const initialPosts = await fetchPostMetas(1, 10);
+  const data = await fetchPosts({ page: 1 });
 
   return (
     <main className="max-w-5xl lg:mx-auto mx-5 space-y-10 py-6">        
       <AboutPreview />
-      <LatestPostsPreview initialPosts={initialPosts}/>
+      <LatestPostsPreview initialPosts={data.posts}/>
       <ProjectsPreview />
     </main>
   );
