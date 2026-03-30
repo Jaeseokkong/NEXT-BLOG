@@ -3,6 +3,8 @@
 import { useEffect, useState, useRef } from "react";
 import { PostMeta } from "@/lib/github";
 import PostCard from "../organisms/PostCard";
+import { useParams } from "next/navigation";
+import { usePosts } from "@/hooks/usePosts";
 
 const Spinner = () => (
   <div className="col-span-full flex justify-center py-6">
@@ -20,6 +22,8 @@ const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const { category } = useParams();
+
   const loaderRef = useRef<HTMLDivElement>(null);
 
   // 검색어가 바뀌면 첫 페이지 데이터로 리셋
@@ -58,24 +62,17 @@ const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
   }, [searchKeyword]);
 
   // 페이지 변경 시 무한 스크롤 데이터 로드
+  const {posts: newPosts, more, isLoading: loading} = usePosts(page, category?.toString());
+
   useEffect(() => {
-    if (page <= 1 || searchKeyword) return; // 검색 중이면 무한스크롤 건너뜀
+    if (page <= 1 || searchKeyword) return;
     if (!hasMore) return;
 
-    const loadPosts = async () => {
-      setIsLoading(true);
-      const res = await fetch(`/api/posts?page=${page}`);
-      const { posts: newPosts, more } = await res.json();
+    if (newPosts && newPosts.length> 0) {
+      setPosts((prev) => [...prev, ...newPosts]);
+    }
 
-      if (newPosts.length > 0) {
-        setPosts((prev) => [...prev, ...newPosts]);
-      }
-
-      setHasMore(more);
-      setIsLoading(false);
-    };
-
-    loadPosts();
+    setHasMore(more);
   }, [page, hasMore, searchKeyword]);
 
   // IntersectionObserver 등록
