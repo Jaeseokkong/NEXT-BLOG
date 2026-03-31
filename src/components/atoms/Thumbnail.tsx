@@ -1,4 +1,4 @@
-import { categoryBgColors } from '@/lib/categoryColors';
+import { categoryBgColors } from '@/constants/category';
 import Image from 'next/image'
 import React from 'react'
 
