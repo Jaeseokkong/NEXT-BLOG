@@ -12,3 +12,19 @@ export const categoryBgColors: Record<string, string> = {
     Web3: "bg-purple-100",
     images: "bg-indigo-100",
 };
+
+export type Category =
+  | { main: "Algorithm" }
+  | { main: "CSS" }
+  | { main: "GraphQL" }
+  | { main: "JWT" }
+  | { main: "JavaScript" }
+  | { main: "Next.js" }
+  | { main: "Nginx" }
+  | { main: "Node" }
+  | { main: "Performance" }
+  | { main: "React", sub: "Architecture" | "Core" | "Form" | "Integration" | "State-Management" | "TanStack-Query"}
+  | { main: "Spring" }
+  | { main: "Testing"}
+  | { main: "TypeScript"}
+  | { main: "Web3"};
