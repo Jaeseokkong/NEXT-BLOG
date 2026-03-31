@@ -1,16 +1,16 @@
-import { categoryBgColors } from '@/constants/category';
+import { CATEGORY_BG_COLORS, MainCategory } from '@/constants/category';
 import Image from 'next/image'
 import React from 'react'
 
 interface ThumbnailProps {
     image?: string;
     title: string;
-    category: string;
+    category: MainCategory;
 }
 
 export default function Thumbnail({ image, title, category }: ThumbnailProps) {
 
-    const bgColor = categoryBgColors[category] ?? "bg-gray-100";
+    const bgColor = CATEGORY_BG_COLORS[category] ?? "bg-gray-100";
 
     return (
         <div className="relative h-40 w-full overflow-hidden">
