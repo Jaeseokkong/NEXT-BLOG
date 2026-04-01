@@ -1,4 +1,4 @@
-import { fetchAllMarkdownFilesWithTree, fetchPostMetas } from "@/lib/github";
+import { fetchAllMarkdownFilesWithTree } from "@/lib/github";
 import { markdownToPlainText } from "@/lib/stripMarkdown";
 import { extractFirstImage } from "@/lib/utils";
 import matter from "gray-matter";
@@ -18,7 +18,14 @@ export async function GET(req: NextRequest) {
     ? allPosts.filter((file) => file.path.startsWith(`${category}/`))
     : allPosts;
 
-  const sortedFiles = filteredFiles.sort((a, b) => a.path < b.path ? 1 : -1);
+    const sortedFiles = filteredFiles.sort((a, b) => {
+      const getDateStr = (path: string) => {
+        const name = path.split("/").pop()!;
+        return name.split("-").slice(0, 3).join("");
+      };
+    
+      return getDateStr(b.path).localeCompare(getDateStr(a.path));
+    });;
 
   const start = (page - 1) * PAGE_SIZE;
   const selectedFiles = sortedFiles.slice(start, start + PAGE_SIZE + 1);
