@@ -39,4 +39,4 @@ export const CATEGORY_BG_COLORS: Record<MainCategory, string> = {
     Testing: "bg-orange-100",
     TypeScript: "bg-blue-100",
     Web3: "bg-purple-100",
-  };
+};
