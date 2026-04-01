@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "@/lib/api/posts";
 import { PostResponse } from "@/types/post";
-import { queryKeys } from "@/lib/contants";
+import { queryKeys } from "@/constants/query";
 
 export function usePosts(page: number = 1, category?: string, initialPosts?: PostResponse) {
   const fallback = {
