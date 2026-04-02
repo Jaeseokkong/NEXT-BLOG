@@ -1,6 +1,6 @@
 import { PostResponse } from "@/types/post";
 
-export async function fetchPosts({ page = 1, category }: { page: number, category?: string } ): Promise<PostResponse> {
+export async function fetchPosts({ page = 1, category }: { page: number, category?: string, search?: string } ): Promise<PostResponse> {
   const query = new URLSearchParams({
     page: page.toString(),
   });
