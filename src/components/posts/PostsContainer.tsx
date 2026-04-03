@@ -13,7 +13,7 @@ interface PostsContainerProps {
 const PostsContainer = ({ initialPosts }: PostsContainerProps) => {
   const [searchInput, setSearchInput] = useState('');
   const [debouncedKeyword, setDebouncedKeyword] = useState('');
-  const { posts, isLoading } = usePosts(1, undefined, initialPosts);
+  const { posts, isLoading } = usePosts(1, undefined, "", initialPosts);
 
   useEffect(() => {
     const handler = setTimeout(() => {
