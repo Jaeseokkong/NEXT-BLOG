@@ -1,7 +1,6 @@
 "use client";
 
 import { MainCategory } from '@/constants/category';
-import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import React from 'react'
 
