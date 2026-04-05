@@ -5,6 +5,7 @@ import { PostMeta } from "@/lib/github";
 import PostCard from "../organisms/PostCard";
 import { useSearchParams } from "next/navigation";
 import { usePosts } from "@/hooks/usePosts";
+import { MainCategory } from "@/constants/category";
 
 const Spinner = () => (
   <div className="col-span-full flex justify-center py-6">
@@ -25,9 +26,8 @@ const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
   const [hasMore, setHasMore] = useState(true);
   const loaderRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
+  const category = searchParams.get('category') as MainCategory;
 
-
-  // 검색어가 바뀌면 첫 페이지 데이터로 리셋
   useEffect(() => {
     if (!searchKeyword) {
       setPosts(initialPosts);
@@ -60,10 +60,10 @@ const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
     fetchSearchResults();
   
     return () => controller.abort();
-  }, [searchKeyword]);
+  }, [searchKeyword, category]);
 
   // 페이지 변경 시 무한 스크롤 데이터 로드
-  const {posts: newPosts, more, isLoading: isFetching} = usePosts(page, undefined, "");
+  const {posts: newPosts, more, isLoading: isFetching} = usePosts(page, category, searchKeyword);
 
   useEffect(() => {
     if (page <= 1 || searchKeyword) return;
