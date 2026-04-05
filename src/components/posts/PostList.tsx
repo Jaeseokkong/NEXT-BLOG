@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { PostMeta } from "@/lib/github";
 import PostCard from "../organisms/PostCard";
-import { useParams, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { usePosts } from "@/hooks/usePosts";
 
 const Spinner = () => (
@@ -24,7 +24,6 @@ const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const loaderRef = useRef<HTMLDivElement>(null);
-  const [categroy, setCategory] = useState(null);
   const searchParams = useSearchParams();
 
 
