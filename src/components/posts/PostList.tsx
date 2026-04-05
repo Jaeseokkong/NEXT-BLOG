@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { PostMeta } from "@/lib/github";
 import PostCard from "../organisms/PostCard";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { usePosts } from "@/hooks/usePosts";
 
 const Spinner = () => (
@@ -14,17 +14,19 @@ const Spinner = () => (
 
 type PostListProps = {
   initialPosts: PostMeta[];
-  searchKeyword?: string; // 검색 키워드 prop
+  searchKeyword?: string;
 };
 
 const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
   const [posts, setPosts] = useState<PostMeta[]>(initialPosts);
+  console.log(initialPosts)
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const { category } = useParams();
-
   const loaderRef = useRef<HTMLDivElement>(null);
+  const [categroy, setCategory] = useState(null);
+  const searchParams = useSearchParams();
+
 
   // 검색어가 바뀌면 첫 페이지 데이터로 리셋
   useEffect(() => {
@@ -62,7 +64,7 @@ const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
   }, [searchKeyword]);
 
   // 페이지 변경 시 무한 스크롤 데이터 로드
-  const {posts: newPosts, more, isLoading: loading} = usePosts(page, category?.toString());
+  const {posts: newPosts, more, isLoading: isFetching} = usePosts(page, undefined, "");
 
   useEffect(() => {
     if (page <= 1 || searchKeyword) return;
@@ -75,26 +77,25 @@ const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
     setHasMore(more);
   }, [page, hasMore, searchKeyword]);
 
-  // IntersectionObserver 등록
   useEffect(() => {
-    if (searchKeyword) return; // 검색 중이면 옵저버 비활성화
-
+    if (searchKeyword) return;
+  
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !isLoading && hasMore) {
+        if (entries[0].isIntersecting && !isFetching && hasMore) {
           setPage((prev) => prev + 1);
         }
       },
       { threshold: 1 }
     );
-
+  
     const currentRef = loaderRef.current;
     if (currentRef) observer.observe(currentRef);
-
+  
     return () => {
       if (currentRef) observer.unobserve(currentRef);
     };
-  }, [isLoading, hasMore, searchKeyword]);
+  }, [isFetching, hasMore, searchKeyword]);
 
   return (
     <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
