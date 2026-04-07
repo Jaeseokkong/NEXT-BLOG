@@ -10,7 +10,7 @@ export function usePosts(page: number = 1, category?: MainCategory, search?: str
     more: false
   }
   const { data = fallback, isLoading  } = useQuery<PostResponse>({
-    queryKey: [queryKeys.posts, page, category],
+    queryKey: [queryKeys.posts, page, category, search],
     queryFn: () => fetchPosts({ page, category, search }),
     staleTime: 1000 * 60 * 5,
     initialData: initialPosts
