@@ -20,7 +20,6 @@ type PostListProps = {
 
 const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
   const [posts, setPosts] = useState<PostMeta[]>(initialPosts);
-  console.log(initialPosts)
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -35,7 +34,7 @@ const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
       setHasMore(true);
       return;
     }
-  
+
     const controller = new AbortController();
   
     const fetchSearchResults = async () => {
