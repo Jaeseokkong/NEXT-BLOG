@@ -3,7 +3,6 @@ import { markdownToPlainText } from "./stripMarkdown";
 import { extractFirstImage } from "./utils";
 import { RepoTreeItem } from "@/types/post";
 
-const GITHUB_API_BASE_URL = "https://api.github.com/repos/Jaeseokkong/TIL/contents";
 const GITHUB_RAW_BASE_URL = "https://raw.githubusercontent.com/Jaeseokkong/TIL/main";
 
 const headers = {
@@ -32,11 +31,6 @@ export type PostResponse = {
   posts: PostMeta[];
   more: boolean;
 }
-
-export async function fetchFilesInCategory(category: string): Promise<PostItemType[]> {
-  return fetchMarkdownFilesRecursive(category);
-}
-
 
 export async function fetchMarkdownFileByPath(path: string): Promise<string> {
   const res = await fetch(`${GITHUB_RAW_BASE_URL}/${path}`, {
@@ -78,44 +72,10 @@ export async function fetchPosts(
   return res.json();
 }
 
-async function fetchMarkdownFilesRecursive(path: string = ""): Promise<PostItemType[]> {
-  const url = path
-    ? `${GITHUB_API_BASE_URL}/${path}`
-    : GITHUB_API_BASE_URL;
 
-  const res = await fetch(url, {
-    headers,
-    next: { revalidate: 3600 },
-  });
-
-  const data = await res.json();
-
-  if (!Array.isArray(data)) return [];
-
-  let results: PostItemType[] = [];
-
-  for (const item of data) {
-    if (item.type === "file" && item.name.endsWith(".md") && item.name.toLowerCase() !== "readme.md") {
-      results.push({
-        name: item.name,
-        path: item.path,
-        type: item.type,
-      });
-    }
-
-    if (item.type === "dir" && item.name !== "images") {
-      const nested = await fetchMarkdownFilesRecursive(item.path);
-      results = results.concat(nested);
-    }
-  }
-
-  return results;
-}
-
-
-export async function fetchAllMarkdownFilesWithTree(): Promise<PostItemType[]> {
+export async function getAllPostPaths(): Promise<PostItemType[]> {
   const res = await fetch(
-    `https://api.github.com/repos/Jaeseokkong/TIL/git/trees/main?recursive=1`,
+    `${process.env.NEXT_PUBLIC_SITE_URL}?recursive=1`,
     {
       headers,
       next: { revalidate: 3600 }
@@ -123,5 +83,16 @@ export async function fetchAllMarkdownFilesWithTree(): Promise<PostItemType[]> {
 
   const data = await res.json();
 
-  return data.tree.filter((item: RepoTreeItem) => item.type == "blob" && item.path.endsWith(".md") && !item.path.toLowerCase().includes("readme.md"))
+  
+  return data.tree
+    .filter((item: RepoTreeItem) =>
+      item.type === "blob" &&
+      item.path.endsWith(".md") &&
+      !item.path.toLowerCase().includes("readme.md")
+    )
+    .map((item: RepoTreeItem) => ({
+      name: item.path.split("/").pop()!,
+      path: item.path,
+      type: item.type,
+    }));
 }
