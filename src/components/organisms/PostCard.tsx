@@ -3,12 +3,13 @@ import Thumbnail from "../atoms/Thumbnail";
 import Text from "../atoms/Text";
 import Title from "../atoms/Title";
 import MoreButton from "../atoms/MoreButton";
+import { MainCategory } from "@/constants/category";
 
 interface PostCardProps {
   title: string;
   date: string;
   slug: string;
-  category: string;
+  category: MainCategory;
   excerpt?: string;
   image?: string;
   path: string;
