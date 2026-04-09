@@ -1,7 +1,4 @@
-import { fetchAllMarkdownFilesWithTree } from "@/lib/github";
-import { markdownToPlainText } from "@/lib/stripMarkdown";
-import { extractFirstImage } from "@/lib/utils";
-import matter from "gray-matter";
+import { getAllPostPaths } from "@/lib/github";
 import { NextRequest, NextResponse } from "next/server";
 
 const PAGE_SIZE = 12;
@@ -11,61 +8,39 @@ export async function GET(req: NextRequest) {
   const search = req.nextUrl.searchParams.get("search")?.toLowerCase() || '';
   const category = req.nextUrl.searchParams.get("category");
   const page = pageParam ? parseInt(pageParam, 10) : 1;
+  let more = false;
 
-  const allPosts = await fetchAllMarkdownFilesWithTree();
+  let trees = await getAllPostPaths();
+  let n = trees.length
 
-  const filteredFiles = category 
-    ? allPosts.filter((file) => file.path.startsWith(`${category}/`))
-    : allPosts;
+  // 카테고리 필터링
+  if (category) {
+    trees = trees.filter((tree) => tree.path.startsWith(`${category}`));
+  }
 
-    const sortedFiles = filteredFiles.sort((a, b) => {
-      const getDateStr = (path: string) => {
-        const name = path.split("/").pop()!;
-        return name.split("-").slice(0, 3).join("");
-      };
-    
-      return getDateStr(b.path).localeCompare(getDateStr(a.path));
-    });;
+  // 검색 필터링
+  if (search) {
+    trees = trees.filter((tree) => tree.path.toLocaleLowerCase().includes(search));
+  }
+
+  // 파일 이름에서 날짜 추출
+  const getDate = (path: string) => {
+    const paths = path.split("/");
+    let name = paths[paths.length - 1];
+    const [y, m, d] = name.split("-").map(Number);
+    return new Date(y, m - 1, d).getTime();
+  }
+
+  // 최신순으로 정렬
+  trees.sort((a, b) => getDate(b.path) - getDate(a.path));
 
   const start = (page - 1) * PAGE_SIZE;
-  const selectedFiles = sortedFiles.slice(start, start + PAGE_SIZE + 1);
+  const selectedFiles = trees.slice(start, start + PAGE_SIZE + 1);
 
-  const posts = await Promise.all(
-    selectedFiles.slice(0, PAGE_SIZE).map(async (file) => {
-      const res = await fetch(`${process.env.GITHUB_RAW_BASE_URL}/${file.path}`);
-      const content = await res.text();
-      const { data, content: body } = matter(content);
-
-      const name = file.path.split("/").pop()!.replace(".md", "");
-      const split = name.split("-");
-
-      const title = split.slice(3).join("-");
-      const date = split.slice(0, 3).join("");
-      const category = file.path.split("/")[0];
-      const image = extractFirstImage(body);
-
-      return {
-        title,
-        date,
-        slug: name,
-        category,
-        path: file.path,
-        excerpt: data.excerpt
-          ? markdownToPlainText(data.excerpt)
-          : markdownToPlainText(body),
-        image: image ?? undefined,
-      };
-    })
-  );
-
-  const filteredPosts = posts.filter((post) =>
-    search ? post.title.toLowerCase().includes(search) : true
-  );
-
-  const more = selectedFiles.length > PAGE_SIZE;
+  if (n > start + PAGE_SIZE + 1) more = true;
 
   return NextResponse.json({
-    posts: filteredPosts,
-    more,
+    posts: selectedFiles,
+    more: more,
   });
 }
