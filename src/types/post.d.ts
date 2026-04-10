@@ -1,3 +1,5 @@
+import { MainCategory } from "@/constants/category";
+
 export type PostItemType = {
     name: string;
     path: string;
@@ -8,7 +10,7 @@ export type PostMeta = {
     title: string;
     date: string;
     slug: string;
-    category: string;
+    category: MainCategory;
     path: string;
     excerpt?: string;
     image?: string;
