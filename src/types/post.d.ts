@@ -15,7 +15,7 @@ export type PostMeta = {
 };
   
 export type PostResponse = {
-    posts: PostMeta[];
+    posts: PostItem[];
     more: boolean;
 }
 
