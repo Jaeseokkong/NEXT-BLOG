@@ -1,9 +1,9 @@
-import { PostMeta } from "@/lib/github";
 import PreviewPostCard from "../molecules/PreviewPostCard";
 import PreviewSection from "../organisms/PreviewSection";
+import { PostItem } from "@/types/post";
 
 interface LatestPostsPreviewProps {
-  initialPosts: PostMeta[];
+  initialPosts: PostItem[];
 }
 
 export default function LatestPostsPreview({ initialPosts }: LatestPostsPreviewProps) {
@@ -14,8 +14,8 @@ export default function LatestPostsPreview({ initialPosts }: LatestPostsPreviewP
       moreButton={{ href: "/posts", label: "전체 글 보기" }}
     >
       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-        {initialPosts.slice(0, 4).map((post) => (
-          <PreviewPostCard key={post.title} post={post}/>
+        {initialPosts.slice(0, 6).map((post) => (
+          <PreviewPostCard key={post.name} post={post}/>
         ))}
       </ul>
     </PreviewSection>
