@@ -15,11 +15,10 @@ export default function PreviewPostCard({ post }: { post : PostItem }) {
             >
                 <div className="flex flex-col h-full">
                     <div className="flex items-center justify-between mb-2">
-                        <Text as="span" size="xs" className="text-indigo-500 dark:text-indigo-400 uppercase tracking-wide">{post.path}</Text>
+                        <Text as="span" size="xs" className="text-indigo-500 dark:text-indigo-400 uppercase tracking-wide">{post.breadcrumb}</Text>
                         <Text as="span" size="xs" className="text-zinc-400">📅 {post.date}</Text>
                     </div>
-                    <Title level={2}>{post.name}</Title>
-                    {/* {post.excerpt && <Text size="sm" className="text-zinc-600 dark:text-zinc-400 mt-2 line-clamp-2">{post.excerpt}</Text>} */}
+                    <Title level={2}>{post.title}</Title>
                     <MoreButton>더 보기</MoreButton>
                 </div>
             </Link>
