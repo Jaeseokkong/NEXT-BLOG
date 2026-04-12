@@ -1,5 +1,6 @@
 import { MainCategory } from "@/constants/category";
 import { getAllPostPaths } from "@/lib/github";
+import { parsePostFile } from "@/lib/utils";
 import { NextRequest, NextResponse } from "next/server";
 
 const PAGE_SIZE = 12;
@@ -24,21 +25,31 @@ export async function GET(req: NextRequest) {
   }
 
   // 파일 이름에서 날짜 추출
-  const getDate = (path: string) => {
-    const paths = path.split("/");
-    let name = paths[paths.length - 1];
+  const getDate = (name: string) => {
     const [y, m, d] = name.split("-").map(Number);
     return new Date(y, m - 1, d).getTime();
   }
 
   // 최신순으로 정렬
-  trees.sort((a, b) => getDate(b.path) - getDate(a.path));
+  trees.sort((a, b) => getDate(b.name) - getDate(a.name));
+
+  console.log(trees[0].name)
+  // 이름 및 날짜 파싱
+  trees = trees.map((tree) => {
+    const parsed = parsePostFile(tree.name);
+
+    return {
+      ...tree,
+      ...parsed
+    }
+  })
   
   const start = (page - 1) * PAGE_SIZE;
   const selectedFiles = trees.slice(start, start + PAGE_SIZE + 1);
 
   if (trees.length > start + PAGE_SIZE + 1) more = true;
 
+  console.log(selectedFiles);
   return NextResponse.json({
     posts: selectedFiles,
     more: more,
