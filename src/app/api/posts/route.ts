@@ -33,10 +33,9 @@ export async function GET(req: NextRequest) {
   // 최신순으로 정렬
   trees.sort((a, b) => getDate(b.name) - getDate(a.name));
 
-  console.log(trees[0].name)
-  // 이름 및 날짜 파싱
+  // 이름, 날짜, 폴더 경로 파싱
   trees = trees.map((tree) => {
-    const parsed = parsePostFile(tree.name);
+    const parsed = parsePostFile(tree.path);
 
     return {
       ...tree,
@@ -49,7 +48,6 @@ export async function GET(req: NextRequest) {
 
   if (trees.length > start + PAGE_SIZE + 1) more = true;
 
-  console.log(selectedFiles);
   return NextResponse.json({
     posts: selectedFiles,
     more: more,
