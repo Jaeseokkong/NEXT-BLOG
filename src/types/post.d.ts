@@ -4,6 +4,9 @@ export type PostItem = {
     name: string;
     path: string;
     type: string;
+    title:string;
+    date: string;
+    breadcrumb: string;
 }
   
 export type PostMeta = {
