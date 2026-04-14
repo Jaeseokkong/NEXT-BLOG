@@ -1,6 +1,3 @@
-import matter from "gray-matter";
-import { markdownToPlainText } from "./stripMarkdown";
-import { extractFirstImage } from "./utils";
 import { RepoTreeItem } from "@/types/post";
 
 const GITHUB_RAW_BASE_URL = "https://raw.githubusercontent.com/Jaeseokkong/TIL/main";
@@ -72,10 +69,13 @@ export async function fetchPosts(
   return res.json();
 }
 
+let cachedTrees: PostItemType[] = [];
 
 export async function getAllPostPaths(): Promise<PostItemType[]> {
+  if (cachedTrees.length > 0) return cachedTrees;
+
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}?recursive=1`,
+    `${process.env.GITHUB_TREE_BASE_URL}?recursive=1`,
     {
       headers,
       next: { revalidate: 3600 }
@@ -83,8 +83,7 @@ export async function getAllPostPaths(): Promise<PostItemType[]> {
 
   const data = await res.json();
 
-  
-  return data.tree
+  cachedTrees = data.tree
     .filter((item: RepoTreeItem) =>
       item.type === "blob" &&
       item.path.endsWith(".md") &&
@@ -95,4 +94,6 @@ export async function getAllPostPaths(): Promise<PostItemType[]> {
       path: item.path,
       type: item.type,
     }));
+  
+  return cachedTrees;
 }
