@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState, useRef } from "react";
-import { PostMeta } from "@/lib/github";
 import PostCard from "../organisms/PostCard";
 import { useSearchParams } from "next/navigation";
 import { usePosts } from "@/hooks/usePosts";
 import { MainCategory } from "@/constants/category";
+import { PostItem } from "@/types/post";
 
 const Spinner = () => (
   <div className="col-span-full flex justify-center py-6">
@@ -14,12 +14,12 @@ const Spinner = () => (
 );
 
 type PostListProps = {
-  initialPosts: PostMeta[];
+  initialPosts: PostItem[];
   searchKeyword?: string;
 };
 
 const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
-  const [posts, setPosts] = useState<PostMeta[]>(initialPosts);
+  const [posts, setPosts] = useState<PostItem[]>(initialPosts);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -98,7 +98,7 @@ const PostList = ({ initialPosts, searchKeyword = "" }: PostListProps) => {
   return (
     <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {posts.map((post) => (
-        <PostCard key={post.slug} post={post} />
+        <PostCard key={post.title} post={post} />
       ))}
       {isLoading && <Spinner />}
       {!searchKeyword && <div ref={loaderRef} />}
