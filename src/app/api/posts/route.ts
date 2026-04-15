@@ -1,5 +1,5 @@
 import { MainCategory } from "@/constants/category";
-import { getAllPostPaths } from "@/lib/github";
+import { getAllPosts } from "@/lib/github";
 import { parsePostFile } from "@/lib/utils";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
   const page = pageParam ? parseInt(pageParam, 10) : 1;
   let more = false;
 
-  let trees = await getAllPostPaths();
+  let trees = await getAllPosts();
 
   // 카테고리 필터링
   if (category) {
