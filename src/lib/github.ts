@@ -69,21 +69,26 @@ export async function fetchPosts(
   return res.json();
 }
 
-let cachedTrees: PostItemType[] = [];
+let cachedPosts: PostItemType[] = [];
+let lastFetched = 0;
 
-export async function getAllPostPaths(): Promise<PostItemType[]> {
-  if (cachedTrees.length > 0) return cachedTrees;
+const CACHE_TTL = 1000 * 60 * 60; // 1시간
 
-  const res = await fetch(
-    `${process.env.GITHUB_TREE_BASE_URL}?recursive=1`,
-    {
+export async function getAllPosts(): Promise<PostItemType[]> {
+  const now = Date.now();
+
+  if (cachedPosts.length && now - lastFetched < CACHE_TTL) {
+    return cachedPosts;
+  }
+
+  const res = await fetch(`${process.env.GITHUB_TREE_BASE_URL}?recursive=1`, {
       headers,
       next: { revalidate: 3600 }
-    });
+  });
 
   const data = await res.json();
 
-  cachedTrees = data.tree
+  cachedPosts = data.tree
     .filter((item: RepoTreeItem) =>
       item.type === "blob" &&
       item.path.endsWith(".md") &&
@@ -95,5 +100,5 @@ export async function getAllPostPaths(): Promise<PostItemType[]> {
       type: item.type,
     }));
   
-  return cachedTrees;
+  return cachedPosts;
 }
