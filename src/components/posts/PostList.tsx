@@ -22,9 +22,10 @@ type PostListProps = {
 
 const PostList = ({ posts, fetchNextPage, hasNextPage, isFetchingNextPage }: PostListProps) => {
   const loaderRef = useRef<HTMLDivElement>(null);
+  
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && hasNextPage) {
+      if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
         fetchNextPage();
       }
     });
@@ -39,7 +40,7 @@ const PostList = ({ posts, fetchNextPage, hasNextPage, isFetchingNextPage }: Pos
   return (
     <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {posts.map((post) => (
-        <PostCard key={post.title} post={post} />
+        <PostCard key={post.path} post={post} />
       ))}
       {isFetchingNextPage && <Spinner />}
       <div ref={loaderRef} />

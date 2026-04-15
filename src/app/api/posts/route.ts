@@ -44,7 +44,7 @@ export async function GET(req: NextRequest) {
   })
   
   const start = (page - 1) * PAGE_SIZE;
-  const selectedFiles = trees.slice(start, start + PAGE_SIZE + 1);
+  const selectedFiles = trees.slice(start, start + PAGE_SIZE);
 
   if (trees.length > start + PAGE_SIZE + 1) more = true;
 
