@@ -11,12 +11,8 @@ import { MainCategory } from "@/constants/category";
 const PostsContainer = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [category, setCategory] = useState<MainCategory | undefined>(undefined);
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isFetching } = usePosts(category, searchKeyword);
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = usePosts(category, searchKeyword);
   const posts = data?.pages.flatMap((page) => page.posts) ?? [];
-
-  if (isFetching) {
-    return <div>...</div>
-  }
 
   return (
     <div className="flex flex-col gap-3">
