@@ -1,7 +1,6 @@
 export const CATEGORY_MAP = {
     Algorithm: [],
     CSS: [],
-    GraphQL: [],
     JWT: [],
     JavaScript: [],
     "Next.js": [],
@@ -27,7 +26,6 @@ export type MainCategory = keyof typeof CATEGORY_MAP;
 export const CATEGORY_BG_COLORS: Record<MainCategory, string> = {
     Algorithm: "bg-gray-100",
     CSS: "bg-indigo-100",
-    GraphQL: "bg-rose-100",
     JWT: "bg-amber-100",
     JavaScript: "bg-yellow-100",
     "Next.js": "bg-zinc-200",
