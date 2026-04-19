@@ -6,13 +6,19 @@ import PostList from "@/components/posts/PostList";
 import { usePosts } from "@/hooks/usePosts";
 import { PostResponse } from "@/types/post";
 import { MainCategory } from "@/constants/category";
+import {  useSearchParams } from "next/navigation";
 
 
 const PostsContainer = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
+  const searchParams = useSearchParams();
   const [category, setCategory] = useState<MainCategory | undefined>(undefined);
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = usePosts(category, searchKeyword);
   const posts = data?.pages.flatMap((page) => page.posts) ?? [];
+
+  useEffect(() => {
+    setCategory(searchParams.get("category") as MainCategory);
+  }, [searchParams])
 
   return (
     <div className="flex flex-col gap-3">
