@@ -11,6 +11,7 @@ const Sidebar = async () => {
         📚 카테고리
       </Title>
       <ul className="space-y-3">
+        <SidebarButton key="ALL" category="ALL"/>
         {categories?.map((category) => <SidebarButton key={category} category={category}/>)}
       </ul>
     </aside>
