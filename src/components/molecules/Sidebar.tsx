@@ -1,18 +1,32 @@
-import { CATEGORY_MAP, MainCategory } from '@/constants/category';
+"use client";
+
+import { Category, CATEGORY_MAP } from '@/constants/category';
 import SidebarButton from '../atoms/SidebarButton';
 import Title from '../atoms/Title';
+import { useRouter, useSearchParams } from 'next/navigation';
 
-const Sidebar = async () => {
-  const categories = Object.keys(CATEGORY_MAP) as MainCategory[];
+const Sidebar = () => {
+  const categories = Object.keys(CATEGORY_MAP) as Category[];
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const selectCategory = searchParams.get("category");
   
+  const handleClick = (category: Category) => {
+		if (category === "ALL") {
+			router.push('posts')
+		} else {
+			router.push(`posts?category=${category}`)
+		}
+	}
+
   return (
     <aside className="hidden md:block w-[220px] shrink-0 p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl shadow-sm h-fit sticky top-24">
       <Title level={2} className=" text-zinc-800 dark:text-zinc-100 mb-4">
         📚 카테고리
       </Title>
       <ul className="space-y-3">
-        <SidebarButton key="ALL" category="ALL"/>
-        {categories?.map((category) => <SidebarButton key={category} category={category}/>)}
+        <SidebarButton key="ALL" category="ALL" handleClick={handleClick} selected={selectCategory === null} />
+        {categories?.map((category) => <SidebarButton key={category} category={category} handleClick={handleClick} selected={selectCategory === category} />)}
       </ul>
     </aside>
   );
