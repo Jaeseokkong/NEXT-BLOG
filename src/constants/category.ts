@@ -23,6 +23,8 @@ export const CATEGORY_MAP = {
 
 export type MainCategory = keyof typeof CATEGORY_MAP;
 
+export type Category = MainCategory | "ALL";
+
 export const CATEGORY_BG_COLORS: Record<MainCategory, string> = {
     Algorithm: "bg-gray-100",
     CSS: "bg-indigo-100",
