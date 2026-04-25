@@ -21,7 +21,7 @@ const PostCard = ({ post }: { post: PostItem }) => {
           <Text as="span" size="xs" className="text-indigo-500 dark:text-indigo-400 font-medium uppercase tracking-wide mb-1">{post.breadcrumb} </Text>
           <Title>{post.title}</Title>
           <div className="mt-auto pt-4 flex justify-between items-center text-xs text-zinc-400">
-              {/* <span>📅 {post.date}</span> */}
+              <span>📅 {post.date}</span>
               <MoreButton>더 보기</MoreButton>
           </div>
       </div>

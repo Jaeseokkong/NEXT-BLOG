@@ -8,7 +8,7 @@ interface MoreButtonProps {
 export default function MoreButton({ children }: MoreButtonProps) {
     return (
         <span
-            className="mt-auto pt-3 flex items-center gap-1 text-xs text-indigo-500 dark:text-indigo-400 font-medium
+            className="mt-auto flex items-center gap-1 text-xs text-indigo-500 dark:text-indigo-400 font-medium
             opacity-70 group-hover:opacity-100 transition-all duration-300 translate-x-[1px] group-hover:translate-x-0"
         >
             {children}
