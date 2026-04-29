@@ -8,7 +8,7 @@ import { MainCategory } from "@/constants/category";
 
 
 const PostCard = ({ post }: { post: PostItem }) => {
-  let category = post.breadcrumb.includes(">") ? post.breadcrumb.split(">")[0] : post.breadcrumb;
+  const category = post.breadcrumb.includes(">") ? post.breadcrumb.split(">")[0] : post.breadcrumb;
 
   return (
     <Link
