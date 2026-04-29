@@ -14,7 +14,7 @@ export default function Thumbnail({ image, title, category }: ThumbnailProps) {
 
     return (
         <div className="relative h-40 w-full overflow-hidden">
-            {!!image ? (
+            {image ? (
             <>
                 <Image
                 src={image!}
