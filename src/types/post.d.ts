@@ -18,6 +18,7 @@ export type PostMeta = {
 };
   
 export type PostResponse = {
+	hasMore: boolean;
 	nextPage: number;
     posts: PostItem[];
     more: boolean;
