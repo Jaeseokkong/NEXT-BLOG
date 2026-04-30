@@ -1,11 +1,12 @@
 import { PostResponse } from "@/types/post";
 
-export async function fetchPosts({ page = 1, category }: { page: number, category?: string, search?: string } ): Promise<PostResponse> {
+export async function fetchPosts({ page = 1, category, search }: { page: number, category?: string, search?: string } ): Promise<PostResponse> {
   const query = new URLSearchParams({
     page: page.toString(),
   });
 
   if (category) query.append("category", category);
+  if (search) query.append("search", search);
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/posts?${query.toString()}`);
 
