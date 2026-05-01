@@ -1,10 +1,7 @@
 'use client';
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import PostCard from "../organisms/PostCard";
-import { useSearchParams } from "next/navigation";
-import { usePosts } from "@/hooks/usePosts";
-import { MainCategory } from "@/constants/category";
 import { PostItem } from "@/types/post";
 
 const Spinner = () => (
