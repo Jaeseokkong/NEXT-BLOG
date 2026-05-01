@@ -6,8 +6,8 @@ import { fetchPosts } from "@/lib/api/posts";
 
 export function useInfinitePosts(category?: MainCategory, search?: string) {
 	const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useInfiniteQuery({
-		queryKey: [queryKeys.posts, category],
-		queryFn: ({ pageParam = 1 }) => fetchPosts({ page: pageParam, category }),
+		queryKey: [queryKeys.posts, category, search],
+		queryFn: ({ pageParam = 1 }) => fetchPosts({ page: pageParam, category, search }),
 		initialPageParam: 1,
 		getNextPageParam: (lastPage) => {
 			return lastPage.hasMore ? lastPage.nextPage : undefined;
