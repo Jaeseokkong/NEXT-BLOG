@@ -1,6 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { MainCategory } from "@/constants/category";
-import { queryClient } from "@/lib/queryClient";
 import { queryKeys } from "@/constants/query";
 import { fetchPosts } from "@/lib/api/posts";
 

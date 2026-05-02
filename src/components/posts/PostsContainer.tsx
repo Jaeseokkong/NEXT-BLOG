@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import SearchInput from "@/components/posts/SearchInput";
 import PostList from "@/components/posts/PostList";
-import { usePosts } from "@/hooks/usePosts";
 import { MainCategory } from "@/constants/category";
 import {  useSearchParams } from "next/navigation";
 import { useInfinitePosts } from "@/hooks/useInfinitePosts";
