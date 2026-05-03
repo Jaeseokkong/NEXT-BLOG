@@ -19,10 +19,11 @@ type PostListProps = {
 
 const PostList = ({ posts, fetchNextPage, hasNextPage, isFetchingNextPage }: PostListProps) => {
   const loaderRef = useRef<HTMLDivElement>(null);
-  
+  console.log(hasNextPage)
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
+        console.log('여기')
         fetchNextPage();
       }
     });
