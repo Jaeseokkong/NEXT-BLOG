@@ -12,7 +12,7 @@ const PostsContainer = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
   const searchParams = useSearchParams();
   const [category, setCategory] = useState<MainCategory | undefined>(undefined);
-  const { posts, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfinitePosts(category, searchKeyword);
+  const { posts, fetchNextPage, hasNextPage, isFetchingNextPage, isFetching } = useInfinitePosts(category, searchKeyword);
   const isSearching = searchKeyword.length > 0;
   const isEmpty = posts.length === 0;
 
@@ -22,16 +22,18 @@ const PostsContainer = () => {
 
   return (
     <div className="flex flex-col gap-3">
-      <SearchInput onSearch={setSearchKeyword}/>
-      {isEmpty ? (
-        isSearching ? (
-          <p className="text-center text-gray-500">검색 결과가 없습니다.</p> 
-        ) : (
-          <p className="text-center text-gray-500">결과가 없습니다.</p>
-        )
-      ) : 
+      <SearchInput onSearch={setSearchKeyword} />
+      {isFetching && isEmpty ? (
+        <p className="text-center text-gray-400">검색 중...</p>
+      ) : isEmpty ? (
+            isSearching ? (
+              <p className="text-center text-gray-500">검색 결과가 없습니다.</p>
+            ) : (
+              <p className="text-center text-gray-500">결과가 없습니다.</p>
+            )
+      ) : (
         <PostList posts={posts} fetchNextPage={fetchNextPage} hasNextPage={hasNextPage} isFetchingNextPage={isFetchingNextPage} />
-      }
+      )}
     </div>
   );
 };

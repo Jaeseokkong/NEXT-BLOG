@@ -4,7 +4,7 @@ import { queryKeys } from "@/constants/query";
 import { fetchPosts } from "@/lib/api/posts";
 
 export function useInfinitePosts(category?: MainCategory, search?: string) {
-	const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useInfiniteQuery({
+	const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isFetching } = useInfiniteQuery({
 		queryKey: [queryKeys.posts, category, search],
 		queryFn: ({ pageParam = 1 }) => fetchPosts({ page: pageParam, category, search }),
 		initialPageParam: 1,
@@ -20,6 +20,7 @@ export function useInfinitePosts(category?: MainCategory, search?: string) {
 		fetchNextPage,
 		hasNextPage,
 		isFetchingNextPage,
-		isLoading
+		isLoading,
+		isFetching
 	}
 }
