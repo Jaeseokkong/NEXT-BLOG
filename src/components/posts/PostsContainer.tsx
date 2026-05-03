@@ -13,7 +13,9 @@ const PostsContainer = () => {
   const searchParams = useSearchParams();
   const [category, setCategory] = useState<MainCategory | undefined>(undefined);
   const { posts, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfinitePosts(category, searchKeyword);
-  
+  const isSearching = searchKeyword.length > 0;
+  const isEmpty = posts.length === 0;
+
   useEffect(() => {
     setCategory(searchParams.get("category") as MainCategory);
   }, [searchParams])
@@ -21,12 +23,13 @@ const PostsContainer = () => {
   return (
     <div className="flex flex-col gap-3">
       <SearchInput onSearch={setSearchKeyword}/>
-      {posts.length === 0 ? 
-        searchKeyword ?
+      {isEmpty ? (
+        isSearching ? (
           <p className="text-center text-gray-500">검색 결과가 없습니다.</p> 
-          :
+        ) : (
           <p className="text-center text-gray-500">결과가 없습니다.</p>
-       : 
+        )
+      ) : 
         <PostList posts={posts} fetchNextPage={fetchNextPage} hasNextPage={hasNextPage} isFetchingNextPage={isFetchingNextPage} />
       }
     </div>
