@@ -17,7 +17,8 @@ const PostsContainer = () => {
   const isEmpty = posts.length === 0;
 
   useEffect(() => {
-    setCategory(searchParams.get("category") as MainCategory);
+    const param = searchParams.get("category");
+    setCategory(param ? (param as MainCategory) : undefined)
   }, [searchParams])
 
   return (
