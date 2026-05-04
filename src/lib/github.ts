@@ -91,6 +91,7 @@ export async function getAllPosts(): Promise<PostItemType[]> {
   cachedPosts = data.tree
     .filter((item: RepoTreeItem) =>
       item.type === "blob" &&
+      typeof item.path === "string" &&
       item.path.endsWith(".md") &&
       !item.path.toLowerCase().includes("readme.md")
     )
