@@ -1,10 +1,10 @@
 import AboutPreview from "@/components/templates/AboutPreview";
 import ProjectsPreview from "@/components/templates/ProjectsPreview";
 import LatestPostsPreview from "@/components/templates/LatestPostsPreview";
-import { fetchPosts } from "@/lib/api/posts";
+import { fetchPostsServer } from "@/lib/api/posts";
 
 export default async function Home() {
-  const data = await fetchPosts({ page: 1 });
+  const data = await fetchPostsServer({ page: 1 });
 
   return (
     <main className="max-w-5xl lg:mx-auto mx-5 space-y-10 py-6">        
