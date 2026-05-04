@@ -100,5 +100,7 @@ export async function getAllPosts(): Promise<PostItemType[]> {
       type: item.type,
     }));
   
+  lastFetched = now;
+  
   return cachedPosts;
 }
