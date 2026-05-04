@@ -19,11 +19,9 @@ type PostListProps = {
 
 const PostList = ({ posts, fetchNextPage, hasNextPage, isFetchingNextPage }: PostListProps) => {
   const loaderRef = useRef<HTMLDivElement>(null);
-  console.log(hasNextPage)
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
-        console.log('여기')
         fetchNextPage();
       }
     });
@@ -34,7 +32,7 @@ const PostList = ({ posts, fetchNextPage, hasNextPage, isFetchingNextPage }: Pos
     return (() => {
       if (current) observer.unobserve(current);
     })
-  }, [hasNextPage])
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage])
   return (
     <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {posts.map((post) => (

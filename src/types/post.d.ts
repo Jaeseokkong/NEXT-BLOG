@@ -18,10 +18,9 @@ export type PostMeta = {
 };
   
 export type PostResponse = {
-	hasMore: boolean;
+    hasMore: boolean;
 	nextPage: number;
     posts: PostItem[];
-    more: boolean;
 }
 
 export type RepoTreeItem = {
