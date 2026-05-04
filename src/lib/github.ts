@@ -1,33 +1,12 @@
-import { RepoTreeItem } from "@/types/post";
+import { PostItem, PostResponse, RepoTreeItem } from "@/types/post";
 
 const GITHUB_RAW_BASE_URL = "https://raw.githubusercontent.com/Jaeseokkong/TIL/main";
 
 const headers = {
   "Accept": "application/vnd.github+json",
   "User-Agent": "Next-TIL-App",
-  "Authorization": `token ${process.env.GITHUB_TOKEN}`
+  "Authorization": `Bearer ${process.env.GITHUB_TOKEN}`
 };
-
-export type PostItemType = {
-  name: string;
-  path: string;
-  type: string;
-}
-
-export type PostMeta = {
-  title: string;
-  date: string;
-  slug: string;
-  category: string;
-  path: string;
-  excerpt?: string;
-  image?: string;
-};
-
-export type PostResponse = {
-  posts: PostMeta[];
-  more: boolean;
-}
 
 export async function fetchMarkdownFileByPath(path: string): Promise<string> {
   const res = await fetch(`${GITHUB_RAW_BASE_URL}/${path}`, {
@@ -69,11 +48,11 @@ export async function fetchPosts(
   return res.json();
 }
 
-let cachedPosts: PostItemType[] = [];
+let cachedPosts: PostItem[] = [];
 let lastFetched = 0;
 const CACHE_TTL = 1000 * 60 * 60; // 1시간
 
-export async function getAllPosts(): Promise<PostItemType[]> {
+export async function getAllPosts(): Promise<PostItem[]> {
   const now = Date.now();
 
   if (cachedPosts.length && now - lastFetched < CACHE_TTL) {
