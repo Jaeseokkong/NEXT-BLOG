@@ -1,4 +1,4 @@
-import Title from "../atoms/Title";
+import Title from "../common/Title";
 import SkillList from "./SkillList";
 
 interface SkillGroupProps {

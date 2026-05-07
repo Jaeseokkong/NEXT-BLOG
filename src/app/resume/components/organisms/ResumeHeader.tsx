@@ -1,6 +1,6 @@
 import Divider from "@/components/atoms/Divider";
-import Text from "@/components/atoms/Text";
-import Title from "@/components/atoms/Title";
+import Text from "@/components/common/Text";
+import Title from "@/components/common/Title";
 import Link from "next/link";
 import { LuGithub, LuLaptop, LuMail, LuSmartphone } from "react-icons/lu";
 

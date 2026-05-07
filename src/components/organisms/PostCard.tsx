@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Thumbnail from "../atoms/Thumbnail";
-import Text from "../atoms/Text";
-import Title from "../atoms/Title";
-import MoreButton from "../atoms/MoreButton";
+import Text from "../common/Text";
+import Title from "../common/Title";
+import MoreButton from "../common/MoreButton";
 import { PostItem } from "@/types/post";
 import { MainCategory } from "@/constants/category";
 

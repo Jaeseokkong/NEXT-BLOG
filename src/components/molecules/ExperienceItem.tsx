@@ -1,5 +1,5 @@
-import Text from "../atoms/Text";
-import Title from "../atoms/Title";
+import Text from "../common/Text";
+import Title from "../common/Title";
 
 interface ExperienceItemProps {
 	company: string;

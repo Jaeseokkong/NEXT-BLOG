@@ -2,8 +2,8 @@ import fs from "fs";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { MdxComponents } from "@/components/mdx/MdxComponents";
-import Title from "@/components/atoms/Title";
-import Text from "@/components/atoms/Text";
+import Title from "@/components/common/Title";
+import Text from "@/components/common/Text";
 
 type ProjectMeta = {
   title: string;

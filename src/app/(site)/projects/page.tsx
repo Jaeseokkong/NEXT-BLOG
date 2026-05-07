@@ -1,4 +1,4 @@
-import Title from "@/components/atoms/Title";
+import Title from "@/components/common/Title";
 import BadgeGroup from "@/components/molecules/BadgeGroup";
 import { getAllProjects } from "@/lib/projects";
 import Link from "next/link";

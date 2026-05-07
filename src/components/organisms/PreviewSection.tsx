@@ -1,6 +1,6 @@
 import SectionMoreButton from "../atoms/SectionMoreButton";
-import Title from "../atoms/Title";
-import Text from "../atoms/Text";
+import Title from "../common/Title";
+import Text from "../common/Text";
 
 interface PreviewSectionProps {
   title: string;
