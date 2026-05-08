@@ -23,6 +23,7 @@ export default function Text({ children, as = 'p', size = 'base', href, classNam
 			{...(as === 'a' && href ? { href } : {})}
 			className={`
 				text-gray-700
+				dark:text-zinc-200
 				leading-relaxed
 				${sizeStyles[size]}
 				
