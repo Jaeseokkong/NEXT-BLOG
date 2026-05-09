@@ -13,8 +13,8 @@ export default function PreviewPostCard({ post }: { post : PostItem }) {
                 href={`/posts/${post.path}`}
                 className="group block rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all p-5 hover:-translate-y-1"
             >
-                <div className="flex flex-col h-full">
-                    <div className="flex items-center justify-between mb-2">
+                <div className="flex flex-col h-full gap-3">
+                    <div className="flex items-center justify-between">
                         <Text as="span" size="xs" className="text-indigo-500 dark:text-indigo-400 uppercase tracking-wide">{post.breadcrumb}</Text>
                         <Text as="span" size="xs" className="text-zinc-400">📅 {post.date}</Text>
                     </div>
