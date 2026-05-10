@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
+import '@/styles/MobileSidebar.css';
 import { Inter, Montserrat } from 'next/font/google';
 import Header from "@/components/organisms/Header";
 import { Providers } from '../providers';
