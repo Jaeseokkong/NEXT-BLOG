@@ -1,12 +1,12 @@
-import Intro from "@/components/atoms/Intro";
-import MobileCategoryTabs from "@/components/posts/MobileCategoryTabs";
-import PostsContainer from "@/components/posts/PostsContainer";
-import ScrollToTopButton from "@/components/posts/ScrollToTopButton";
-import Sidebar from "@/components/molecules/Sidebar";
 import { fetchPostsServer } from "@/lib/api/posts";
 import { queryClient } from "@/lib/queryClient";
 import { queryKeys } from "@/constants/query";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import Intro from "./_components/Intro";
+import MobileCategoryTabs from "./_components/MobileCategoryTabs";
+import PostsContainer from "./_components/PostsContainer";
+import { Sidebar } from "lucide-react";
+import ScrollToTopButton from "./_components/ScrollToTopButton";
 
 export default async function PostsPage() {  
   await queryClient.prefetchInfiniteQuery({
