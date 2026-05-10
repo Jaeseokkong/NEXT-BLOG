@@ -3,10 +3,10 @@ import { queryClient } from "@/lib/queryClient";
 import { queryKeys } from "@/constants/query";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import Intro from "./_components/Intro";
-import MobileCategoryTabs from "./_components/MobileCategoryTabs";
+import MobileSidebar from "./_components/MobileSidebar";
 import PostsContainer from "./_components/PostsContainer";
-import { Sidebar } from "lucide-react";
 import ScrollToTopButton from "./_components/ScrollToTopButton";
+import Sidebar from "./_components/Sidebar";
 
 export default async function PostsPage() {  
   await queryClient.prefetchInfiniteQuery({
@@ -21,7 +21,7 @@ export default async function PostsPage() {
         <Sidebar />
         <div className="flex-1 flex flex-col gap-6">
           <Intro />
-          <MobileCategoryTabs />
+          <MobileSidebar />
           <PostsContainer />
         </div>
         <ScrollToTopButton />

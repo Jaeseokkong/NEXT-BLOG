@@ -2,12 +2,11 @@
 
 import Link from 'next/link';
 import { useRef, useState } from 'react';
-import '@/styles/MobileCategoryTabs.css'
 import { twMerge } from 'tailwind-merge';
 import { Category, CATEGORY_MAP } from '@/constants/category';
 import { useSearchParams } from 'next/navigation';
 
-const MobileCategoryTabs = () => {
+const MobileSidebar = () => {
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const [isDragging, setIsDragging] = useState(false);
 	const [startX, setStartX] = useState(0);
@@ -84,4 +83,4 @@ const MobileCategoryTabs = () => {
   );
 };
 
-export default MobileCategoryTabs;
+export default MobileSidebar;
