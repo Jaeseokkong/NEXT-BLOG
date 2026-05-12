@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from "react";
-import PostCard from "../organisms/PostCard";
+import PostCard from "../../../../components/organisms/PostCard";
 import { PostItem } from "@/types/post";
 
 const Spinner = () => (
