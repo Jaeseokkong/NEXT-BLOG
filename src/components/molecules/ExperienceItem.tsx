@@ -1,5 +1,5 @@
-import Text from "../common/Text";
-import Title from "../common/Title";
+import Text from "../ui/Text";
+import Title from "../ui/Title";
 
 interface ExperienceItemProps {
 	company: string;

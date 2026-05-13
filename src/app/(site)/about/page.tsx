@@ -1,7 +1,7 @@
 import Avatar from "@/app/(site)/about/_components/Avatar";
-import Badge from "@/components/common/Badge";
-import Text from "@/components/common/Text";
-import Title from "@/components/common/Title";
+import Badge from "@/components/ui/Badge";
+import Text from "@/components/ui/Text";
+import Title from "@/components/ui/Title";
 import Link from "next/link";
 
 const skills = {

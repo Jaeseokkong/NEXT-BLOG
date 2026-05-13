@@ -1,4 +1,4 @@
-import Badge from "../common/Badge";
+import Badge from "../ui/Badge";
 
 interface SkillListProps {
 	skills: string[];

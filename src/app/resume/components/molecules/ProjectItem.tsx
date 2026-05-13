@@ -1,5 +1,5 @@
-import Badge from '@/components/common/Badge';
-import Text from '@/components/common/Text';
+import Badge from '@/components/ui/Badge';
+import Text from '@/components/ui/Text';
 import React from 'react'
 
 interface ProjectItemProps {

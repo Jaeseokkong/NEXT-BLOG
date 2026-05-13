@@ -1,4 +1,4 @@
-import Title from "../common/Title";
+import Title from "../ui/Title";
 import SkillList from "./SkillList";
 
 interface SkillGroupProps {

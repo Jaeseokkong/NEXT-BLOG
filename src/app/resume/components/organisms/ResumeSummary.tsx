@@ -1,4 +1,4 @@
-import Text from '@/components/common/Text'
+import Text from '@/components/ui/Text'
 
 export default function ResumeSummary() {
     return (

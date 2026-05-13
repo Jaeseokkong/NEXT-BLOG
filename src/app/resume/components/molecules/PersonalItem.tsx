@@ -1,5 +1,5 @@
-import Text from '@/components/common/Text';
-import Title from '@/components/common/Title'
+import Text from '@/components/ui/Text';
+import Title from '@/components/ui/Title'
 import Link from 'next/link';
 import { LuExternalLink } from 'react-icons/lu';
 

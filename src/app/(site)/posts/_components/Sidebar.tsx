@@ -2,7 +2,7 @@
 
 import { Category, CATEGORY_MAP } from '@/constants/category';
 import SidebarButton from './SidebarButton';
-import Title from '../../../../components/common/Title';
+import Title from '../../../../components/ui/Title';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 const Sidebar = () => {
