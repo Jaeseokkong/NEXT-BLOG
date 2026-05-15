@@ -1,12 +1,12 @@
-import PreviewPostCard from "../molecules/PreviewPostCard";
-import PreviewSection from "../organisms/PreviewSection";
+import PreviewPostCard from "@/components/molecules/PreviewPostCard";
+import PreviewSection from "@/components/organisms/PreviewSection";
 import { PostItem } from "@/types/post";
 
-interface LatestPostsPreviewProps {
+interface PostsPreviewProps {
   initialPosts: PostItem[];
 }
 
-export default function LatestPostsPreview({ initialPosts }: LatestPostsPreviewProps) {
+export default function PostsPreview({ initialPosts }: PostsPreviewProps) {
   return (
     <PreviewSection
       title="📌 최신 포스트"
