@@ -1,6 +1,6 @@
-import AboutPreview from "@/components/templates/AboutPreview";
+import AboutPreview from "@/app/(site)/about/_components/Preview";
+import PostsPreview from "./posts/_components/PostsPreview";
 import ProjectsPreview from "@/components/templates/ProjectsPreview";
-import LatestPostsPreview from "@/components/templates/LatestPostsPreview";
 import { fetchPostsServer } from "@/lib/api/posts";
 
 export default async function Home() {
@@ -9,7 +9,7 @@ export default async function Home() {
   return (
     <main className="max-w-5xl lg:mx-auto mx-5 space-y-10 py-6">        
       <AboutPreview />
-      <LatestPostsPreview initialPosts={data.posts}/>
+      <PostsPreview initialPosts={data.posts}/>
       <ProjectsPreview />
     </main>
   );
