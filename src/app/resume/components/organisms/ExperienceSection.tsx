@@ -1,5 +1,5 @@
 import ExperienceItem from '@/components/molecules/ExperienceItem'
-import { SectionTitle } from '@/components/molecules/SectionTitle'
+import { SectionTitle } from '@/components/common/SectionTitle'
 import React from 'react'
 
 export default function ExperienceSection() {

@@ -1,4 +1,4 @@
-import { SectionTitle } from '@/components/molecules/SectionTitle'
+import { SectionTitle } from '@/components/common/SectionTitle'
 import React from 'react'
 import ProjectItem from '../molecules/ProjectItem'
 

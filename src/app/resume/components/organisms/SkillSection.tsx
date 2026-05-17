@@ -1,4 +1,4 @@
-import { SectionTitle } from "@/components/molecules/SectionTitle";
+import { SectionTitle } from "@/components/common/SectionTitle";
 import SkillGroup from "@/components/molecules/SkillGroup";
 
 export default function SkillSection() {
