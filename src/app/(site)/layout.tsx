@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "../globals.css";
 import '@/styles/MobileSidebar.css';
 import { Inter, Montserrat } from 'next/font/google';
-import Header from "@/components/organisms/Header";
 import { Providers } from '../providers';
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
+import Header from "@/components/common/Header";
 
 const inter = Inter({
   subsets: ["latin"],

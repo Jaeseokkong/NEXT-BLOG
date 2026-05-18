@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Logo from '../atoms/Logo';
-import ThemeToggle from '../molecules/ThemeToggle';
+import ThemeToggle from './ThemeToggle';
 
 export default function Header() {
     const [mounted, setMounted] = useState(false);
