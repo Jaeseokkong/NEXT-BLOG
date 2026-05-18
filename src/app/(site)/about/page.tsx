@@ -3,6 +3,7 @@ import Badge from "@/components/ui/Badge";
 import Text from "@/components/ui/Text";
 import Title from "@/components/ui/Title";
 import Link from "next/link";
+import HeroSection from "./_components/HeroSection";
 
 const skills = {
   Frontend: ["JavaScript", "TypeScript", "React", "Next.js", "React Native"],
@@ -79,7 +80,8 @@ const projects = [
 export default function AboutPage() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-20 space-y-28 text-zinc-800 dark:text-zinc-100">
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+      <HeroSection />
+      {/* <section className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
         <Avatar />
 
         <div className="md:col-span-2 space-y-8">
@@ -189,7 +191,7 @@ export default function AboutPage() {
             wotjr294@naver.com
           </a>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
