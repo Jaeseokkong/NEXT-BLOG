@@ -19,22 +19,19 @@ interface TextProps {
 	size?: 'xs' | 'sm' | 'base' | 'lg';
 	href?: string;
 	className?: string;
-	color: keyof typeof colorStyles;
+	color?: keyof typeof colorStyles;
 }
 
 export default function Text({ children, as = 'p', size = 'base', href, className, color = "primary" }: TextProps) {
 	const Tag = as as keyof JSX.IntrinsicElements;
 
-
 	return (
 		<Tag
 			{...(as === 'a' && href ? { href } : {})}
 			className={`
-				text-gray-700
-				dark:text-zinc-200
 				leading-relaxed
 				${sizeStyles[size]}
-				
+				${colorStyles[color]}
 				${className}
 			`}
 		>

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import PreviewSection from "../organisms/PreviewSection";
-import BadgeGroup from "../molecules/BadgeGroup";
 import { getAllProjects } from "@/lib/projects";
+import PreviewSection from "@/components/organisms/PreviewSection";
+import BadgeGroup from "@/components/ui/BadgeGroup";
 
 export default function ProjectsPreview() {
   const projects = getAllProjects().slice(0, 4);

@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useRef } from "react";
-import PostCard from "../../../../components/organisms/PostCard";
 import { PostItem } from "@/types/post";
+import PostCard from "./PostCard";
 
 const Spinner = () => (
   <div className="col-span-full flex justify-center py-6">

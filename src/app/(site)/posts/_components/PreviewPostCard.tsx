@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import React from 'react'
-import Text from '../ui/Text'
-import Title from '../ui/Title'
-import MoreButton from '../ui/MoreButton'
+import Title from '@/components/ui/Title';
+import Text from '@/components/ui/Text';
+import MoreButton from '@/components/ui/MoreButton';
 import { PostItem } from '@/types/post'
 
 export default function PreviewPostCard({ post }: { post : PostItem }) {

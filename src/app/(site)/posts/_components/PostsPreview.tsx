@@ -1,6 +1,6 @@
-import PreviewPostCard from "@/components/molecules/PreviewPostCard";
 import PreviewSection from "@/components/organisms/PreviewSection";
 import { PostItem } from "@/types/post";
+import PreviewPostCard from "./PreviewPostCard";
 
 interface PostsPreviewProps {
   initialPosts: PostItem[];

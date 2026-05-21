@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import Logo from '../atoms/Logo';
 import ThemeToggle from './ThemeToggle';
+import Logo from '../ui/Logo';
 
 export default function Header() {
     const [mounted, setMounted] = useState(false);
