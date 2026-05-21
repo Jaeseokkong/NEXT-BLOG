@@ -1,4 +1,4 @@
-import SectionMoreButton from "../common/SectionMoreButton";
+import SectionMoreButton from "../atoms/SectionMoreButton";
 import Title from "../ui/Title";
 import Text from "../ui/Text";
 
