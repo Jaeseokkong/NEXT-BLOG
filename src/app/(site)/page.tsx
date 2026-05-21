@@ -1,7 +1,7 @@
-import AboutPreview from "@/app/(site)/about/_components/Preview";
-import PostsPreview from "./posts/_components/PostsPreview";
 import ProjectsPreview from "@/components/templates/ProjectsPreview";
 import { fetchPostsServer } from "@/lib/api/posts";
+import AboutPreview from "./about/_components/Preview";
+import PostsPreview from "./posts/_components/PostsPreview";
 
 export default async function Home() {
   const data = await fetchPostsServer({ page: 1 });
@@ -10,10 +10,11 @@ export default async function Home() {
     <main className="max-w-5xl lg:mx-auto mx-5 space-y-10 py-6">        
       <AboutPreview />
       <PostsPreview initialPosts={data.posts}/>
-      <ProjectsPreview />
+      <ProjectsPreview />  
     </main>
   );
 }
+
 
 
 export const metadata = {
