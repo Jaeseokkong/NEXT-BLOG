@@ -1,4 +1,4 @@
-import ExperienceItem from '@/components/molecules/ExperienceItem'
+import ExperienceItem from '@/app/(site)/about/_components/ExperienceItem'
 import { SectionTitle } from '@/components/common/SectionTitle'
 import React from 'react'
 
