@@ -3,11 +3,6 @@ import Title from '@/components/ui/Title'
 import Link from 'next/link'
 import React from 'react'
 
-const metrics = [
-	{ value: "154개", label: "누적 TIL\n꾸준한 학습 기록" },
-	{ value: "5년차", label: "프론트엔드\n실무 경험" },
-]
-
 function HeroSection() {
 	return (
 		<>
