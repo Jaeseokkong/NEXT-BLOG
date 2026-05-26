@@ -4,6 +4,9 @@ import Text from "@/components/ui/Text";
 import Title from "@/components/ui/Title";
 import Link from "next/link";
 import HeroSection from "./_components/HeroSection";
+import CareerSection from "./_components/CareerSection";
+import ProjectsSection from "./_components/ProjectSection";
+import SkillsSection from "./_components/SkillSection";
 
 const skills = {
   Frontend: ["JavaScript", "TypeScript", "React", "Next.js", "React Native"],
@@ -81,6 +84,9 @@ export default function AboutPage() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-20 space-y-28 text-zinc-800 dark:text-zinc-100">
       <HeroSection />
+      <SkillsSection />
+      <CareerSection />
+      <ProjectsSection />
     </div>
   );
 }
