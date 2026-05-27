@@ -1,35 +1,39 @@
-import Title from "../ui/Title";
-import Text from "../ui/Text";
-import SectionMoreButton from "../common/SectionMoreButton";
+import Title from "@/components/ui/Title";
+import Text from "@/components/ui/Text";
+import SectionMoreButton from "@/components/common/SectionMoreButton";
 
 interface PreviewSectionProps {
-  title: string;
-  context?: string;
-  moreButton?: {
-    href: string;
-    label?: string;
-  };
-  children: React.ReactNode;
+    title: string;
+    context?: string;
+    moreButton?: {
+        href: string;
+        label?: string;
+    };
+    children: React.ReactNode;
 }
 
 export default function PreviewSection({
-  title,
-  context,
-  moreButton,
-  children,
+    title,
+    context,
+    moreButton,
+    children,
 }: PreviewSectionProps) {
-  return (
-    <section className="bg-zinc-100 dark:bg-zinc-800 rounded-xl p-6 shadow-sm">
-      <Title level={2} className="mb-2 text-zinc-800 dark:text-zinc-100">
-        {title}
-      </Title>
-      {context && 
-        <Text as="p" className="text-zinc-700 dark:text-zinc-300 mb-3 whitespace-pre-line">
-          {context}
-        </Text>
-      }
-      {children}
-      {moreButton && <SectionMoreButton href={moreButton.href} label={moreButton.label} />}
-    </section>
-  );
+return (
+        <section>
+        <div className="flex items-center justify-between mb-4">
+            <Title level={2} className="text-zinc-900 dark:text-zinc-100">
+            {title}
+            </Title>
+            {moreButton && (
+            <SectionMoreButton href={moreButton.href} label={moreButton.label} />
+            )}
+        </div>
+        {context && (
+            <Text color="secondary" size="sm" className="mb-4 whitespace-pre-line">
+            {context}
+            </Text>
+        )}
+        {children}
+        </section>
+    );
 }
