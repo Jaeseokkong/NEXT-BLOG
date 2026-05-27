@@ -3,6 +3,11 @@ import Title from '@/components/ui/Title'
 import Link from 'next/link'
 import React from 'react'
 
+const metrics = [
+    { value: "대략 150개", label: "누적 TIL\n꾸준한 학습 기록" },
+    { value: "5년차", label: "프론트엔드\n실무 경험" },
+]
+
 function HeroSection() {
 	return (
 		<>
@@ -43,6 +48,18 @@ function HeroSection() {
 					</a>
 				</div>
 			</section>
+			<div className="grid grid-cols-2 gap-3 mt-10">
+				{metrics.map((m) => (
+					<div key={m.value} className="bg-zinc-50 dark:bg-zinc-800/60 rounded-xl p-4">
+					<p className="text-xl font-medium text-indigo-500 dark:text-indigo-400 mb-1">
+						{m.value}
+					</p>
+					<p className="text-xs text-zinc-400 dark:text-zinc-500 leading-relaxed whitespace-pre-line">
+						{m.label}
+					</p>
+					</div>
+				))}
+			</div>
 		</>
 	)
 }
