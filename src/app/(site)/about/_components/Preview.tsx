@@ -21,7 +21,7 @@ export default function AboutPreview() {
                 <div
                     key={h.label}
                     className="bg-zinc-50 dark:bg-zinc-800/60 rounded-xl p-4"
-                >å
+                >
                     <p className="text-lg font-medium text-indigo-500 dark:text-indigo-400 mb-1">
                     {h.label}
                     </p>
