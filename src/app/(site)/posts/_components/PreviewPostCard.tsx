@@ -1,26 +1,25 @@
 import Link from 'next/link'
-import React from 'react'
-import Title from '@/components/ui/Title';
-import Text from '@/components/ui/Text';
-import MoreButton from '@/components/ui/MoreButton';
 import { PostItem } from '@/types/post'
 
-export default function PreviewPostCard({ post }: { post : PostItem }) {
+export default function PreviewPostCard({ post }: { post: PostItem }) {
     return (
-        <li key={post.path}>
+        <li>
             <Link
                 data-testid={`post-link-${post.path}`}
                 href={`/posts/${post.path}`}
-                className="group block rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-all p-5 hover:-translate-y-1"
+                className="group flex items-center justify-between gap-4 py-3 px-1 border-b border-zinc-100 dark:border-zinc-800 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors"
             >
-                <div className="flex flex-col h-full gap-3">
-                    <div className="flex items-center justify-between">
-                        <Text as="span" size="xs" className="text-indigo-500 dark:text-indigo-400 uppercase tracking-wide">{post.breadcrumb}</Text>
-                        <Text as="span" size="xs" className="text-zinc-400">📅 {post.date}</Text>
-                    </div>
-                    <Title level={2}>{post.title}</Title>
-                    <MoreButton>더 보기</MoreButton>
+                <div className="flex items-center gap-3 min-w-0">
+                    <span className="text-xs text-indigo-500 dark:text-indigo-400 shrink-0">
+                        {post.breadcrumb}
+                    </span>
+                    <span className="text-sm text-zinc-800 dark:text-zinc-200 truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                        {post.title}
+                    </span>
                 </div>
+                <span className="text-xs text-zinc-400 dark:text-zinc-500 shrink-0">
+                {post.date}
+                </span>
             </Link>
         </li>
     )
