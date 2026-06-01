@@ -1,4 +1,4 @@
-import Divider from "@/components/atoms/Divider";
+import Divider from "@/components/ui/Divider";
 import Text from "@/components/ui/Text";
 import Title from "@/components/ui/Title";
 import Link from "next/link";

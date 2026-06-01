@@ -1,5 +1,5 @@
+import BadgeGroup from "@/components/ui/BadgeGroup";
 import Title from "@/components/ui/Title";
-import BadgeGroup from "@/components/molecules/BadgeGroup";
 import { getAllProjects } from "@/lib/projects";
 import Link from "next/link";
 

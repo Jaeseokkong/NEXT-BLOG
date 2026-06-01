@@ -1,5 +1,5 @@
+import SkillGroup from "@/app/(site)/about/_components/SkillGroup";
 import { SectionTitle } from "@/components/common/SectionTitle";
-import SkillGroup from "@/components/molecules/SkillGroup";
 
 export default function SkillSection() {
     return (
