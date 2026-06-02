@@ -5,7 +5,7 @@ import ExperienceSection from "./components/organisms/ExperienceSection";
 import ProjectSection from "./components/organisms/ProjectSection";
 import PersonalSection from "./components/organisms/PersonalSection";
 import ResumeSummary from "./components/organisms/ResumeSummary";
-import Print from "@/components/atoms/Print";
+import Print from "@/components/common/Print";
 
 export default function ResumePage() {
 	return (

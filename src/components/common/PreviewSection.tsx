@@ -1,5 +1,5 @@
-import Title from "../ui/Title";
 import Text from "../ui/Text";
+import Title from "../ui/Title";
 import SectionMoreButton from "./SectionMoreButton";
 
 interface PreviewSectionProps {
