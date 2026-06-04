@@ -24,7 +24,7 @@ export default function PreviewSection({
         {title}
       </Title>
       {context && 
-        <Text as="p" className="text-zinc-700 dark:text-zinc-300 mb-3 whitespace-pre-line">
+        <Text as="p" className="text-zinc-700 dark:text-zinc-300 mb-3 whitespace-pre-line" color="primary">
           {context}
         </Text>
       }
