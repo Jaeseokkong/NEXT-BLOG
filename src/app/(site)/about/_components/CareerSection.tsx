@@ -34,7 +34,7 @@ export default function CareerSection() {
       <div className="relative pl-5 border-l border-zinc-200 dark:border-zinc-800 space-y-8">
         {careers.map((career) => (
           <div key={career.company} className="relative">
-            <span className={`absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-zinc-900 ${career.current ? 'bg-indigo-500' : 'bg-zinc-400 dark:bg-zinc-600'}`} />
+            <span className={`absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-zinc-900 ${career.current ? 'bg-indigo-500' : 'bg-zinc-400 dark:bg-zinc-600'}`} />
             <div className="flex items-center gap-2 mb-1">
               <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
                 {career.company}
