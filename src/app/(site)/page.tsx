@@ -10,7 +10,7 @@ export default async function Home() {
     <main className="max-w-5xl lg:mx-auto mx-5 space-y-10 py-6">        
       <AboutPreview />
       <PostsPreview initialPosts={data.posts}/>
-      <ProjectsPreview />  
+      {/* <ProjectsPreview />   */}
     </main>
   );
 }
