@@ -13,7 +13,7 @@ export default function PostsPreview({ initialPosts }: PostsPreviewProps) {
             moreButton={{ href: "/posts", label: "전체 글 보기" }}
         >
             <ul className="flex flex-col gap-2 mt-2">
-                {initialPosts.slice(0, 5).map((post) => (
+                {initialPosts.slice(0, 15).map((post) => (
                     <PreviewPostCard key={post.name} post={post} />
                 ))}
             </ul>
