@@ -1,4 +1,4 @@
-import { PostItem, PostResponse, RepoTreeItem } from "@/types/post";
+import { PostItem, RepoTreeItem } from "@/types/post";
 
 const GITHUB_RAW_BASE_URL = "https://raw.githubusercontent.com/Jaeseokkong/TIL/main";
 

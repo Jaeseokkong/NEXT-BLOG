@@ -1,7 +1,6 @@
 import { fetchPostsServer } from "@/lib/api/posts";
 import AboutPreview from "./about/_components/Preview";
 import PostsPreview from "./posts/_components/PostsPreview";
-import ProjectsPreview from "./portfolio/_components/ProjectsPreview";
 
 export default async function Home() {
   const data = await fetchPostsServer({ page: 1 });
