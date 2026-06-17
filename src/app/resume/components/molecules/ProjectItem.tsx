@@ -12,11 +12,11 @@ interface ProjectItemProps {
 export default function ProjectItem({ title, description, highlights, techStack }: ProjectItemProps) {
 	return (
 		<div className="break-avoid">
-			<Text className="font-semibold text-gray-900">
+			<Text color="secondary" className="font-semibold text-gray-900">
 				{title}
 			</Text>
 		
-			<Text size="sm" className="mt-1">
+			<Text color="secondary" size="sm" className="mt-1">
 				{description}
 			</Text>
 

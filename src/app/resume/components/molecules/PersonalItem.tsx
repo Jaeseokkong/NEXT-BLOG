@@ -27,7 +27,7 @@ export default function PersonalItem({ title, description, highlights, link }: P
 
 			
 
-			<Text size="sm" className="mt-1">
+			<Text color="secondary" size="sm" className="mt-1">
 				{description}
 			</Text>
 
@@ -35,7 +35,7 @@ export default function PersonalItem({ title, description, highlights, link }: P
 				<ul className="mt-2 list-disc pl-5 space-y-1 text-sm text-gray-700">
 					{highlights.map((item, idx) => (
 						<li key={idx}>
-							<Text size="sm">{item}</Text>
+							<Text color="secondary" size="sm">{item}</Text>
 						</li>
 					))}
 				</ul>

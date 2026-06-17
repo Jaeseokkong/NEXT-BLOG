@@ -59,7 +59,7 @@ export default async function ProjectPage({ params }: Props) {
         <Title level={1} className="bg-gradient-to-r from-indigo-600 to-purple-500 bg-clip-text text-transparent">
           {frontmatter.title}
         </Title>
-        <Text size="sm" className="text-zinc-500 dark:text-zinc-400 mt-1">
+        <Text color="muted" size="sm" className="text-zinc-500 dark:text-zinc-400 mt-1">
           {frontmatter.date}
         </Text>
 
