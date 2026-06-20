@@ -3,7 +3,7 @@ export type Project = {
     title: string;
     subtitle: string;       // 한 줄 설명
     period: string;
-    companyu: string;
+    company: string;
     tags: string[];        
     highlights: string[];   // 핵심 성과
     description: string;    // 상세 페이지용 긴 설명
