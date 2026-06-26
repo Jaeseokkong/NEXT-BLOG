@@ -1,7 +1,7 @@
 import { fetchPostsServer } from "@/lib/api/posts";
 import AboutPreview from "./about/_components/Preview";
 import PostsPreview from "./posts/_components/PostsPreview";
-import ProjectsPreview from "./portfolio/_components/ProjectsPreview";
+// import ProjectsPreview from "./portfolio/_components/ProjectsPreview";
 
 export default async function Home() {
   const data = await fetchPostsServer({ page: 1 });
@@ -10,7 +10,7 @@ export default async function Home() {
     <main className="max-w-5xl lg:mx-auto mx-5 space-y-10 py-6">        
       <AboutPreview />
       <PostsPreview initialPosts={data.posts}/>
-      <ProjectsPreview />  
+      {/* <ProjectsPreview />   */}
     </main>
   );
 }
