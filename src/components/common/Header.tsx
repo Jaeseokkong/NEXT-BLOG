@@ -20,6 +20,7 @@ export default function Header() {
                 <div className="flex items-center space-x-6 font-medium text-sm text-zinc-700 dark:text-zinc-200">
                     <Link href="/about" className="hover:underline">About</Link>
                     <Link href="/posts" className="hover:underline">Posts</Link>
+                    <Link href="/portfolio" className="hover:underline">Portfolio</Link>
                     {mounted && (
                         <ThemeToggle />
                     )}
