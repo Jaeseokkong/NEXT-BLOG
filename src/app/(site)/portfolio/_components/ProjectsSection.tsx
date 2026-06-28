@@ -8,11 +8,12 @@ export default function ProjectsSection() {
       <SectionLabel>Projects</SectionLabel>
       <div className="space-y-3">
         {projects.map((project) => (
-          <Link
-            key={project.slug}
-            href={`/portfolio/${project.slug}`}
-            className="block bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-xl p-4 space-y-2 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors"
-          >
+          // <Link
+          //   key={project.slug}
+          //   href={`/portfolio/${project.slug}`}
+          //   className="block bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-xl p-4 space-y-2 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors"
+          // >
+          <div className="block bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-xl p-4 space-y-2 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors">
             <div className="flex items-start justify-between gap-3">
               <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
                 {project.title}
@@ -34,7 +35,8 @@ export default function ProjectsSection() {
                 </li>
               ))}
             </ul>
-          </Link>
+          </div>
+          // </Link>
         ))}
       </div>
     </section>
