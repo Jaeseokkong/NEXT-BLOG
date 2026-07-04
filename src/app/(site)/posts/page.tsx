@@ -16,14 +16,9 @@ export default async function PostsPage() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <main className="max-w-7xl mx-auto px-4 py-8 md:flex gap-6">
-        <Sidebar />
-        <div className="flex-1 flex flex-col gap-6">
-          <MobileSidebar />
-          <PostsContainer />
-        </div>
-        <ScrollToTopButton />
-      </main>
+      <main className="max-w-5xl mx-auto px-4 py-8">
+        <PostsContainer />
+       </main>
     </HydrationBoundary>
   )
 }
