@@ -6,6 +6,8 @@ import PostList from "@/app/(site)/posts/_components/PostList";
 import { MainCategory } from "@/constants/category";
 import {  useSearchParams } from "next/navigation";
 import { useInfinitePosts } from "@/hooks/useInfinitePosts";
+import CategoryFilter from "./CategoryFilter";
+import Title from "@/components/ui/Title";
 
 
 const PostsContainer = () => {
@@ -23,6 +25,8 @@ const PostsContainer = () => {
 
   return (
     <div className="flex flex-col gap-3">
+      <Title>Posts</Title>
+      <CategoryFilter />
       <SearchInput onSearch={setSearchKeyword} />
       {isFetching && isEmpty ? (
         <p className="text-center text-gray-400">검색 중...</p>
