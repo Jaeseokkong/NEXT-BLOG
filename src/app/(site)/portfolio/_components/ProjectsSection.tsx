@@ -1,4 +1,4 @@
-import Link from 'next/link'
+// import Link from 'next/link'
 import { SectionLabel } from './SkillsSection'
 import { projects } from '@/constants/portfolio'
 
