@@ -2,10 +2,7 @@ import { fetchPostsServer } from "@/lib/api/posts";
 import { queryClient } from "@/lib/queryClient";
 import { queryKeys } from "@/constants/query";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import MobileSidebar from "./_components/MobileSidebar";
 import PostsContainer from "./_components/PostsContainer";
-import ScrollToTopButton from "./_components/ScrollToTopButton";
-import Sidebar from "./_components/Sidebar";
 
 export default async function PostsPage() {  
   await queryClient.prefetchInfiniteQuery({
