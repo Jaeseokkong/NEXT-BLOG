@@ -18,7 +18,7 @@ export default function CategoryButton({ category, handleClick, selected }: Cate
 					`px-4 py-2 rounded-lg bg-zinc-100 whitespace-nowrap
 					dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-indigo-300/20 text-zinc-800 
 					dark:text-zinc-100 font-medium transition-colors duration-200`,
-					selected && "bg-indigo-100 dark:bg-indigo-300/20"
+					selected ? "bg-indigo-100 dark:bg-indigo-300/20" : "cursor-pointer"
 				)
 			}
 			key={category} onClick={() => handleClick(category)}>
