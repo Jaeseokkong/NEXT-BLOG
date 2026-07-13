@@ -2,11 +2,11 @@
 
 import { useEffect, useRef } from "react";
 import { PostItem } from "@/types/post";
-import PostCard from "./PostCard";
+import PostRow from "./PostRow";
 
 const Spinner = () => (
-  <div className="col-span-full flex justify-center py-6">
-    <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-gray-500" />
+  <div className="flex justify-center py-6">
+    <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-zinc-400" />
   </div>
 );
 
@@ -19,6 +19,7 @@ type PostListProps = {
 
 const PostList = ({ posts, fetchNextPage, hasNextPage, isFetchingNextPage }: PostListProps) => {
   const loaderRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
@@ -28,15 +29,15 @@ const PostList = ({ posts, fetchNextPage, hasNextPage, isFetchingNextPage }: Pos
 
     const current = loaderRef.current;
     if (current) observer.observe(current);
-
-    return (() => {
+    return () => {
       if (current) observer.unobserve(current);
-    })
-  }, [hasNextPage, isFetchingNextPage, fetchNextPage])
+    };
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
+
   return (
-    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="flex flex-col">
       {posts.map((post) => (
-        <PostCard key={post.path} post={post} />
+        <PostRow key={post.path} post={post} />
       ))}
       {isFetchingNextPage && <Spinner />}
       <div ref={loaderRef} />
